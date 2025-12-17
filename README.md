@@ -3,8 +3,6 @@
 **🌐 Project Website**: [https://lib-evolution-eval.github.io/](https://lib-evolution-eval.github.io/)  
 **📄 Paper**: [https://aclanthology.org/2025.naacl-long.348/](https://aclanthology.org/2025.naacl-long.348/)
 
-Recent advancements in code completion models have often overlooked the evolving nature of public libraries. LIBEVOLUTIONEVAL bridges this gap by providing a benchmark that rigorously tests Large Language Models on version-specific code completion across multiple public libraries such as PyTorch, Matplotlib, and more. Our experiments show that model performance can vary significantly when libraries undergo rapid version changes—APIs might be introduced, deprecated, or modified. We demonstrate that providing version-aware context, such as retrieved documentation, helps but does not fully solve the inherent challenges. We also show that embedding models themselves exhibit bias toward certain library versions, highlighting the complexity of handling evolving public libraries in real-world development settings.
-
 ## Overview
 
 Recent advancements in code completion models have primarily focused on either single-file contexts or entire repositories, overlooking the critical challenge of fast-evolving public libraries. As libraries introduce, deprecate, or modify APIs across versions, a model’s performance can vary significantly based on the year and version of the library in use.
