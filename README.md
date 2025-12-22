@@ -1,6 +1,8 @@
 # LibEvolutionEval: A Benchmark and Study for Version-Specific Code Generation
 
-**🌐 Project Website**: [https://lib-evolution-eval.github.io/](https://lib-evolution-eval.github.io/)  
+**🌐 Project Website**: [https://lib-evolution-eval.github.io/](https://lib-evolution-eval.github.io/) 
+**Venue**: NAACL 2025
+**Presentation**: Oral Presentation
 **📄 Paper**: [https://aclanthology.org/2025.naacl-long.348/](https://aclanthology.org/2025.naacl-long.348/)
 
 ## Overview
@@ -169,11 +171,3 @@ If you use this work in your research, please cite:
 ## Acknowledgments
 
 This work was conducted at AWS AI Labs. We thank the research community for their foundational work in code completion evaluation and the open source community for providing the libraries and tools that made this research possible. This code is being released solely for academic and scientific reproducibility purposes, in support of the methods and findings described in the associated publication. Pull requests for code changes are not being accepted in order to maintain the code as it was used in the paper.
-
-
-## Publication Details
-
-- **Venue**: NAACL 2025
-- **Presentation**: Oral Presentation
-- **Paper URL**: [https://aclanthology.org/2025.naacl-long.348/](https://aclanthology.org/2025.naacl-long.348/)
-- **Project Website**: [https://lib-evolution-eval.github.io/](https://lib-evolution-eval.github.io/)
