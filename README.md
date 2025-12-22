@@ -1,9 +1,9 @@
 # LibEvolutionEval: A Benchmark and Study for Version-Specific Code Generation
 
-**🌐 Project Website**: [https://lib-evolution-eval.github.io/](https://lib-evolution-eval.github.io/) 
-**Venue**: NAACL 2025
-**Presentation**: Oral Presentation
-**📄 Paper**: [https://aclanthology.org/2025.naacl-long.348/](https://aclanthology.org/2025.naacl-long.348/)
+- **🌐 Project Website**: [https://lib-evolution-eval.github.io/](https://lib-evolution-eval.github.io/) 
+- **Venue**: NAACL 2025
+- **Presentation**: Oral Presentation
+- **📄 Paper**: [https://aclanthology.org/2025.naacl-long.348/](https://aclanthology.org/2025.naacl-long.348/)
 
 ## Overview
 
