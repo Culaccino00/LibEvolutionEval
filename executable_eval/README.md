@@ -87,12 +87,15 @@ Do not pass the case file itself to a model, because it contains reference answe
 ```bash
 python3 -m executable_eval.export_tasks \
   --cases executable_eval/cases --library matplotlib \
-  --output results/matplotlib_3_8_3_tasks.jsonl
+  --output experiments/version_eval_harness/matplotlib_3_8_3_tasks.jsonl
 
 python3 -m executable_eval.export_tasks \
   --cases executable_eval/cases --library torch \
-  --output results/torch_2_2_0_tasks.jsonl
+  --output experiments/version_eval_harness/torch_2_2_0_tasks.jsonl
 ```
+
+A ready-to-use copy of both task files, together with the full evaluation
+procedure, lives in `experiments/version_eval_harness/`.
 
 Use exactly these prompts for both systems. The experimental difference should be the memory supplied to the model: the baseline receives its normal or stale context, while Memix resolves the context for the target version.
 
