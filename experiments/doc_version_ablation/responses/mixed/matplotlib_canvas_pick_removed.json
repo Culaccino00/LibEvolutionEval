@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_pick_removed", "raw": "fig.pick(event)", "completion": "fig.pick(event)"}

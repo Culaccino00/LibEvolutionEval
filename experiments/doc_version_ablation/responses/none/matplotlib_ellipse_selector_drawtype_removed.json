@@ -1,0 +1,1 @@
+{"id": "matplotlib_ellipse_selector_drawtype_removed", "raw": "widgets.EllipseSelector(ax, onselect=lambda eclick, erelease: None)", "completion": "widgets.EllipseSelector(ax, onselect=lambda eclick, erelease: None)"}

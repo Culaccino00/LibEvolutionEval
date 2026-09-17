@@ -1,0 +1,1 @@
+{"id": "matplotlib_axes3d_quiver_length_keyword_only", "raw": "quiver = ax.quiver(0, 0, 0, 1, 1, 1)", "completion": "quiver = ax.quiver(0, 0, 0, 1, 1, 1)"}

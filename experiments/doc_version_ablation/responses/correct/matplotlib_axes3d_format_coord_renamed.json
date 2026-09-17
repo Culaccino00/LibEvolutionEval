@@ -1,0 +1,1 @@
+{"id": "matplotlib_axes3d_format_coord_renamed", "raw": "ax.format_coord(0, 0)", "completion": "ax.format_coord(0, 0)"}

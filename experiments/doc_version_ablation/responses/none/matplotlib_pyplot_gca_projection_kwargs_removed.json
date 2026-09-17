@@ -1,0 +1,1 @@
+{"id": "matplotlib_pyplot_gca_projection_kwargs_removed", "raw": "fig.add_subplot(projection=\"polar\")", "completion": "fig.add_subplot(projection=\"polar\")"}

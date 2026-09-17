@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_key_release_event_removed", "raw": "from matplotlib.backend_bases import KeyEvent\nfig.canvas.callbacks.process(\"key_release_event\", KeyEvent(\"key_release_event\", fig.canvas, \"a\"))", "completion": "from matplotlib.backend_bases import KeyEvent\nfig.canvas.callbacks.process(\"key_release_event\", KeyEvent(\"key_release_event\", fig.canvas, \"a\"))"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_motion_event_removed", "raw": "    fig.canvas.motion_notify_event(1, 2)\n    fig.canvas.motion_notify_event(3, 4)", "completion": "    fig.canvas.motion_notify_event(1, 2)\n    fig.canvas.motion_notify_event(3, 4)"}

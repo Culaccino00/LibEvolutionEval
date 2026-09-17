@@ -1,0 +1,1 @@
+{"id": "matplotlib_spine_cla_removed", "raw": "spine.set_position((\"outward\", 0))", "completion": "spine.set_position((\"outward\", 0))"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_subplotspec_get_position_return_all_removed", "raw": "spec.get_position(fig)", "completion": "spec.get_position(fig)"}

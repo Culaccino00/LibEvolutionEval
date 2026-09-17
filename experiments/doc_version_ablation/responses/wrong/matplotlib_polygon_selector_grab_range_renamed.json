@@ -1,0 +1,1 @@
+{"id": "matplotlib_polygon_selector_grab_range_renamed", "raw": "widgets.PolygonSelector(ax, lambda x: None)._grab_range", "completion": "widgets.PolygonSelector(ax, lambda x: None)._grab_range"}

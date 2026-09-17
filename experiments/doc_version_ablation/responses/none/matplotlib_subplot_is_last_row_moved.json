@@ -1,0 +1,1 @@
+{"id": "matplotlib_subplot_is_last_row_moved", "raw": "axes[1, 0].is_last_row()", "completion": "axes[1, 0].is_last_row()"}

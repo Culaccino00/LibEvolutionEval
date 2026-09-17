@@ -1,0 +1,1 @@
+{"id": "matplotlib_svg_print_dpi_removed", "raw": "canvas.print_svg(buffer)", "completion": "canvas.print_svg(buffer)"}

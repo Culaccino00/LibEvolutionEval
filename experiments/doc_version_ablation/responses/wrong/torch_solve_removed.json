@@ -1,0 +1,1 @@
+{"id": "torch_solve_removed", "raw": "solution = torch.linalg.solve(matrix, rhs)", "completion": "solution = torch.linalg.solve(matrix, rhs)"}

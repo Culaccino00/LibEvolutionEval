@@ -1,0 +1,22 @@
+[
+  {
+    "id": "torch_fake_quantize_per_channel_affine_axis_required",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "added_required_parameter",
+    "api": "torch.fake_quantize_per_channel_affine",
+    "description": "Fake-quantize a 2x2 float tensor per channel over dim 0 with unit scale.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef per_channel_fake_quant(values):\n    x = torch.tensor(values, dtype=torch.float32)\n    scale = torch.ones(2, dtype=torch.float32)\n    zero_point = torch.zeros(2, dtype=torch.int32)\n    return ",
+    "right_context": "\n",
+    "assertions": "result = per_channel_fake_quant([[1.4, 2.6], [3.2, 4.8]])\nassert result.shape == (2, 2)\nassert result.dtype == torch.float32\nexpected = torch.tensor([[1.0, 3.0], [3.0, 5.0]])\nassert torch.allclose(result, expected)",
+    "old_completion": "torch.fake_quantize_per_channel_affine(x, scale, zero_point, 0, 255)",
+    "new_completion": "torch.fake_quantize_per_channel_affine(x, scale, zero_point, 0, 0, 255)",
+    "expected_old_error": "missing 1 required positional arguments: \"quant_max\"",
+    "provenance": {
+      "old_signature": "torch.fake_quantize_per_channel_affine(input,scale,zero_point,quant_min,quant_max)→Tensor¶",
+      "new_signature": "torch.fake_quantize_per_channel_affine(input,scale,zero_point,axis,quant_min,quant_max)→Tensor¶",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

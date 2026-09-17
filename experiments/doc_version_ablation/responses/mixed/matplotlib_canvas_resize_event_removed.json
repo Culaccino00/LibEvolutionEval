@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_resize_event_removed", "raw": "fig.canvas.callbacks.process(\"resize_event\", matplotlib.backend_bases.ResizeEvent(\"resize_event\", fig.canvas))", "completion": "fig.canvas.callbacks.process(\"resize_event\", matplotlib.backend_bases.ResizeEvent(\"resize_event\", fig.canvas))"}

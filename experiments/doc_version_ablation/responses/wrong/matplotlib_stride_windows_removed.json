@@ -1,0 +1,1 @@
+{"id": "matplotlib_stride_windows_removed", "raw": "np.lib.stride_tricks.sliding_window_view(values, 2)", "completion": "np.lib.stride_tricks.sliding_window_view(values, 2)"}

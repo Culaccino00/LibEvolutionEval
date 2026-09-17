@@ -1,0 +1,1 @@
+{"id": "matplotlib_cbook_bunch_removed", "raw": "return cbook.Bunch(answer=42)", "completion": "return cbook.Bunch(answer=42)"}

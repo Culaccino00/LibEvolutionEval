@@ -1,0 +1,1 @@
+{"id": "matplotlib_mathtext_parse_antialiased_renamed", "raw": "parser.parse(r\"$\\Box$\")", "completion": "parser.parse(r\"$\\Box$\")"}

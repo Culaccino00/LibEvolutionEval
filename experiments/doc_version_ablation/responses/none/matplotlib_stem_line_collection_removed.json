@@ -1,0 +1,1 @@
+{"id": "matplotlib_stem_line_collection_removed", "raw": "plt.stem(values)", "completion": "plt.stem(values)"}

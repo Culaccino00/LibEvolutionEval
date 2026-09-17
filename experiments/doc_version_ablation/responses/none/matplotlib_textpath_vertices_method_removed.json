@@ -1,0 +1,1 @@
+{"id": "matplotlib_textpath_vertices_method_removed", "raw": "```python\n    font = FontProperties(family='DejaVu Sans')\n    path = TextPath((0, 0), 'A', size=12, prop=font)\n    return path.vertices, path.codes\n```", "completion": "    font = FontProperties(family='DejaVu Sans')\n    path = TextPath((0, 0), 'A', size=12, prop=font)\n    return path.vertices, path.codes"}

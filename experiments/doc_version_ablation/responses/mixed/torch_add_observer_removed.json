@@ -1,0 +1,1 @@
+{"id": "torch_add_observer_removed", "raw": "torch.ao.quantization.prepare(model, inplace=True)", "completion": "torch.ao.quantization.prepare(model, inplace=True)"}

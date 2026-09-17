@@ -1,0 +1,1 @@
+{"id": "matplotlib_line2d_valid_cap_removed", "raw": "    return Line2D([0, 1], [0, 1], linewidth=10, solid_capstyle=\"round\")", "completion": "    return Line2D([0, 1], [0, 1], linewidth=10, solid_capstyle=\"round\")"}

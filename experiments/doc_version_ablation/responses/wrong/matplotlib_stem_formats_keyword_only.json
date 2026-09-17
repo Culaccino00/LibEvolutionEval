@@ -1,0 +1,1 @@
+{"id": "matplotlib_stem_formats_keyword_only", "raw": "axes.stem([1, 2, 3], [4, 5, 6], linefmt='--', markerfmt='o', basefmt='-')", "completion": "axes.stem([1, 2, 3], [4, 5, 6], linefmt='--', markerfmt='o', basefmt='-')"}

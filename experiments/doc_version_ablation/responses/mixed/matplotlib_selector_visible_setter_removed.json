@@ -1,0 +1,1 @@
+{"id": "matplotlib_selector_visible_setter_removed", "raw": "selector.set_visible(False)", "completion": "selector.set_visible(False)"}

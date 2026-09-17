@@ -1,0 +1,1 @@
+{"id": "torch_tp_make_output_tensor_removed", "raw": "sharded.full_tensor()", "completion": "sharded.full_tensor()"}

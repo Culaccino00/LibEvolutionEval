@@ -1,0 +1,107 @@
+[
+  {
+    "id": "torch_buffered_shuffle_dataset_removed",
+    "library": "torch",
+    "source_version": "1.8.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_class",
+    "api": "torch.utils.data.BufferedShuffleDataset",
+    "replacement_api": "torch.utils.data.datapipes.iter.IterableWrapper.shuffle",
+    "description": "Iterate a dataset in buffer-shuffled order.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport torch.utils.data\nimport torch.utils.data.datapipes.iter\n\n\ndef buffer_shuffled_order(size, buffer_size):\n    torch.manual_seed(0)\n    dataset = list(range(size))\n    shuffler = ",
+    "right_context": "\n    return list(shuffler)\n",
+    "assertions": "order = buffer_shuffled_order(10, 4)\nassert sorted(order) == list(range(10))\nassert order != list(range(10))\nrepeat = buffer_shuffled_order(10, 4)\nassert repeat == order",
+    "old_completion": "torch.utils.data.BufferedShuffleDataset(dataset, buffer_size)",
+    "new_completion": "torch.utils.data.datapipes.iter.IterableWrapper(dataset).shuffle(buffer_size=buffer_size)",
+    "expected_old_error": "has no attribute 'BufferedShuffleDataset'",
+    "provenance": {
+      "old_signature": "classtorch.utils.data.BufferedShuffleDataset(dataset,buffer_size)[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_cpp_extension_check_compiler_abi_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.utils.cpp_extension.check_compiler_abi_compatibility",
+    "replacement_api": "torch.utils.cpp_extension.get_compiler_abi_compatibility_and_version",
+    "description": "Check whether a C++ compiler is ABI-compatible with this PyTorch build.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nfrom torch.utils import cpp_extension\n\n\ndef compiler_abi_is_compatible(compiler):\n    return ",
+    "right_context": "\n",
+    "assertions": "compatible = compiler_abi_is_compatible(\"cc\")\nassert isinstance(compatible, bool)\nfull = cpp_extension.get_compiler_abi_compatibility_and_version(\"cc\")\nassert isinstance(full, tuple) and len(full) == 2\nassert full[0] == compatible\nassert isinstance(full[1], str)",
+    "old_completion": "cpp_extension.check_compiler_abi_compatibility(compiler)",
+    "new_completion": "cpp_extension.get_compiler_abi_compatibility_and_version(compiler)[0]",
+    "expected_old_error": "has no attribute 'check_compiler_abi_compatibility'",
+    "provenance": {
+      "old_signature": "torch.utils.cpp_extension.check_compiler_abi_compatibility(compiler)[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_fx_graph_flatten_inps_removed",
+    "library": "torch",
+    "source_version": "1.10.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.fx.Graph.flatten_inps",
+    "replacement_api": "torch.utils._pytree.tree_flatten",
+    "description": "Flatten a pair of pytree arguments into a single flat list.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nfrom torch.utils import _pytree\n\n\ndef flatten_argument_pair(left, right):\n    graph = torch.fx.Graph()\n    flat = ",
+    "right_context": "\n    return flat\n",
+    "assertions": "flat = flatten_argument_pair([1, 2], [3, 4])\nassert flat == [1, 2, 3, 4]\nnested = flatten_argument_pair({\"a\": 1}, (2, 3))\nassert nested == [1, 2, 3]",
+    "old_completion": "graph.flatten_inps(left, right)",
+    "new_completion": "_pytree.tree_flatten((left, right))[0]",
+    "expected_old_error": "'Graph' object has no attribute 'flatten_inps'",
+    "provenance": {
+      "old_signature": "flatten_inps(*args)[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_fx_graph_unflatten_outs_removed",
+    "library": "torch",
+    "source_version": "1.10.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.fx.Graph.unflatten_outs",
+    "replacement_api": "torch.utils._pytree.tree_unflatten",
+    "description": "Restore a pytree of outputs from a flat list of leaves.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nfrom torch.utils import _pytree\n\n\ndef unflatten_outputs(flat, template):\n    graph = torch.fx.Graph()\n    restored = ",
+    "right_context": "\n    return restored\n",
+    "assertions": "restored = unflatten_outputs([10, 20, 30], ({\"x\": 0}, [0, 0]))\nassert restored == ({\"x\": 10}, [20, 30])\nassert isinstance(restored[0], dict) and isinstance(restored[1], list)",
+    "old_completion": "graph.unflatten_outs(flat)",
+    "new_completion": "_pytree.tree_unflatten(flat, _pytree.tree_flatten(template)[1])",
+    "expected_old_error": "'Graph' object has no attribute 'unflatten_outs'",
+    "provenance": {
+      "old_signature": "unflatten_outs(out)[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_rpc_process_group_backend_options_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_class",
+    "api": "torch.distributed.rpc.ProcessGroupRpcBackendOptions",
+    "replacement_api": "torch.distributed.rpc.TensorPipeRpcBackendOptions",
+    "description": "Build RPC backend options carrying the rendezvous URL and default timeout.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport torch.distributed.rpc as rpc\n\n\ndef make_backend_options(init_method, rpc_timeout):\n    options = ",
+    "right_context": "\n    return options\n",
+    "assertions": "options = make_backend_options(\"tcp://localhost:29500\", 20.0)\nassert isinstance(options, rpc.RpcBackendOptions)\nassert options.init_method == \"tcp://localhost:29500\"\nassert float(options.rpc_timeout) == 20.0",
+    "old_completion": "rpc.ProcessGroupRpcBackendOptions(init_method=init_method, rpc_timeout=rpc_timeout)",
+    "new_completion": "rpc.TensorPipeRpcBackendOptions(init_method=init_method, rpc_timeout=rpc_timeout)",
+    "expected_old_error": "has no attribute 'ProcessGroupRpcBackendOptions'",
+    "provenance": {
+      "old_signature": "classtorch.distributed.rpc.ProcessGroupRpcBackendOptions¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

@@ -1,0 +1,1 @@
+{"id": "matplotlib_imshow_aspect_keyword_only", "raw": "axes.imshow([[0, 1], [2, 3]], aspect=\"equal\")", "completion": "axes.imshow([[0, 1], [2, 3]], aspect=\"equal\")"}

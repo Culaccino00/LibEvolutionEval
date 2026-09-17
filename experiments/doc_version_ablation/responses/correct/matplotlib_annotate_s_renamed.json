@@ -1,0 +1,1 @@
+{"id": "matplotlib_annotate_s_renamed", "raw": "plt.annotate(\"annotation text\", xy=(0, 0))", "completion": "plt.annotate(\"annotation text\", xy=(0, 0))"}

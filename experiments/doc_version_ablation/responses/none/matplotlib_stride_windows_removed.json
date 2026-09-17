@@ -1,0 +1,1 @@
+{"id": "matplotlib_stride_windows_removed", "raw": "list(zip(values[:-1], values[1:]))", "completion": "list(zip(values[:-1], values[1:]))"}

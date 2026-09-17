@@ -1,0 +1,302 @@
+[
+  {
+    "id": "matplotlib_pyplot_gca_projection_kwargs_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "matplotlib.pyplot.gca",
+    "description": "Create a polar axes as the current axes.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef polar_current_axes_name():\n    fig = plt.figure()\n    ax = ",
+    "right_context": "\n    name = ax.name\n    plt.close(fig)\n    return name\n",
+    "assertions": "assert polar_current_axes_name() == \"polar\"",
+    "old_completion": "plt.gca(projection=\"polar\")",
+    "new_completion": "fig.add_subplot(projection=\"polar\")",
+    "expected_old_error": "gca() got an unexpected keyword argument 'projection'",
+    "provenance": {
+      "old_signature": "matplotlib.pyplot.gca(**kwargs)#",
+      "new_signature": "matplotlib.pyplot.gca()#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_figure_gca_kwargs_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "matplotlib.figure.Figure.gca",
+    "description": "Create a polar axes on a figure through gca.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef polar_figure_axes_name():\n    fig = plt.figure()\n    ax = ",
+    "right_context": "\n    name = ax.name\n    plt.close(fig)\n    return name\n",
+    "assertions": "assert polar_figure_axes_name() == \"polar\"",
+    "old_completion": "fig.gca(projection=\"polar\")",
+    "new_completion": "fig.add_subplot(projection=\"polar\")",
+    "expected_old_error": "gca() got an unexpected keyword argument 'projection'",
+    "provenance": {
+      "old_signature": "gca(**kwargs)#",
+      "new_signature": "gca()#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_artistlist_insert_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_method",
+    "api": "matplotlib.axes.Axes.ArtistList.insert",
+    "description": "Add a line to the axes' line list.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.lines import Line2D\n\n\ndef first_line_ydata():\n    fig, ax = plt.subplots()\n    line = Line2D([0.0, 1.0], [2.0, 4.0])\n    ",
+    "right_context": "\n    ydata = list(list(ax.lines)[0].get_ydata())\n    plt.close(fig)\n    return ydata\n",
+    "assertions": "assert first_line_ydata() == [2.0, 4.0]",
+    "old_completion": "ax.lines.insert(0, line)",
+    "new_completion": "ax.add_line(line)",
+    "expected_old_error": "'ArtistList' object has no attribute 'insert'",
+    "provenance": {
+      "old_signature": "insert(index,item)#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_colorbar_set_ticklabels_update_ticks_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "matplotlib.colorbar.Colorbar.set_ticklabels",
+    "description": "Label the two ends of a colorbar.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n\ndef colorbar_ticklabels():\n    fig, ax = plt.subplots()\n    image = ax.imshow(np.arange(9).reshape(3, 3))\n    colorbar = fig.colorbar(image)\n    colorbar.set_ticks([0, 8])\n    ",
+    "right_context": "\n    labels = [text.get_text() for text in colorbar.ax.get_yticklabels()]\n    plt.close(fig)\n    return labels\n",
+    "assertions": "assert colorbar_ticklabels() == [\"low\", \"high\"]",
+    "old_completion": "colorbar.set_ticklabels([\"low\", \"high\"], update_ticks=True)",
+    "new_completion": "colorbar.set_ticklabels([\"low\", \"high\"])",
+    "expected_old_error": "unexpected keyword argument 'update_ticks'",
+    "provenance": {
+      "old_signature": "set_ticklabels(ticklabels,update_ticks=<deprecatedparameter>,*,minor=False,**kwargs)#",
+      "new_signature": "set_ticklabels(ticklabels,*,minor=False,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_colorbarpatch_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "replaced_class",
+    "api": "matplotlib.colorbar.ColorbarPatch",
+    "description": "Attach a colorbar to a dedicated axes.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.colorbar\n\n\ndef colorbar_tracks_image():\n    fig = plt.figure()\n    ax = fig.add_axes([0.1, 0.1, 0.7, 0.8])\n    cax = fig.add_axes([0.85, 0.1, 0.05, 0.8])\n    image = ax.imshow(np.arange(9).reshape(3, 3))\n    colorbar = ",
+    "right_context": "\n    result = colorbar.mappable is image\n    plt.close(fig)\n    return result\n",
+    "assertions": "assert colorbar_tracks_image()",
+    "old_completion": "matplotlib.colorbar.ColorbarPatch(cax, mappable=image)",
+    "new_completion": "matplotlib.colorbar.Colorbar(cax, mappable=image)",
+    "expected_old_error": "module 'matplotlib.colorbar' has no attribute 'ColorbarPatch'",
+    "provenance": {
+      "old_signature": "class matplotlib.colorbar.ColorbarPatch(ax,mappable=None,*,cmap=None,norm=None,alpha=None,values=None,boundaries=None,orientation='vertical',ticklocation='auto',extend=None,spacing='uniform',ticks=None,format=None,drawedges=False,filled=True,extendfrac=None,extendrect=False,label='')#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_get_font_filename_renamed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "matplotlib.font_manager.get_font",
+    "description": "Load the default font face and read its family name.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import font_manager\n\n\ndef default_font_family_name():\n    font_path = font_manager.findfont(\"DejaVu Sans\")\n    face = ",
+    "right_context": "\n    name = face.family_name\n    if isinstance(name, bytes):\n        name = name.decode(\"utf-8\")\n    return name\n",
+    "assertions": "assert default_font_family_name() == \"DejaVu Sans\"",
+    "old_completion": "font_manager.get_font(filename=font_path)",
+    "new_completion": "font_manager.get_font(font_filepaths=font_path)",
+    "expected_old_error": "get_font() got an unexpected keyword argument 'filename'",
+    "provenance": {
+      "old_signature": "matplotlib.font_manager.get_font(filename,hinting_factor=None)#",
+      "new_signature": "matplotlib.font_manager.get_font(font_filepaths,hinting_factor=None)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_subplotspec_get_position_return_all_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "matplotlib.gridspec.SubplotSpec.get_position",
+    "description": "Read the figure-space bounds of a grid cell.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nimport matplotlib.gridspec as gridspec\n\n\ndef first_grid_cell_bounds():\n    fig = plt.figure()\n    spec = gridspec.GridSpec(2, 2)[0, 0]\n    bbox = ",
+    "right_context": "\n    bounds = (bbox.x0, bbox.x1)\n    plt.close(fig)\n    return bounds\n",
+    "assertions": "x0, x1 = first_grid_cell_bounds()\nassert abs(x0 - 0.125) < 1e-9\nassert abs(x1 - 0.4772727272727273) < 1e-9",
+    "old_completion": "spec.get_position(fig, return_all=True)",
+    "new_completion": "spec.get_position(fig)",
+    "expected_old_error": "get_position() got an unexpected keyword argument 'return_all'",
+    "provenance": {
+      "old_signature": "get_position(figure,return_all=<deprecatedparameter>)#",
+      "new_signature": "get_position(figure)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_axesimage_positional_cmap_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.image.AxesImage",
+    "description": "Build an image artist with a named colormap.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.image import AxesImage\n\n\ndef axes_image_colormap_name():\n    fig, ax = plt.subplots()\n    image = ",
+    "right_context": "\n    image.set_data(np.arange(4).reshape(2, 2))\n    ax.add_image(image)\n    name = image.get_cmap().name\n    plt.close(fig)\n    return name\n",
+    "assertions": "assert axes_image_colormap_name() == \"viridis\"",
+    "old_completion": "AxesImage(ax, \"viridis\")",
+    "new_completion": "AxesImage(ax, cmap=\"viridis\")",
+    "expected_old_error": "__init__() takes 2 positional arguments but 3 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.image.AxesImage(ax,cmap=None,norm=None,interpolation=None,origin=None,extent=None,filternorm=True,filterrad=4.0,resample=False,*,interpolation_stage=None,**kwargs)#",
+      "new_signature": "class matplotlib.image.AxesImage(ax,*,cmap=None,norm=None,interpolation=None,origin=None,extent=None,filternorm=True,filterrad=4.0,resample=False,interpolation_stage=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_pcolorimage_positional_cmap_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.image.PcolorImage",
+    "description": "Build a non-uniform image from coordinate vectors.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.image import PcolorImage\n\n\ndef pcolor_image_colormap_name():\n    fig, ax = plt.subplots()\n    data = np.arange(4).reshape(2, 2)\n    image = ",
+    "right_context": "\n    ax.add_image(image)\n    name = image.get_cmap().name\n    shape = image.get_array().shape\n    plt.close(fig)\n    return name, shape\n",
+    "assertions": "name, shape = pcolor_image_colormap_name()\nassert name == \"viridis\"\nassert shape == (2, 2)",
+    "old_completion": "PcolorImage(ax, [0.0, 1.0, 2.0], [0.0, 1.0, 2.0], data, \"viridis\")",
+    "new_completion": "PcolorImage(ax, [0.0, 1.0, 2.0], [0.0, 1.0, 2.0], data, cmap=\"viridis\")",
+    "expected_old_error": "__init__() takes from 2 to 5 positional arguments but 6 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.image.PcolorImage(ax,x=None,y=None,A=None,cmap=None,norm=None,**kwargs)#",
+      "new_signature": "class matplotlib.image.PcolorImage(ax,x=None,y=None,A=None,*,cmap=None,norm=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_legend_positional_loc_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.legend.Legend",
+    "description": "Build a legend in the upper-right corner.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.legend import Legend\n\n\ndef legend_location_code():\n    fig, ax = plt.subplots()\n    (handle,) = ax.plot([0.0, 1.0], [0.0, 1.0], label=\"series\")\n    legend = ",
+    "right_context": "\n    ax.add_artist(legend)\n    texts = [text.get_text() for text in legend.get_texts()]\n    code = legend._loc\n    plt.close(fig)\n    return code, texts\n",
+    "assertions": "code, texts = legend_location_code()\nassert code == 1\nassert texts == [\"series\"]",
+    "old_completion": "Legend(ax, [handle], [\"series\"], \"upper right\")",
+    "new_completion": "Legend(ax, [handle], [\"series\"], loc=\"upper right\")",
+    "expected_old_error": "__init__() takes 4 positional arguments but 5 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.legend.Legend(parent,handles,labels,loc=None,numpoints=None,markerscale=None,markerfirst=True,scatterpoints=None,scatteryoffsets=None,prop=None,fontsize=None,labelcolor=None,borderpad=None,labelspacing=None,handlelength=None,handleheight=None,handletextpad=None,borderaxespad=None,columnspacing=None,ncol=1,mode=None,fancybox=None,shadow=None,title=None,title_fontsize=None,framealpha=None,edgecolor=None,facecolor=None,bbox_to_anchor=None,bbox_transform=None,frameon=None,handler_map=None,title_fontproperties=None)#",
+      "new_signature": "class matplotlib.legend.Legend(parent,handles,labels,*,loc=None,numpoints=None,markerscale=None,markerfirst=True,reverse=False,scatterpoints=None,scatteryoffsets=None,prop=None,fontsize=None,labelcolor=None,borderpad=None,labelspacing=None,handlelength=None,handleheight=None,handletextpad=None,borderaxespad=None,columnspacing=None,ncols=1,mode=None,fancybox=None,shadow=None,title=None,title_fontsize=None,framealpha=None,edgecolor=None,facecolor=None,bbox_to_anchor=None,bbox_transform=None,frameon=None,handler_map=None,title_fontproperties=None,alignment='center',ncol=1,draggable=False)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_table_cell_positional_colors_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.table.Cell",
+    "description": "Style a table cell with edge and face colors.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib.table import Cell\n\n\ndef cell_face_color():\n    cell = ",
+    "right_context": "\n    return cell.get_facecolor()\n",
+    "assertions": "assert cell_face_color() == (0.0, 0.0, 1.0, 1.0)",
+    "old_completion": "Cell((0.0, 0.0), 1.0, 1.0, \"red\", \"blue\")",
+    "new_completion": "Cell((0.0, 0.0), 1.0, 1.0, edgecolor=\"red\", facecolor=\"blue\")",
+    "expected_old_error": "__init__() takes 4 positional arguments but 6 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.table.Cell(xy,width,height,edgecolor='k',facecolor='w',fill=True,text='',loc=None,fontproperties=None,*,visible_edges='closed')#",
+      "new_signature": "class matplotlib.table.Cell(xy,width,height,*,edgecolor='k',facecolor='w',fill=True,text='',loc=None,fontproperties=None,visible_edges='closed')#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_spine_cla_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_method",
+    "api": "matplotlib.spines.Spine.cla",
+    "description": "Reset a spine's customized position.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef spine_position_after_reset():\n    fig, ax = plt.subplots()\n    spine = ax.spines[\"bottom\"]\n    spine.set_position((\"data\", 0.5))\n    ",
+    "right_context": "\n    position = spine.get_position()\n    plt.close(fig)\n    return position\n",
+    "assertions": "assert spine_position_after_reset() == (\"outward\", 0)",
+    "old_completion": "spine.cla()",
+    "new_completion": "spine.clear()",
+    "expected_old_error": "'Spine' object has no attribute 'cla'",
+    "provenance": {
+      "old_signature": "cla()#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_tight_layout_get_renderer_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "replaced_function",
+    "api": "matplotlib.tight_layout.get_renderer",
+    "description": "Obtain a renderer for a figure.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef figure_renderer_exists():\n    fig = plt.figure()\n    renderer = ",
+    "right_context": "\n    result = renderer is not None\n    plt.close(fig)\n    return result\n",
+    "assertions": "assert figure_renderer_exists()",
+    "old_completion": "__import__(\"matplotlib.tight_layout\", fromlist=[\"get_renderer\"]).get_renderer(fig)",
+    "new_completion": "fig.canvas.get_renderer()",
+    "expected_old_error": "No module named 'matplotlib.tight_layout'",
+    "provenance": {
+      "old_signature": "matplotlib.tight_layout.get_renderer(fig)#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_axis_positional_pickradius_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.axis.Axis",
+    "description": "Set an axis pick radius.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nimport matplotlib.axis\n\n\ndef xaxis_pickradius():\n    fig, ax = plt.subplots()\n    axis = ",
+    "right_context": "\n    radius = axis.get_pickradius()\n    plt.close(fig)\n    return radius\n",
+    "assertions": "assert xaxis_pickradius() == 10",
+    "old_completion": "matplotlib.axis.XAxis(ax, 10)",
+    "new_completion": "matplotlib.axis.XAxis(ax, pickradius=10)",
+    "expected_old_error": "__init__() takes 2 positional arguments but 3 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.axis.Axis(axes,pickradius=15)#",
+      "new_signature": "class matplotlib.axis.Axis(axes,*,pickradius=15,clear=True)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_clabeltext_positional_color_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.contour.ClabelText",
+    "description": "Create a colored contour label.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib.contour import ClabelText\n\n\ndef contour_label_color():\n    label = ",
+    "right_context": "\n    return label.get_color()\n",
+    "assertions": "assert contour_label_color() == \"red\"",
+    "old_completion": "ClabelText(0.0, 0.0, \"summit\", \"red\")",
+    "new_completion": "ClabelText(0.0, 0.0, \"summit\", color=\"red\")",
+    "expected_old_error": "__init__() takes from 1 to 4 positional arguments but 5 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.contour.ClabelText(x=0,y=0,text='',color=None,verticalalignment='baseline',horizontalalignment='left',multialignment=None,fontproperties=None,rotation=None,linespacing=None,rotation_mode=None,usetex=None,wrap=False,transform_rotates_text=False,*,parse_math=True,**kwargs)#",
+      "new_signature": "class matplotlib.contour.ClabelText(x=0,y=0,text='',*,color=None,verticalalignment='baseline',horizontalalignment='left',multialignment=None,fontproperties=None,rotation=None,linespacing=None,rotation_mode=None,usetex=None,wrap=False,transform_rotates_text=False,parse_math=None,antialiased=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

@@ -1,0 +1,1 @@
+{"id": "matplotlib_natural_log_transform_removed", "raw": "scale.LogTransform(base=math.e)", "completion": "scale.LogTransform(base=math.e)"}

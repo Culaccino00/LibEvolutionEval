@@ -132,6 +132,10 @@ For convenience, use the provided script to run evaluations across multiple conf
 ./run.sh --debug
 ```
 
+### Executable Version Evaluation (Memix Extension)
+
+The [`executable_eval`](executable_eval/README.md) extension adds 212 curated, version-sensitive tasks — 167 for Matplotlib 3.8.3 and 45 for PyTorch 2.2.0 — scored by running assertions rather than matching strings. Each accepted task verifies, in one pinned target environment, that an older API completion fails for the expected reason and that the current API completion passes. It also includes a prediction scorer for direct Memix-versus-baseline comparisons, an explicit rejected-candidate record, and a tool for discovering additional candidates from the packaged API snapshots.
+
 ## Authors
 
 Sachit Kuhar, Wasi Uddin Ahmad, Zijian Wang, Nihal Jain, Haifeng Qian, Baishakhi Ray, Murali Krishna Ramanathan, Xiaofei Ma, Anoop Deoras

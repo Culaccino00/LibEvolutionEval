@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_key_release_event_removed", "raw": "    fig.canvas.key_release_event(\"a\")", "completion": "    fig.canvas.key_release_event(\"a\")"}

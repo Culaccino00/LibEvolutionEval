@@ -1,0 +1,1 @@
+{"id": "matplotlib_agg_print_jpg_pil_kwargs", "raw": "canvas.print_jpg(buffer)", "completion": "canvas.print_jpg(buffer)"}

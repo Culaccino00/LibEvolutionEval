@@ -1,0 +1,1 @@
+{"id": "torch_rfft_removed", "raw": "torch.view_as_real(torch.fft.rfft(signal))", "completion": "torch.view_as_real(torch.fft.rfft(signal))"}

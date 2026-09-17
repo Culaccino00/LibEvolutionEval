@@ -1,0 +1,1 @@
+{"id": "matplotlib_subplotparams_validate_removed", "raw": "    params.update(left=0.1, bottom=0.2, right=0.9, top=0.8, wspace=0.3, hspace=0.4)", "completion": "    params.update(left=0.1, bottom=0.2, right=0.9, top=0.8, wspace=0.3, hspace=0.4)"}

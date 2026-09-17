@@ -1,0 +1,1 @@
+{"id": "torch_tp_make_input_replicate_1d_removed", "raw": "distribute_tensor(tensor, mesh, [Replicate()])", "completion": "distribute_tensor(tensor, mesh, [Replicate()])"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_avconv_writer_removed", "raw": "animation.FFMpegWriter(fps=30)", "completion": "animation.FFMpegWriter(fps=30)"}

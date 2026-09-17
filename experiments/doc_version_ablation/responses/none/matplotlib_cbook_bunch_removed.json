@@ -1,0 +1,1 @@
+{"id": "matplotlib_cbook_bunch_removed", "raw": "return cbook.__dict__", "completion": "return cbook.__dict__"}

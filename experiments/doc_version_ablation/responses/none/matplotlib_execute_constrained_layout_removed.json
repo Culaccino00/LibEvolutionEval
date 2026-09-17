@@ -1,0 +1,1 @@
+{"id": "matplotlib_execute_constrained_layout_removed", "raw": "fig.get_layout_engine().execute(fig)", "completion": "fig.get_layout_engine().execute(fig)"}

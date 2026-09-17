@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_button_release_event_removed", "raw": "    fig.canvas.button_release_event(1, 1, 1)\n    fig.canvas.button_release_event(1, 1, 2)\n    fig.canvas.button_release_event(1, 1, 3)", "completion": "    fig.canvas.button_release_event(1, 1, 1)\n    fig.canvas.button_release_event(1, 1, 2)\n    fig.canvas.button_release_event(1, 1, 3)"}

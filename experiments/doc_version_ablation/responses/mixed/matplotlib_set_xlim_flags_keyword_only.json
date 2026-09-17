@@ -1,0 +1,1 @@
+{"id": "matplotlib_set_xlim_flags_keyword_only", "raw": "ax.set_xlim(0, 10, emit=False)", "completion": "ax.set_xlim(0, 10, emit=False)"}

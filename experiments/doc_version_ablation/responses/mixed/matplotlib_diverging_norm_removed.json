@@ -1,0 +1,1 @@
+{"id": "matplotlib_diverging_norm_removed", "raw": "return colors.TwoSlopeNorm(vcenter=0)", "completion": "return colors.TwoSlopeNorm(vcenter=0)"}

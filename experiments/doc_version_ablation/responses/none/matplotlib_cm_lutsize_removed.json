@@ -1,0 +1,1 @@
+{"id": "matplotlib_cm_lutsize_removed", "raw": "cm.get_cmap().N", "completion": "cm.get_cmap().N"}

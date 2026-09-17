@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_scroll_event_removed", "raw": "    fig.canvas.scroll_event(0.5, 0.5, 1)\n    fig.canvas.scroll_event(0.5, 0.5, -1)", "completion": "    fig.canvas.scroll_event(0.5, 0.5, 1)\n    fig.canvas.scroll_event(0.5, 0.5, -1)"}

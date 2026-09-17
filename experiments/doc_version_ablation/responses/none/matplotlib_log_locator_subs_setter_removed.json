@@ -1,0 +1,1 @@
+{"id": "matplotlib_log_locator_subs_setter_removed", "raw": "locator.set_params(numticks=1)", "completion": "locator.set_params(numticks=1)"}

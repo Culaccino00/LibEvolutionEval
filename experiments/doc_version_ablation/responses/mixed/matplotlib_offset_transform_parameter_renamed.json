@@ -1,0 +1,1 @@
+{"id": "matplotlib_offset_transform_parameter_renamed", "raw": "collection.set_offset_transform(transform)", "completion": "collection.set_offset_transform(transform)"}

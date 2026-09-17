@@ -1,0 +1,1 @@
+{"id": "matplotlib_rectangle_selector_rectprops_renamed", "raw": "```python\n    selector = RectangleSelector(axes, lambda eclick, erelease: None, useblit=False)\n```", "completion": "    selector = RectangleSelector(axes, lambda eclick, erelease: None, useblit=False)"}

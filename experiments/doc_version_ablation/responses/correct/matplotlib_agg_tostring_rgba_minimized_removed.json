@@ -1,0 +1,1 @@
+{"id": "matplotlib_agg_tostring_rgba_minimized_removed", "raw": "np.asarray(figure.canvas.buffer_rgba())", "completion": "np.asarray(figure.canvas.buffer_rgba())"}

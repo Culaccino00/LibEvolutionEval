@@ -1,0 +1,1 @@
+{"id": "matplotlib_mathtext_parse_antialiased_renamed", "raw": "parser.parse(r\"$\\pi$\")", "completion": "parser.parse(r\"$\\pi$\")"}

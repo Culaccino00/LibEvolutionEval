@@ -1,0 +1,1 @@
+{"id": "matplotlib_colorbar_set_ticks_update_ticks_removed", "raw": "    colorbar.set_label(\"Label\")", "completion": "    colorbar.set_label(\"Label\")"}

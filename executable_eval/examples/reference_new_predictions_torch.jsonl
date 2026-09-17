@@ -1,0 +1,45 @@
+{"id": "torch_symeig_removed", "completion": "torch.linalg.eigh(matrix)"}
+{"id": "torch_tensor_symeig_removed", "completion": "torch.linalg.eigh(matrix)"}
+{"id": "torch_all_gather_multigpu_removed", "completion": "dist.all_gather(outputs, input_tensor)"}
+{"id": "torch_all_reduce_multigpu_removed", "completion": "dist.all_reduce(tensor)"}
+{"id": "torch_broadcast_multigpu_removed", "completion": "dist.broadcast(tensor, src=0)"}
+{"id": "torch_reduce_multigpu_removed", "completion": "dist.reduce(tensor, dst=0)"}
+{"id": "torch_reduce_scatter_multigpu_removed", "completion": "dist.reduce_scatter_tensor(output, contribution)"}
+{"id": "torch_fsdp_load_optim_state_dict_pre_hook_removed", "completion": "FSDP.optim_state_dict_to_load(model, optim, full_state)"}
+{"id": "torch_fsdp_optim_state_dict_post_hook_removed", "completion": "FSDP.optim_state_dict(model, optim)"}
+{"id": "torch_fsdp_params_with_grad_removed", "completion": "[p for p in model.parameters() if p.requires_grad]"}
+{"id": "torch_tp_enable_2d_with_fsdp_removed", "completion": "FSDP(nn.Linear(4, 4), device_mesh=mesh[\"dp\"], device_id=torch.device(\"cpu\"))"}
+{"id": "torch_tp_multihead_attention_removed", "completion": "nn.MultiheadAttention(embed_dim=4, num_heads=2, batch_first=True)"}
+{"id": "torch_tp_pairwise_parallel_removed", "completion": "{\"fc1\": ColwiseParallel(), \"fc2\": RowwiseParallel()}"}
+{"id": "torch_tp_make_input_replicate_1d_removed", "completion": "distribute_tensor(tensor, mesh, [Replicate()])"}
+{"id": "torch_tp_make_input_shard_1d_removed", "completion": "distribute_tensor(tensor, mesh, [Shard(0)])"}
+{"id": "torch_tp_make_input_shard_1d_last_dim_removed", "completion": "distribute_tensor(tensor, mesh, [Shard(tensor.ndim - 1)])"}
+{"id": "torch_tp_make_output_replicate_1d_removed", "completion": "sharded.redistribute(mesh, [Replicate()])"}
+{"id": "torch_tp_make_output_shard_1d_removed", "completion": "replicated.redistribute(mesh, [Shard(1)])"}
+{"id": "torch_tp_make_output_tensor_removed", "completion": "sharded.full_tensor()"}
+{"id": "torch_eig_removed", "completion": "torch.linalg.eig(matrix)"}
+{"id": "torch_tensor_eig_removed", "completion": "torch.linalg.eig(matrix)"}
+{"id": "torch_solve_removed", "completion": "torch.linalg.solve(matrix, rhs)"}
+{"id": "torch_tensor_solve_removed", "completion": "torch.linalg.solve(matrix, rhs)"}
+{"id": "torch_lstsq_removed", "completion": "torch.linalg.lstsq(design, target, driver=\"gels\").solution"}
+{"id": "torch_tensor_lstsq_removed", "completion": "torch.linalg.lstsq(design, target, driver=\"gels\").solution"}
+{"id": "torch_matrix_rank_removed", "completion": "torch.linalg.matrix_rank(matrix)"}
+{"id": "torch_fft_removed", "completion": "torch.fft.fft(signal)"}
+{"id": "torch_ifft_removed", "completion": "torch.fft.ifft(torch.view_as_complex(spectrum))"}
+{"id": "torch_rfft_removed", "completion": "torch.fft.rfft(signal)"}
+{"id": "torch_irfft_removed", "completion": "torch.fft.irfft(spectrum, n=8)"}
+{"id": "torch_tensor_fft_removed", "completion": "torch.fft.fft(signal)"}
+{"id": "torch_tensor_ifft_removed", "completion": "torch.fft.ifft(torch.view_as_complex(spectrum))"}
+{"id": "torch_tensor_rfft_removed", "completion": "torch.fft.rfft(signal)"}
+{"id": "torch_tensor_irfft_removed", "completion": "torch.fft.irfft(spectrum, n=8)"}
+{"id": "torch_buffered_shuffle_dataset_removed", "completion": "torch.utils.data.datapipes.iter.IterableWrapper(dataset).shuffle(buffer_size=buffer_size)"}
+{"id": "torch_cpp_extension_check_compiler_abi_removed", "completion": "cpp_extension.get_compiler_abi_compatibility_and_version(compiler)[0]"}
+{"id": "torch_fx_graph_flatten_inps_removed", "completion": "_pytree.tree_flatten((left, right))[0]"}
+{"id": "torch_fx_graph_unflatten_outs_removed", "completion": "_pytree.tree_unflatten(flat, _pytree.tree_flatten(template)[1])"}
+{"id": "torch_rpc_process_group_backend_options_removed", "completion": "rpc.TensorPipeRpcBackendOptions(init_method=init_method, rpc_timeout=rpc_timeout)"}
+{"id": "torch_nn_quantized_relu_module_removed", "completion": "torch.nn.ReLU()"}
+{"id": "torch_nn_quantized_functional_relu_removed", "completion": "F.relu(x)"}
+{"id": "torch_onnx_jitscalartype_from_name_removed", "completion": "torch.onnx.JitScalarType.from_dtype(torch.float32)"}
+{"id": "torch_add_observer_removed", "completion": "torch.ao.quantization.prepare(model, inplace=True)"}
+{"id": "torch_get_observer_dict_removed", "completion": "collected.update({name + \".activation_post_process\": mod.activation_post_process for name, mod in prepared.named_modules() if hasattr(mod, \"activation_post_process\")})"}
+{"id": "torch_fake_quantize_per_channel_affine_axis_required", "completion": "torch.fake_quantize_per_channel_affine(x, scale, zero_point, 0, 0, 255)"}

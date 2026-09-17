@@ -1,0 +1,1 @@
+{"id": "matplotlib_get_renderer_cleared_removed", "raw": "fig.canvas.draw()\nfig.clear()\nrenderer = fig.canvas.get_renderer()", "completion": "fig.canvas.draw()\nfig.clear()\nrenderer = fig.canvas.get_renderer()"}

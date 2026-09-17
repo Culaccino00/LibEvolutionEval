@@ -1,0 +1,1 @@
+{"id": "torch_tp_multihead_attention_removed", "raw": "TensorParallelMultiheadAttention(embed_dim=4, num_heads=2)", "completion": "TensorParallelMultiheadAttention(embed_dim=4, num_heads=2)"}

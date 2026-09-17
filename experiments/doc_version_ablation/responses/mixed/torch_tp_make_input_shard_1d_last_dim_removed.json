@@ -1,0 +1,1 @@
+{"id": "torch_tp_make_input_shard_1d_last_dim_removed", "raw": "tp_style.make_input_shard_1d_last_dim(tensor, device_mesh=mesh)", "completion": "tp_style.make_input_shard_1d_last_dim(tensor, device_mesh=mesh)"}

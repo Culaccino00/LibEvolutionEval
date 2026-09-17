@@ -1,0 +1,451 @@
+[
+  {
+    "id": "matplotlib_hist_normed_removed",
+    "library": "matplotlib",
+    "source_version": "3.0.3",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "matplotlib.pyplot.hist",
+    "description": "Build a two-bin probability-density histogram.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef normalized_histogram(values):\n    fig = plt.figure()\n    counts, edges, _ = ",
+    "right_context": "\n    plt.close(fig)\n    return counts, edges\n",
+    "assertions": "counts, edges = normalized_histogram([0.0, 0.25, 0.75, 1.0])\nassert len(counts) == 2\narea = sum(float(count) * float(width) for count, width in zip(counts, edges[1:] - edges[:-1]))\nassert abs(area - 1.0) < 1e-12",
+    "old_completion": "plt.hist(values, bins=2, normed=True)",
+    "new_completion": "plt.hist(values, bins=2, density=True)",
+    "expected_old_error": "unexpected keyword argument 'normed'",
+    "provenance": {
+      "old_signature": "matplotlib.pyplot.hist(x,bins=None,range=None,density=None,weights=None,cumulative=False,bottom=None,histtype='bar',align='mid',orientation='vertical',rwidth=None,log=False,color=None,label=None,stacked=False,normed=None,*,data=None,**kwargs)",
+      "new_signature": "matplotlib.pyplot.hist(x,bins=None,range=None,density=False,weights=None,cumulative=False,bottom=None,histtype='bar',align='mid',orientation='vertical',rwidth=None,log=False,color=None,label=None,stacked=False,*,data=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_annotate_s_renamed",
+    "library": "matplotlib",
+    "source_version": "3.0.3",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "matplotlib.pyplot.annotate",
+    "description": "Create an annotation and return its displayed text.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef annotation_text():\n    fig, _ = plt.subplots()\n    artist = ",
+    "right_context": "\n    result = artist.get_text()\n    plt.close(fig)\n    return result\n",
+    "assertions": "assert annotation_text() == \"versioned\"",
+    "old_completion": "plt.annotate(s=\"versioned\", xy=(0.5, 0.5))",
+    "new_completion": "plt.annotate(text=\"versioned\", xy=(0.5, 0.5))",
+    "expected_old_error": "missing 1 required positional argument: 'text'",
+    "provenance": {
+      "old_signature": "matplotlib.pyplot.annotate(s,xy,*args,**kwargs)",
+      "new_signature": "matplotlib.pyplot.annotate(text,xy,xytext=None,xycoords='data',textcoords=None,arrowprops=None,annotation_clip=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_stem_line_collection_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "matplotlib.pyplot.stem",
+    "description": "Create a stem plot and return the number of marker points.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef stem_point_count(values):\n    fig = plt.figure()\n    container = ",
+    "right_context": "\n    count = len(container.markerline.get_xdata())\n    plt.close(fig)\n    return count\n",
+    "assertions": "assert stem_point_count([1.0, 3.0, 2.0]) == 3",
+    "old_completion": "plt.stem(range(len(values)), values, use_line_collection=True)",
+    "new_completion": "plt.stem(range(len(values)), values)",
+    "expected_old_error": "unexpected keyword argument 'use_line_collection'",
+    "provenance": {
+      "old_signature": "matplotlib.pyplot.stem(*args,linefmt=None,markerfmt=None,basefmt=None,bottom=0,label=None,use_line_collection=True,orientation='vertical',data=None)#",
+      "new_signature": "matplotlib.pyplot.stem(*args,linefmt=None,markerfmt=None,basefmt=None,bottom=0,label=None,orientation='vertical',data=None)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_grid_b_renamed",
+    "library": "matplotlib",
+    "source_version": "3.0.3",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "matplotlib.pyplot.grid",
+    "description": "Enable the major grid lines on the current axes.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef major_grid_is_visible():\n    fig, ax = plt.subplots()\n    plt.sca(ax)\n    ",
+    "right_context": "\n    visible = all(line.get_visible() for line in ax.get_xgridlines())\n    plt.close(fig)\n    return visible\n",
+    "assertions": "assert major_grid_is_visible()",
+    "old_completion": "plt.grid(b=True)",
+    "new_completion": "plt.grid(visible=True)",
+    "expected_old_error": "keyword grid_b is not recognized",
+    "provenance": {
+      "old_signature": "matplotlib.pyplot.grid(b=None,which='major',axis='both',**kwargs)",
+      "new_signature": "matplotlib.pyplot.grid(visible=None,which='major',axis='both',**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_diverging_norm_removed",
+    "library": "matplotlib",
+    "source_version": "3.3.4",
+    "target_version": "3.8.3",
+    "change_type": "removed_api",
+    "api": "matplotlib.colors.DivergingNorm",
+    "replacement_api": "matplotlib.colors.TwoSlopeNorm",
+    "description": "Create a normalization centered at zero.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import colors\n\n\ndef centered_normalizer():\n    return ",
+    "right_context": "\n",
+    "assertions": "normalizer = centered_normalizer()\nvalues = normalizer([-1.0, 0.0, 1.0])\nassert float(values[0]) == 0.0\nassert float(values[1]) == 0.5\nassert float(values[2]) == 1.0",
+    "old_completion": "colors.DivergingNorm(vcenter=0.0)",
+    "new_completion": "colors.TwoSlopeNorm(vcenter=0.0)",
+    "expected_old_error": "has no attribute 'DivergingNorm'",
+    "provenance": {
+      "old_signature": "class matplotlib.colors.DivergingNorm(**kwargs)",
+      "new_signature": "class matplotlib.colors.TwoSlopeNorm(vcenter,vmin=None,vmax=None)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_cbook_warning_moved",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "moved_api",
+    "api": "matplotlib.cbook.MatplotlibDeprecationWarning",
+    "replacement_api": "matplotlib.MatplotlibDeprecationWarning",
+    "description": "Return Matplotlib's public deprecation-warning type.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import cbook\n\n\ndef warning_type():\n    return ",
+    "right_context": "\n",
+    "assertions": "warning = warning_type()\nassert issubclass(warning, Warning)\nassert warning.__name__ == \"MatplotlibDeprecationWarning\"",
+    "old_completion": "cbook.MatplotlibDeprecationWarning",
+    "new_completion": "matplotlib.MatplotlibDeprecationWarning",
+    "expected_old_error": "has no attribute 'MatplotlibDeprecationWarning'",
+    "provenance": {
+      "source": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#cbook-removals"
+    }
+  },
+  {
+    "id": "matplotlib_shared_axes_join_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_method",
+    "api": "matplotlib.cbook.GrouperView.join",
+    "replacement_api": "matplotlib.axes.Axes.sharex",
+    "description": "Make two existing axes share their x-axis.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef axes_share_x():\n    fig, (top, bottom) = plt.subplots(2)\n    group = top.get_shared_x_axes()\n    ",
+    "right_context": "\n    shared = group.joined(top, bottom)\n    plt.close(fig)\n    return shared\n",
+    "assertions": "assert axes_share_x()",
+    "old_completion": "group.join(top, bottom)",
+    "new_completion": "bottom.sharex(top)",
+    "expected_old_error": "'GrouperView' object has no attribute 'join'",
+    "provenance": {
+      "old_signature": "join(a,*args)#",
+      "new_signature": "Axes.sharex(other)#",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#groupers-from-get-shared-x-axes-get-shared-y-axes-are-immutable"
+    }
+  },
+  {
+    "id": "matplotlib_figure_facecolor_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.pyplot.figure",
+    "description": "Create a 4-by-3-inch, 100-DPI figure with a red face color.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef configured_figure():\n    fig = ",
+    "right_context": "\n    result = (tuple(fig.get_size_inches()), fig.get_dpi(), fig.get_facecolor())\n    plt.close(fig)\n    return result\n",
+    "assertions": "size, dpi, color = configured_figure()\nassert size == (4.0, 3.0)\nassert dpi == 100.0\nassert color == (1.0, 0.0, 0.0, 1.0)",
+    "old_completion": "plt.figure(None, (4, 3), 100, \"red\")",
+    "new_completion": "plt.figure(None, (4, 3), 100, facecolor=\"red\")",
+    "expected_old_error": "takes from 0 to 3 positional arguments but 4 were given",
+    "provenance": {
+      "old_signature": "matplotlib.pyplot.figure(num=None,figsize=None,dpi=None,facecolor=None,edgecolor=None,frameon=True,FigureClass=<class 'matplotlib.figure.Figure'>,clear=False,**kwargs)#",
+      "new_signature": "matplotlib.pyplot.figure(num=None,figsize=None,dpi=None,*,facecolor=None,edgecolor=None,frameon=True,FigureClass=<class 'matplotlib.figure.Figure'>,clear=False,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_line2d_style_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.lines.Line2D",
+    "description": "Create a dashed line with a linewidth of 2.5 points.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.lines import Line2D\n\n\ndef configured_line():\n    return ",
+    "right_context": "\n",
+    "assertions": "line = configured_line()\nassert line.get_linewidth() == 2.5\nassert line.get_linestyle() == \"--\"",
+    "old_completion": "Line2D([0, 1], [1, 0], 2.5, \"--\")",
+    "new_completion": "Line2D([0, 1], [1, 0], linewidth=2.5, linestyle=\"--\")",
+    "expected_old_error": "takes 3 positional arguments but 5 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.lines.Line2D(xdata,ydata,linewidth=None,linestyle=None,color=None,marker=None,markersize=None,markeredgewidth=None,markeredgecolor=None,markerfacecolor=None,markerfacecoloralt='none',fillstyle=None,antialiased=None,dash_capstyle=None,solid_capstyle=None,dash_joinstyle=None,solid_joinstyle=None,pickradius=5,drawstyle=None,markevery=None,**kwargs)#",
+      "new_signature": "class matplotlib.lines.Line2D(xdata,ydata,*,linewidth=None,linestyle=None,color=None,gapcolor=None,marker=None,markersize=None,markeredgewidth=None,markeredgecolor=None,markerfacecolor=None,markerfacecoloralt='none',fillstyle=None,antialiased=None,dash_capstyle=None,solid_capstyle=None,dash_joinstyle=None,solid_joinstyle=None,pickradius=5,drawstyle=None,markevery=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_set_xlim_flags_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.axes.Axes.set_xlim",
+    "description": "Set x-axis limits without emitting an event and enable autoscaling.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef configured_x_limits():\n    fig, ax = plt.subplots()\n    limits = ",
+    "right_context": "\n    result = (limits, ax.get_autoscalex_on())\n    plt.close(fig)\n    return result\n",
+    "assertions": "limits, autoscale = configured_x_limits()\nassert limits == (0.0, 10.0)\nassert autoscale",
+    "old_completion": "ax.set_xlim(0, 10, False, True)",
+    "new_completion": "ax.set_xlim(0, 10, emit=False, auto=True)",
+    "expected_old_error": "takes from 1 to 3 positional arguments but 5 were given",
+    "provenance": {
+      "old_signature": "Axes.set_xlim(left=None,right=None,emit=True,auto=False,*,xmin=None,xmax=None)#",
+      "new_signature": "Axes.set_xlim(left=None,right=None,*,emit=True,auto=False,xmin=None,xmax=None)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_offset_transform_parameter_renamed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "matplotlib.collections.Collection.set_offset_transform",
+    "description": "Assign a translation transform to a line collection's offsets.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.collections import LineCollection\nfrom matplotlib.transforms import Affine2D\n\n\ndef transformed_origin():\n    collection = LineCollection([])\n    transform = Affine2D().translate(2.0, 3.0)\n    ",
+    "right_context": "\n    return tuple(collection.get_offset_transform().transform((0.0, 0.0)))\n",
+    "assertions": "assert transformed_origin() == (2.0, 3.0)",
+    "old_completion": "collection.set_offset_transform(transOffset=transform)",
+    "new_completion": "collection.set_offset_transform(offset_transform=transform)",
+    "expected_old_error": "unexpected keyword argument 'transOffset'",
+    "provenance": {
+      "old_signature": "set_offset_transform(transOffset)#",
+      "new_signature": "set_offset_transform(offset_transform)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_log_locator_base_setter_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_method",
+    "api": "matplotlib.ticker.LogLocator.base",
+    "replacement_api": "matplotlib.ticker.LogLocator.set_params",
+    "description": "Configure a logarithmic tick locator to use base 2.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.ticker import LogLocator\n\n\ndef base_two_ticks():\n    locator = LogLocator()\n    ",
+    "right_context": "\n    return locator.tick_values(1.0, 16.0)\n",
+    "assertions": "ticks = base_two_ticks()\nfor expected in (1.0, 2.0, 4.0, 8.0, 16.0):\n    assert expected in ticks",
+    "old_completion": "locator.base(2)",
+    "new_completion": "locator.set_params(base=2)",
+    "expected_old_error": "'LogLocator' object has no attribute 'base'",
+    "provenance": {
+      "old_signature": "base(base)#",
+      "new_signature": "set_params(base=None,subs=None,numdecs=None,numticks=None)#",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#methods-to-set-parameters-in-loglocator-and-logformatter"
+    }
+  },
+  {
+    "id": "matplotlib_log_formatter_base_setter_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_method",
+    "api": "matplotlib.ticker.LogFormatter.base",
+    "replacement_api": "matplotlib.ticker.LogFormatter.set_base",
+    "description": "Configure a base-2 formatter that labels only powers of the base.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.ticker import LogFormatter\n\n\ndef formatted_power_of_two():\n    formatter = LogFormatter(labelOnlyBase=True)\n    formatter.create_dummy_axis()\n    ",
+    "right_context": "\n    formatter.set_locs([1.0, 2.0, 4.0, 8.0, 16.0])\n    return formatter(8.0)\n",
+    "assertions": "assert formatted_power_of_two() == \"8\"",
+    "old_completion": "formatter.base(2)",
+    "new_completion": "formatter.set_base(2)",
+    "expected_old_error": "'LogFormatter' object has no attribute 'base'",
+    "provenance": {
+      "old_signature": "base(base)#",
+      "new_signature": "set_base(base)#",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#methods-to-set-parameters-in-loglocator-and-logformatter"
+    }
+  },
+  {
+    "id": "matplotlib_axes_renderer_cache_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "moved_api",
+    "api": "matplotlib.axes.Axes.get_renderer_cache",
+    "replacement_api": "matplotlib.backend_bases.FigureCanvasBase.get_renderer",
+    "description": "Obtain the renderer used by an axes' figure canvas.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef renderer_size():\n    fig, ax = plt.subplots()\n    fig.canvas.draw()\n    renderer = ",
+    "right_context": "\n    result = (renderer.width, renderer.height)\n    plt.close(fig)\n    return result\n",
+    "assertions": "width, height = renderer_size()\nassert width > 0\nassert height > 0",
+    "old_completion": "ax.get_renderer_cache()",
+    "new_completion": "ax.figure.canvas.get_renderer()",
+    "expected_old_error": "'Axes' object has no attribute 'get_renderer_cache'",
+    "provenance": {
+      "old_signature": "Axes.get_renderer_cache()#",
+      "new_signature": "FigureCanvasAgg.get_renderer()#",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#axes-get-renderer-cache"
+    }
+  },
+  {
+    "id": "matplotlib_stride_windows_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_function",
+    "api": "matplotlib.mlab.stride_windows",
+    "replacement_api": "numpy.lib.stride_tricks.sliding_window_view",
+    "description": "Return every consecutive two-element window in an array.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nimport numpy as np\nfrom matplotlib import mlab\n\n\ndef consecutive_pairs(values):\n    return ",
+    "right_context": "\n",
+    "assertions": "windows = consecutive_pairs(np.array([1, 2, 3, 4]))\nassert windows.shape == (3, 2)\nassert windows.tolist() == [[1, 2], [2, 3], [3, 4]]",
+    "old_completion": "mlab.stride_windows(values, 2)",
+    "new_completion": "np.lib.stride_tricks.sliding_window_view(values, 2)",
+    "expected_old_error": "module 'matplotlib.mlab' has no attribute 'stride_windows'",
+    "provenance": {
+      "old_signature": "matplotlib.mlab.stride_windows(x,n,noverlap=None,axis=0)#",
+      "new_signature": "numpy.lib.stride_tricks.sliding_window_view(x, window_shape, axis=None, *, subok=False, writeable=False)",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#mlab-stride-windows"
+    }
+  },
+  {
+    "id": "matplotlib_affine_identity_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "replaced_method",
+    "api": "matplotlib.transforms.Affine2D.identity",
+    "replacement_api": "matplotlib.transforms.Affine2D",
+    "description": "Construct an identity affine transform.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.transforms import Affine2D\n\n\ndef identity_transform():\n    return ",
+    "right_context": "\n",
+    "assertions": "transform = identity_transform()\nassert tuple(transform.transform((2.0, 3.0))) == (2.0, 3.0)\nassert transform.is_affine",
+    "old_completion": "Affine2D.identity()",
+    "new_completion": "Affine2D()",
+    "expected_old_error": "type object 'Affine2D' has no attribute 'identity'",
+    "provenance": {
+      "old_signature": "static identity()#",
+      "new_signature": "class matplotlib.transforms.Affine2D(matrix=None)#",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#transforms-affine2d-identity"
+    }
+  },
+  {
+    "id": "matplotlib_date_ticker_factory_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_function",
+    "api": "matplotlib.dates.date_ticker_factory",
+    "replacement_api": "matplotlib.dates.AutoDateLocator",
+    "description": "Create a scalable date locator and its matching formatter.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import dates\n\n\ndef date_axis_components():\n    ",
+    "right_context": "\n",
+    "assertions": "locator, formatter = date_axis_components()\nassert isinstance(locator, dates.AutoDateLocator)\nassert isinstance(formatter, dates.AutoDateFormatter)\nassert formatter._locator is locator",
+    "old_completion": "locator, formatter = dates.date_ticker_factory(30)\n    return locator, formatter",
+    "new_completion": "locator = dates.AutoDateLocator()\n    formatter = dates.AutoDateFormatter(locator)\n    return locator, formatter",
+    "expected_old_error": "module 'matplotlib.dates' has no attribute 'date_ticker_factory'",
+    "provenance": {
+      "source": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#date-ticker-factory-removed"
+    }
+  },
+  {
+    "id": "matplotlib_canvas_button_event_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_method",
+    "api": "matplotlib.backend_bases.FigureCanvasBase.button_press_event",
+    "replacement_api": "matplotlib.backend_bases.Event",
+    "description": "Dispatch a synthetic button-press event through a figure canvas.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef dispatched_coordinates():\n    fig, _ = plt.subplots()\n    seen = []\n    fig.canvas.mpl_connect(\"button_press_event\", lambda event: seen.append((event.x, event.y)))\n    ",
+    "right_context": "\n    plt.close(fig)\n    return seen\n",
+    "assertions": "assert dispatched_coordinates() == [(3, 4)]",
+    "old_completion": "fig.canvas.button_press_event(3, 4, 1)",
+    "new_completion": "from matplotlib.backend_bases import MouseEvent\n    event = MouseEvent(\"button_press_event\", fig.canvas, 3, 4, button=1)\n    fig.canvas.callbacks.process(event.name, event)",
+    "expected_old_error": "'FigureCanvasAgg' object has no attribute 'button_press_event'",
+    "provenance": {
+      "old_signature": "button_press_event(x,y,button,dblclick=False,guiEvent=None)#",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#removal-of-deprecated-apis"
+    }
+  },
+  {
+    "id": "matplotlib_marker_none_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "changed_argument_value",
+    "api": "matplotlib.markers.MarkerStyle",
+    "description": "Construct a marker style that draws no marker.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.markers import MarkerStyle\n\n\ndef empty_marker():\n    return ",
+    "right_context": "\n",
+    "assertions": "marker = empty_marker()\nassert not marker.is_filled()\nassert len(marker.get_path().vertices) == 0",
+    "old_completion": "MarkerStyle(None)",
+    "new_completion": "MarkerStyle(\"\")",
+    "expected_old_error": "Unrecognized marker style None",
+    "provenance": {
+      "old_signature": "class matplotlib.markers.MarkerStyle(marker=None,fillstyle=None)#",
+      "new_signature": "class matplotlib.markers.MarkerStyle(marker,fillstyle=None,transform=None,capstyle=None,joinstyle=None)#",
+      "source": "data/package_apis.tar.gz",
+      "official_change": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#removal-of-deprecated-apis"
+    }
+  },
+  {
+    "id": "matplotlib_seaborn_style_renamed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_resource",
+    "api": "matplotlib.style.use",
+    "description": "Apply Matplotlib's bundled seaborn white-grid style.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef style_enables_grid():\n    with plt.style.context(",
+    "right_context": "):\n        return bool(matplotlib.rcParams[\"axes.grid\"])\n",
+    "assertions": "assert style_enables_grid()",
+    "old_completion": "\"seaborn-whitegrid\"",
+    "new_completion": "\"seaborn-v0_8-whitegrid\"",
+    "expected_old_error": "'seaborn-whitegrid' is not a valid package style",
+    "provenance": {
+      "source": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#removal-of-deprecated-apis"
+    }
+  },
+  {
+    "id": "matplotlib_axes3d_w_xaxis_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "renamed_attribute",
+    "api": "mpl_toolkits.mplot3d.axes3d.Axes3D.w_xaxis",
+    "replacement_api": "mpl_toolkits.mplot3d.axes3d.Axes3D.xaxis",
+    "description": "Access the x-axis object of a three-dimensional axes.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef x_axis_name():\n    fig = plt.figure()\n    axes = fig.add_subplot(projection=\"3d\")\n    axis = ",
+    "right_context": "\n    result = axis.axis_name\n    plt.close(fig)\n    return result\n",
+    "assertions": "assert x_axis_name() == \"x\"",
+    "old_completion": "axes.w_xaxis",
+    "new_completion": "axes.xaxis",
+    "expected_old_error": "'Axes3D' object has no attribute 'w_xaxis'",
+    "provenance": {
+      "source": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#axes3d"
+    }
+  },
+  {
+    "id": "matplotlib_tick_label_alias_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "renamed_attribute",
+    "api": "matplotlib.axis.Tick.label",
+    "replacement_api": "matplotlib.axis.Tick.label1",
+    "description": "Access and update the primary text label of a major x-axis tick.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.text import Text\n\n\ndef updated_tick_label():\n    fig, axes = plt.subplots()\n    tick = axes.xaxis.get_major_ticks()[0]\n    label = ",
+    "right_context": "\n    label.set_text(\"tick\")\n    result = (isinstance(label, Text), label.get_text())\n    plt.close(fig)\n    return result\n",
+    "assertions": "assert updated_tick_label() == (True, \"tick\")",
+    "old_completion": "tick.label",
+    "new_completion": "tick.label1",
+    "expected_old_error": "'XTick' object has no attribute 'label'",
+    "provenance": {
+      "source": "https://matplotlib.org/3.8.0/api/prev_api_changes/api_changes_3.8.0.html#unused-methods-in-axis-tick-xaxis-and-yaxis"
+    }
+  }
+]

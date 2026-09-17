@@ -1,0 +1,1 @@
+{"id": "torch_reduce_scatter_multigpu_removed", "raw": "```python\ndist.reduce_scatter_multigpu([output], [[contribution]])\n```", "completion": "dist.reduce_scatter_multigpu([output], [[contribution]])"}

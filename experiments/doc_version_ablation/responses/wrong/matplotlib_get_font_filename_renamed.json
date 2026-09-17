@@ -1,0 +1,1 @@
+{"id": "matplotlib_get_font_filename_renamed", "raw": "face = font_manager.get_font(font_path)", "completion": "face = font_manager.get_font(font_path)"}

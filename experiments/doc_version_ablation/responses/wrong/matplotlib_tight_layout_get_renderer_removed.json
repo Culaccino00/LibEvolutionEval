@@ -1,0 +1,1 @@
+{"id": "matplotlib_tight_layout_get_renderer_removed", "raw": "matplotlib.tight_layout.get_renderer(fig)", "completion": "matplotlib.tight_layout.get_renderer(fig)"}

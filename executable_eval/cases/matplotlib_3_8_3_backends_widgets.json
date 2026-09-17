@@ -1,0 +1,371 @@
+[
+ {
+  "id": "matplotlib_mathtext_parse_antialiased_renamed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "renamed_parameter",
+  "api": "matplotlib.mathtext.MathTextParser.parse",
+  "description": "Parse a mathtext string and return its bounding box.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.mathtext import MathTextParser\n\n\ndef math_symbol_box():\n    parser = MathTextParser(\"path\")\n    result = ",
+  "right_context": "\n    return result\n",
+  "assertions": "result = math_symbol_box()\nassert result.width > 0\nassert result.height > 0\nassert result.depth >= 0",
+  "old_completion": "parser.parse(r\"$x^2$\", dpi=100, _force_standard_ps_fonts=True)",
+  "new_completion": "parser.parse(r\"$x^2$\", dpi=100, antialiased=True)",
+  "expected_old_error": "unexpected keyword argument '_force_standard_ps_fonts'",
+  "provenance": {
+   "old_signature": "matplotlib.mathtext.MathTextParser.parse(s,dpi=72,prop=None,*,_force_standard_ps_fonts=False)#",
+   "new_signature": "matplotlib.mathtext.MathTextParser.parse(s,dpi=72,prop=None,*,antialiased=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_mathtext_get_unicode_index_math_removed",
+  "library": "matplotlib",
+  "source_version": "3.5.2",
+  "target_version": "3.8.3",
+  "change_type": "removed_parameter",
+  "api": "matplotlib.mathtext.get_unicode_index",
+  "description": "Look up the Unicode codepoint of a mathtext symbol.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import mathtext\n\n\ndef alpha_codepoint():\n    return ",
+  "right_context": "\n",
+  "assertions": "assert alpha_codepoint() == 0x03B1",
+  "old_completion": "mathtext.get_unicode_index(\"alpha\", math=True)",
+  "new_completion": "mathtext.get_unicode_index(\"alpha\")",
+  "expected_old_error": "unexpected keyword argument 'math'",
+  "provenance": {
+   "old_signature": "matplotlib.mathtext.get_unicode_index(symbol,math=True)#",
+   "new_signature": "matplotlib.mathtext.get_unicode_index(symbol)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_mathtext_to_rgba_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "replaced_method",
+  "api": "matplotlib.mathtext.MathTextParser.to_rgba",
+  "replacement_api": "matplotlib.mathtext.math_to_image",
+  "description": "Render a mathtext string into an RGBA pixel array.",
+  "prompt": "import io\n\nimport matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib import mathtext\n\n\ndef rendered_math_pixels():\n    return ",
+  "right_context": "\n",
+  "assertions": "pixels = rendered_math_pixels()\nassert pixels.ndim == 3 and pixels.shape[2] == 4\nassert pixels.dtype.name == \"float32\"\nassert (pixels[..., 3] > 0.9).any()",
+  "old_completion": "mathtext.MathTextParser(\"path\").to_rgba(r\"$x^2$\", dpi=100)",
+  "new_completion": "plt.imread((lambda buffer: (mathtext.math_to_image(r\"$x^2$\", buffer, dpi=100), buffer.seek(0), buffer)[2])(io.BytesIO()))",
+  "expected_old_error": "'MathTextParser' object has no attribute 'to_rgba'",
+  "provenance": {
+   "old_signature": "matplotlib.mathtext.MathTextParser.to_rgba(texstr,color='black',dpi=120,fontsize=14)#",
+   "new_signature": "matplotlib.mathtext.math_to_image(s,filename_or_obj,prop=None,dpi=None,format=None,*,color=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_mathtext_backend_agg_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_api",
+  "api": "matplotlib.mathtext.MathtextBackendAgg",
+  "replacement_api": "matplotlib.mathtext.MathTextParser",
+  "description": "Rasterize a mathtext string with the Agg backend.",
+  "prompt": "import numpy as np\nimport matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import mathtext\n\n\ndef rasterized_math():\n    result = ",
+  "right_context": "\n    return result\n",
+  "assertions": "result = rasterized_math()\nassert result.width > 0 and result.height > 0\nimage = np.asarray(result.image)\nassert image.size > 0\nassert image.dtype.name == \"uint8\"",
+  "old_completion": "mathtext.MathtextBackendAgg()",
+  "new_completion": "mathtext.MathTextParser(\"agg\").parse(r\"$x^2$\", dpi=100)",
+  "expected_old_error": "module 'matplotlib.mathtext' has no attribute 'MathtextBackendAgg'",
+  "provenance": {
+   "old_signature": "class matplotlib.mathtext.MathtextBackendAgg",
+   "new_signature": "matplotlib.mathtext.MathTextParser.parse(s,dpi=72,prop=None,*,antialiased=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_mathtext_warning_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_api",
+  "api": "matplotlib.mathtext.MathTextWarning",
+  "description": "Return the exception type raised by invalid mathtext.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import mathtext\n\n\ndef math_error_type():\n    return ",
+  "right_context": "\n",
+  "assertions": "error_type = math_error_type()\nassert issubclass(error_type, Exception)\nparser = mathtext.MathTextParser(\"path\")\ncaught = False\ntry:\n    parser.parse(r\"$\\notarealcommand$\")\nexcept error_type:\n    caught = True\nassert caught",
+  "old_completion": "mathtext.MathTextWarning",
+  "new_completion": "ValueError",
+  "expected_old_error": "module 'matplotlib.mathtext' has no attribute 'MathTextWarning'",
+  "provenance": {
+   "old_signature": "exception matplotlib.mathtext.MathTextWarning",
+   "new_signature": "",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_blocking_input_module_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_api",
+  "api": "matplotlib.blocking_input.BlockingMouseInput",
+  "replacement_api": "matplotlib.pyplot.ginput",
+  "description": "Return the entry point for blocking mouse input collection.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef blocking_input_entry():\n    collector = ",
+  "right_context": "\n    return collector\n",
+  "assertions": "collector = blocking_input_entry()\nassert callable(collector)\nassert collector is plt.ginput",
+  "old_completion": "__import__(\"matplotlib.blocking_input\", fromlist=[\"BlockingMouseInput\"]).BlockingMouseInput",
+  "new_completion": "plt.ginput",
+  "expected_old_error": "No module named 'matplotlib.blocking_input'",
+  "provenance": {
+   "old_signature": "class matplotlib.blocking_input.BlockingMouseInput(fig,mouse_add=MouseButton.LEFT,mouse_pop=MouseButton.RIGHT,mouse_stop=MouseButton.MIDDLE)#",
+   "new_signature": "matplotlib.pyplot.ginput(n=1,timeout=30,show_clicks=True,mouse_add=MouseButton.LEFT,mouse_pop=MouseButton.RIGHT,mouse_stop=MouseButton.MIDDLE)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_ellipse_selector_drawtype_removed",
+  "library": "matplotlib",
+  "source_version": "3.3.4",
+  "target_version": "3.8.3",
+  "change_type": "removed_parameter",
+  "api": "matplotlib.widgets.EllipseSelector",
+  "description": "Create an ellipse selector with a custom selection style.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib import widgets\n\n\ndef ellipse_selector_facecolor():\n    fig, ax = plt.subplots()\n    selector = ",
+  "right_context": "\n    color = selector.artists[0].get_facecolor()\n    plt.close(fig)\n    return color\n",
+  "assertions": "red, green, blue, alpha = ellipse_selector_facecolor()\nassert (red, green, blue) == (0.0, 0.0, 1.0)\nassert alpha == 1.0",
+  "old_completion": "widgets.EllipseSelector(ax, lambda e1, e2: None, drawtype=\"box\")",
+  "new_completion": "widgets.EllipseSelector(ax, lambda e1, e2: None, props=dict(facecolor=\"blue\"))",
+  "expected_old_error": "unexpected keyword argument 'drawtype'",
+  "provenance": {
+   "old_signature": "class matplotlib.widgets.EllipseSelector(ax,onselect,drawtype=<deprecated parameter>,minspanx=0,minspany=0,useblit=False,lineprops=<deprecated parameter>,props=None,spancoords='data',button=None,grab_range=10,handle_props=None,interactive=False,state_modifier_keys=None,drag_from_anywhere=False,ignore_event_outside=False)#",
+   "new_signature": "class matplotlib.widgets.EllipseSelector(ax,onselect,*,minspanx=0,minspany=0,useblit=False,props=None,spancoords='data',button=None,grab_range=10,handle_props=None,interactive=False,state_modifier_keys=None,drag_from_anywhere=False,ignore_event_outside=False,use_data_coordinates=False)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_lasso_selector_onselect_required",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_parameter",
+  "api": "matplotlib.widgets.LassoSelector",
+  "description": "Create a lasso selector with a registered selection callback.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib import widgets\n\n\ndef lasso_callback_registered():\n    fig, ax = plt.subplots()\n    callback = lambda verts: verts\n    selector = ",
+  "right_context": "\n    registered = selector.onselect is callback\n    plt.close(fig)\n    return registered\n",
+  "assertions": "assert lasso_callback_registered()",
+  "old_completion": "widgets.LassoSelector(ax)",
+  "new_completion": "widgets.LassoSelector(ax, callback)",
+  "expected_old_error": "missing 1 required positional argument: 'onselect'",
+  "provenance": {
+   "old_signature": "class matplotlib.widgets.LassoSelector(ax,onselect=None,useblit=True,props=None,button=None)#",
+   "new_signature": "class matplotlib.widgets.LassoSelector(ax,onselect,*,useblit=True,props=None,button=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_lasso_callback_required",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_parameter",
+  "api": "matplotlib.widgets.Lasso",
+  "description": "Create a lasso with a vertex callback and read back its start point.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib import widgets\n\n\ndef lasso_start_vertices():\n    fig, ax = plt.subplots()\n    lasso = ",
+  "right_context": "\n    vertices = [tuple(vertex) for vertex in lasso.verts]\n    plt.close(fig)\n    return vertices\n",
+  "assertions": "assert lasso_start_vertices() == [(0.1, 0.2)]",
+  "old_completion": "widgets.Lasso(ax, (0.1, 0.2))",
+  "new_completion": "widgets.Lasso(ax, (0.1, 0.2), callback=lambda verts: verts)",
+  "expected_old_error": "missing 1 required positional argument: 'callback'",
+  "provenance": {
+   "old_signature": "class matplotlib.widgets.Lasso(ax,xy,callback=None,useblit=True)#",
+   "new_signature": "class matplotlib.widgets.Lasso(ax,xy,callback,*,useblit=True)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_polygon_selector_grab_range_renamed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "renamed_parameter",
+  "api": "matplotlib.widgets.PolygonSelector.vertex_select_radius",
+  "replacement_api": "matplotlib.widgets.PolygonSelector.grab_range",
+  "description": "Create a polygon selector with a custom vertex grab radius.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib import widgets\n\n\ndef vertex_grab_range():\n    fig, ax = plt.subplots()\n    radius = ",
+  "right_context": "\n    plt.close(fig)\n    return radius\n",
+  "assertions": "assert vertex_grab_range() == 15",
+  "old_completion": "widgets.PolygonSelector(ax, lambda verts: None, vertex_select_radius=15).vertex_select_radius",
+  "new_completion": "widgets.PolygonSelector(ax, lambda verts: None, grab_range=15).grab_range",
+  "expected_old_error": "unexpected keyword argument 'vertex_select_radius'",
+  "provenance": {
+   "old_signature": "matplotlib.widgets.PolygonSelector.vertex_select_radius",
+   "new_signature": "class matplotlib.widgets.PolygonSelector(ax,onselect,*,useblit=False,props=None,handle_props=None,grab_range=10,draw_bounding_box=False,box_handle_props=None,box_props=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_backend_tools_set_cursor_base_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_api",
+  "api": "matplotlib.backend_tools.SetCursorBase",
+  "replacement_api": "matplotlib.backend_tools.ToolSetCursor",
+  "description": "Return the tool class that changes the canvas cursor.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import backend_tools\n\n\ndef cursor_tool_class():\n    return ",
+  "right_context": "\n",
+  "assertions": "tool_class = cursor_tool_class()\nassert issubclass(tool_class, backend_tools.ToolBase)\nassert tool_class.__name__ == \"ToolSetCursor\"",
+  "old_completion": "backend_tools.SetCursorBase",
+  "new_completion": "backend_tools.ToolSetCursor",
+  "expected_old_error": "module 'matplotlib.backend_tools' has no attribute 'SetCursorBase'",
+  "provenance": {
+   "old_signature": "class matplotlib.backend_tools.SetCursorBase(*args,**kwargs)#",
+   "new_signature": "class matplotlib.backend_tools.ToolSetCursor(*args,**kwargs)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_backend_tools_copy_to_clipboard_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_api",
+  "api": "matplotlib.backend_tools.ToolCopyToClipboard",
+  "replacement_api": "matplotlib.backend_tools.ToolCopyToClipboardBase",
+  "description": "Return the tool class that copies the figure to the clipboard.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib import backend_tools\n\n\ndef clipboard_tool_class():\n    return ",
+  "right_context": "\n",
+  "assertions": "tool_class = clipboard_tool_class()\nassert issubclass(tool_class, backend_tools.ToolBase)\nassert tool_class.__name__ == \"ToolCopyToClipboardBase\"",
+  "old_completion": "backend_tools.ToolCopyToClipboard",
+  "new_completion": "backend_tools.ToolCopyToClipboardBase",
+  "expected_old_error": "module 'matplotlib.backend_tools' has no attribute 'ToolCopyToClipboard'",
+  "provenance": {
+   "old_signature": "matplotlib.backend_tools.ToolCopyToClipboard",
+   "new_signature": "class matplotlib.backend_tools.ToolCopyToClipboardBase(toolmanager,name)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_agg_print_jpg_pil_kwargs",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_parameter",
+  "api": "matplotlib.backends.backend_agg.FigureCanvasAgg.print_jpg",
+  "description": "Save a figure as a JPEG with a custom quality setting.",
+  "prompt": "import io\n\nimport matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib.backends.backend_agg import FigureCanvasAgg\nfrom matplotlib.figure import Figure\n\n\ndef jpeg_bytes():\n    canvas = FigureCanvasAgg(Figure(figsize=(1, 1)))\n    buffer = io.BytesIO()\n    ",
+  "right_context": "\n    return buffer.getvalue()\n",
+  "assertions": "data = jpeg_bytes()\nassert data[:2] == b\"\\xff\\xd8\"\nassert len(data) > 200",
+  "old_completion": "canvas.print_jpg(buffer, quality=95)",
+  "new_completion": "canvas.print_jpg(buffer, pil_kwargs={\"quality\": 95})",
+  "expected_old_error": "unexpected keyword argument 'quality'",
+  "provenance": {
+   "old_signature": "matplotlib.backends.backend_agg.FigureCanvasAgg.print_jpg(filename_or_obj,*args,pil_kwargs=None,**kwargs)#",
+   "new_signature": "matplotlib.backends.backend_agg.FigureCanvasAgg.print_jpg(filename_or_obj,*,metadata=None,pil_kwargs=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_pdf_print_dpi_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_parameter",
+  "api": "matplotlib.backends.backend_pdf.FigureCanvasPdf.print_pdf",
+  "description": "Save a figure as a PDF document.",
+  "prompt": "import io\n\nimport matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib.backends.backend_pdf import FigureCanvasPdf\nfrom matplotlib.figure import Figure\n\n\ndef pdf_bytes():\n    canvas = FigureCanvasPdf(Figure(figsize=(1, 1)))\n    buffer = io.BytesIO()\n    ",
+  "right_context": "\n    return buffer.getvalue()\n",
+  "assertions": "data = pdf_bytes()\nassert data.startswith(b\"%PDF-\")\nassert len(data) > 500",
+  "old_completion": "canvas.print_pdf(buffer, dpi=100)",
+  "new_completion": "canvas.print_pdf(buffer)",
+  "expected_old_error": "unexpected keyword argument 'dpi'",
+  "provenance": {
+   "old_signature": "matplotlib.backends.backend_pdf.FigureCanvasPdf.print_pdf(filename,*,dpi=<deprecated parameter>,bbox_inches_restore=None,metadata=None)#",
+   "new_signature": "matplotlib.backends.backend_pdf.FigureCanvasPdf.print_pdf(filename,*,bbox_inches_restore=None,metadata=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_svg_print_dpi_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_parameter",
+  "api": "matplotlib.backends.backend_svg.FigureCanvasSVG.print_svg",
+  "description": "Save a figure as an SVG document.",
+  "prompt": "import io\n\nimport matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib.backends.backend_svg import FigureCanvasSVG\nfrom matplotlib.figure import Figure\n\n\ndef svg_bytes():\n    canvas = FigureCanvasSVG(Figure(figsize=(1, 1)))\n    buffer = io.BytesIO()\n    ",
+  "right_context": "\n    return buffer.getvalue()\n",
+  "assertions": "data = svg_bytes()\nassert data.startswith(b\"<?xml\")\nassert b\"<svg\" in data",
+  "old_completion": "canvas.print_svg(buffer, dpi=100)",
+  "new_completion": "canvas.print_svg(buffer)",
+  "expected_old_error": "unexpected keyword argument 'dpi'",
+  "provenance": {
+   "old_signature": "matplotlib.backends.backend_svg.FigureCanvasSVG.print_svg(filename,*args,dpi=<deprecated parameter>,bbox_inches_restore=None,metadata=None)#",
+   "new_signature": "matplotlib.backends.backend_svg.FigureCanvasSVG.print_svg(filename,*,bbox_inches_restore=None,metadata=None)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_agg_tostring_rgba_minimized_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "replaced_method",
+  "api": "matplotlib.backends.backend_agg.RendererAgg.tostring_rgba_minimized",
+  "replacement_api": "matplotlib.backends.backend_agg.FigureCanvasAgg.buffer_rgba",
+  "description": "Copy the rendered figure into an RGBA pixel array.",
+  "prompt": "import numpy as np\nimport matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib.figure import Figure\nfrom matplotlib.backends.backend_agg import FigureCanvasAgg\n\n\ndef rendered_rgba_pixels():\n    figure = Figure(figsize=(2, 1), dpi=50)\n    FigureCanvasAgg(figure)\n    axis = figure.add_subplot()\n    axis.plot([0, 1], [0, 1], color=\"red\", linewidth=4)\n    figure.canvas.draw()\n    pixels = ",
+  "right_context": "\n    return pixels\n",
+  "assertions": "pixels = rendered_rgba_pixels()\nassert pixels.shape == (50, 100, 4)\nassert pixels.dtype.name == \"uint8\"\nred = (pixels[..., 0] > 200) & (pixels[..., 1] < 60) & (pixels[..., 2] < 60)\nassert red.any()",
+  "old_completion": "figure.canvas.get_renderer().tostring_rgba_minimized()",
+  "new_completion": "np.asarray(figure.canvas.buffer_rgba())",
+  "expected_old_error": "'RendererAgg' object has no attribute 'tostring_rgba_minimized'",
+  "provenance": {
+   "old_signature": "matplotlib.backends.backend_agg.RendererAgg.tostring_rgba_minimized()#",
+   "new_signature": "matplotlib.backends.backend_agg.FigureCanvasAgg.buffer_rgba()#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_pdf_operator_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_api",
+  "api": "matplotlib.backends.backend_pdf.Operator",
+  "replacement_api": "matplotlib.backends.backend_pdf.Op",
+  "description": "Serialize a PDF graphics-state operator to its byte form.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nfrom matplotlib.backends import backend_pdf\n\n\ndef gsave_operator_bytes():\n    operator = ",
+  "right_context": "\n    return operator.pdfRepr()\n",
+  "assertions": "assert gsave_operator_bytes() == b\"q\"",
+  "old_completion": "backend_pdf.Operator(b\"q\")",
+  "new_completion": "backend_pdf.Op.gsave",
+  "expected_old_error": "module 'matplotlib.backends.backend_pdf' has no attribute 'Operator'",
+  "provenance": {
+   "old_signature": "class matplotlib.backends.backend_pdf.Operator(op)#",
+   "new_signature": "class matplotlib.backends.backend_pdf.Op(value)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ },
+ {
+  "id": "matplotlib_template_new_figure_manager_removed",
+  "library": "matplotlib",
+  "source_version": "3.6.3",
+  "target_version": "3.8.3",
+  "change_type": "removed_api",
+  "api": "matplotlib.backends.backend_template.new_figure_manager",
+  "replacement_api": "matplotlib.backends.backend_template.FigureManagerTemplate",
+  "description": "Create a figure manager for a template-backend figure.",
+  "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib.backends import backend_template\nfrom matplotlib.figure import Figure\n\n\ndef managed_figure_number():\n    figure = Figure()\n    manager = ",
+  "right_context": "\n    return manager.num\n",
+  "assertions": "assert managed_figure_number() == 3",
+  "old_completion": "backend_template.new_figure_manager(3)",
+  "new_completion": "backend_template.FigureManagerTemplate(backend_template.FigureCanvasTemplate(figure), 3)",
+  "expected_old_error": "module 'matplotlib.backends.backend_template' has no attribute 'new_figure_manager'",
+  "provenance": {
+   "old_signature": "matplotlib.backends.backend_template.new_figure_manager(num,*args,FigureClass=<class 'matplotlib.figure.Figure'>,**kwargs)#",
+   "new_signature": "class matplotlib.backends.backend_template.FigureManagerTemplate(canvas,num)#",
+   "source": "data/package_apis.tar.gz"
+  }
+ }
+]

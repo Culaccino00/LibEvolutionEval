@@ -1,0 +1,22 @@
+[
+  {
+    "id": "torch_onnx_jitscalartype_from_name_removed",
+    "library": "torch",
+    "source_version": "1.13.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.onnx.JitScalarType.from_name",
+    "description": "Resolve the ONNX scalar type for 32-bit float tensors.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport torch.onnx\n\n\ndef float_scalar_type():\n    scalar_type = ",
+    "right_context": "\n    return scalar_type\n",
+    "assertions": "scalar_type = float_scalar_type()\nassert scalar_type is torch.onnx.JitScalarType.FLOAT\nassert scalar_type.scalar_name() == \"Float\"\nassert scalar_type.torch_name() == \"float\"\nassert scalar_type.dtype() == torch.float32\nassert scalar_type.onnx_compatible()",
+    "old_completion": "torch.onnx.JitScalarType.from_name(\"Float\")",
+    "new_completion": "torch.onnx.JitScalarType.from_dtype(torch.float32)",
+    "expected_old_error": "AttributeError: from_name",
+    "provenance": {
+      "old_signature": "classmethodfrom_name(name)[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "id": "matplotlib_offsetbox_textarea_minimumdescent_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "matplotlib.offsetbox.TextArea",
+    "description": "Create a text box without the deprecated minimumdescent option.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.offsetbox import TextArea\n\n\ndef rendered_text_box():\n    fig = plt.figure()\n    ax = fig.add_subplot(111)\n    area = ",
+    "right_context": "\n    ax.add_artist(area)\n    fig.canvas.draw()\n    renderer = fig.canvas.get_renderer()\n    height = area.get_window_extent(renderer).height\n    text = area.get_text()\n    plt.close(fig)\n    return text, height\n",
+    "assertions": "text, height = rendered_text_box()\nassert text == \"sample\"\nassert height > 0.0",
+    "old_completion": "TextArea(\"sample\", minimumdescent=False)",
+    "new_completion": "TextArea(\"sample\")",
+    "expected_old_error": "unexpected keyword argument 'minimumdescent'",
+    "provenance": {
+      "old_signature": "class matplotlib.offsetbox.TextArea(s,textprops=None,multilinebaseline=False,minimumdescent=<deprecatedparameter>)#",
+      "new_signature": "class matplotlib.offsetbox.TextArea(s,*,textprops=None,multilinebaseline=False)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_offsetbox_anchoredtext_positional_pad",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.offsetbox.AnchoredText",
+    "description": "Place an anchored text note in the upper right of an axes.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.offsetbox import AnchoredText\n\n\ndef anchored_note():\n    fig, ax = plt.subplots()\n    artist = ",
+    "right_context": "\n    ax.add_artist(artist)\n    fig.canvas.draw()\n    text = artist.txt.get_text()\n    height = artist.get_window_extent(fig.canvas.get_renderer()).height\n    plt.close(fig)\n    return text, height\n",
+    "assertions": "text, height = anchored_note()\nassert text == \"note\"\nassert height > 0.0",
+    "old_completion": "AnchoredText(\"note\", \"upper right\", 0.5)",
+    "new_completion": "AnchoredText(\"note\", loc=\"upper right\", pad=0.5)",
+    "expected_old_error": "__init__() takes 3 positional arguments but 4 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.offsetbox.AnchoredText(s,loc,pad=0.4,borderpad=0.5,prop=None,**kwargs)#",
+      "new_signature": "class matplotlib.offsetbox.AnchoredText(s,loc,*,pad=0.4,borderpad=0.5,prop=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_offsetbox_get_offset_arguments_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "changed_signature",
+    "api": "matplotlib.offsetbox.OffsetBox.get_offset",
+    "description": "Query the drawing offset of a text container.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.offsetbox import TextArea\n\n\ndef container_offset():\n    fig = plt.figure()\n    ax = fig.add_subplot(111)\n    area = TextArea(\"hello\")\n    ax.add_artist(area)\n    area.set_offset((4.0, 5.0))\n    offset = ",
+    "right_context": "\n    plt.close(fig)\n    return offset\n",
+    "assertions": "assert container_offset() == (4.0, 5.0)",
+    "old_completion": "area.get_offset(10, 10, 0, 0, fig.canvas.get_renderer())",
+    "new_completion": "area.get_offset()",
+    "expected_old_error": "get_offset() takes 1 positional argument but 6 were given",
+    "provenance": {
+      "old_signature": "get_offset(width,height,xdescent,ydescent,renderer)#",
+      "new_signature": "get_offset(bbox,renderer)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_fancyarrowpatch_dpi_cor_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "removed_method",
+    "api": "matplotlib.patches.FancyArrowPatch.set_dpi_cor",
+    "description": "Double the head size of a fancy arrow patch.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.patches import FancyArrowPatch\n\n\ndef doubled_arrow_scale():\n    fig, ax = plt.subplots()\n    arrow = FancyArrowPatch((0.0, 0.0), (1.0, 1.0), mutation_scale=10.0)\n    ax.add_patch(arrow)\n    ",
+    "right_context": "\n    fig.canvas.draw()\n    scale = arrow.get_mutation_scale()\n    plt.close(fig)\n    return scale\n",
+    "assertions": "assert doubled_arrow_scale() == 20.0",
+    "old_completion": "arrow.set_dpi_cor(2.0)",
+    "new_completion": "arrow.set_mutation_scale(2.0 * arrow.get_mutation_scale())",
+    "expected_old_error": "'FancyArrowPatch' object has no attribute 'set_dpi_cor'",
+    "provenance": {
+      "old_signature": "set_dpi_cor(dpi_cor)#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_polar_set_ylim_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.projections.polar.PolarAxes.set_ylim",
+    "description": "Set explicit radial limits on a polar axes.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef radial_limits():\n    fig = plt.figure()\n    axes = fig.add_subplot(111, projection=\"polar\")\n    ",
+    "right_context": "\n    limits = axes.get_ylim()\n    plt.close(fig)\n    return limits\n",
+    "assertions": "assert radial_limits() == (0.0, 5.0)",
+    "old_completion": "axes.set_ylim(0.0, 5.0, True, False)",
+    "new_completion": "axes.set_ylim(0.0, 5.0, emit=True, auto=False)",
+    "expected_old_error": "set_ylim() takes from 1 to 3 positional arguments but 5 were given",
+    "provenance": {
+      "old_signature": "set_ylim(bottom=None,top=None,emit=True,auto=False,*,ymin=None,ymax=None)#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_polar_theta_locator_refresh_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "removed_method",
+    "api": "matplotlib.projections.polar.PolarAxes.ThetaLocator.refresh",
+    "description": "Refresh the theta tick locations of a polar plot.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n\ndef theta_tick_locations():\n    fig = plt.figure()\n    axes = fig.add_subplot(111, projection=\"polar\")\n    axes.plot([0.0, np.pi / 2], [0.0, 1.0])\n    ",
+    "right_context": "\n    ticks = axes.get_xticks().copy()\n    plt.close(fig)\n    return ticks\n",
+    "assertions": "ticks = theta_tick_locations()\nnp.testing.assert_allclose(ticks, np.arange(0.0, 2 * np.pi, np.pi / 4))",
+    "old_completion": "axes.xaxis.get_major_locator().refresh()",
+    "new_completion": "fig.canvas.draw()",
+    "expected_old_error": "'ThetaLocator' object has no attribute 'refresh'",
+    "provenance": {
+      "old_signature": "refresh()#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_axes_divider_get_vsize_hsize_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "replaced_method",
+    "api": "mpl_toolkits.axes_grid1.axes_divider.Divider.get_vsize_hsize",
+    "replacement_api": "mpl_toolkits.axes_grid1.axes_divider.Divider.get_horizontal_sizes",
+    "description": "Sum the fixed horizontal sizes of an axes divider layout.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.axes_grid1 import axes_size\nfrom mpl_toolkits.axes_grid1.axes_divider import Divider\n\n\ndef fixed_layout_width():\n    fig = plt.figure()\n    divider = Divider(fig, (0.0, 0.0, 1.0, 1.0),\n                      [axes_size.Fixed(1.0), axes_size.Fixed(2.0)],\n                      [axes_size.Fixed(1.0)])\n    renderer = fig.canvas.get_renderer()\n    width = ",
+    "right_context": "\n    plt.close(fig)\n    return width\n",
+    "assertions": "assert fixed_layout_width() == 3.0",
+    "old_completion": "divider.get_vsize_hsize()[1].get_size(renderer)[1]",
+    "new_completion": "sum(float(size[1]) for size in divider.get_horizontal_sizes(renderer))",
+    "expected_old_error": "'Divider' object has no attribute 'get_vsize_hsize'",
+    "provenance": {
+      "old_signature": "get_vsize_hsize()#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_axes_divider_append_axes_add_to_figure_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "mpl_toolkits.axes_grid1.axes_divider.AxesDivider.append_axes",
+    "description": "Append a fixed-width axes to the right of an existing axes.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.axes_grid1 import axes_size\nfrom mpl_toolkits.axes_grid1.axes_divider import AxesDivider\n\n\ndef appended_axes_count():\n    fig = plt.figure()\n    axes = fig.add_subplot(111)\n    divider = AxesDivider(axes)\n    ",
+    "right_context": "\n    count = len(fig.axes)\n    plt.close(fig)\n    return count\n",
+    "assertions": "assert appended_axes_count() == 2",
+    "old_completion": "divider.append_axes(\"right\", axes_size.Fixed(1.0), pad=0.1, add_to_figure=True)",
+    "new_completion": "divider.append_axes(\"right\", axes_size.Fixed(1.0), pad=0.1)",
+    "expected_old_error": "unexpected keyword argument 'add_to_figure'",
+    "provenance": {
+      "old_signature": "append_axes(position,size,pad=None,add_to_figure=<deprecatedparameter>,**kwargs)#",
+      "new_signature": "append_axes(position,size,pad=None,*,axes_class =None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_parasite_axes_auxtrans_factory_removed",
+    "library": "matplotlib",
+    "source_version": "3.6.3",
+    "target_version": "3.8.3",
+    "change_type": "removed_api",
+    "api": "mpl_toolkits.axes_grid1.parasite_axes.parasite_axes_auxtrans_class_factory",
+    "replacement_api": "mpl_toolkits.axes_grid1.parasite_axes.HostAxesBase.get_aux_axes",
+    "description": "Create a parasite axes with a scaled auxiliary transform.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nfrom matplotlib.transforms import Affine2D\nfrom mpl_toolkits.axes_grid1 import host_axes, parasite_axes\n\n\ndef parasite_viewlim_width():\n    fig = plt.figure()\n    host = host_axes((0.1, 0.1, 0.8, 0.8), figure=fig)\n    fig.add_axes(host)\n    transform = Affine2D().scale(2.0, 1.0)\n    aux = ",
+    "right_context": "\n    aux.plot([0.0, 1.0], [0.0, 2.0])\n    host.set_xlim(0.0, 4.0)\n    width = aux.viewLim.intervalx[1] - aux.viewLim.intervalx[0]\n    plt.close(fig)\n    return width\n",
+    "assertions": "assert abs(parasite_viewlim_width() - 4.0) < 1e-12",
+    "old_completion": "parasite_axes.parasite_axes_auxtrans_class_factory(parasite_axes.ParasiteAxes)(host, transform)",
+    "new_completion": "host.get_aux_axes(transform)",
+    "expected_old_error": "has no attribute 'parasite_axes_auxtrans_class_factory'",
+    "provenance": {
+      "old_signature": "mpl_toolkits.axes_grid1.parasite_axes.parasite_axes_auxtrans_class _factory(axes_class )#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

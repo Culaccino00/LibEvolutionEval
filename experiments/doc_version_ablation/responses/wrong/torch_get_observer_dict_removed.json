@@ -1,0 +1,1 @@
+{"id": "torch_get_observer_dict_removed", "raw": "torch.ao.quantization.get_observer_dict(prepared, collected)", "completion": "torch.ao.quantization.get_observer_dict(prepared, collected)"}

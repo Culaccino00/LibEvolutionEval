@@ -1,0 +1,1 @@
+{"id": "matplotlib_colorbarpatch_removed", "raw": "matplotlib.colorbar.Colorbar(cax, image)", "completion": "matplotlib.colorbar.Colorbar(cax, image)"}

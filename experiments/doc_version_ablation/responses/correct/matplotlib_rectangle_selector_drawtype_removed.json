@@ -1,0 +1,1 @@
+{"id": "matplotlib_rectangle_selector_drawtype_removed", "raw": "RectangleSelector(axes, lambda eclick, erelease: None)", "completion": "RectangleSelector(axes, lambda eclick, erelease: None)"}

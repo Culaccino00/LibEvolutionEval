@@ -1,0 +1,1 @@
+{"id": "torch_tp_make_output_shard_1d_removed", "raw": "output = tp_style.make_output_shard_1d(replicated, device_mesh=mesh, dim=0)", "completion": "output = tp_style.make_output_shard_1d(replicated, device_mesh=mesh, dim=0)"}

@@ -1,0 +1,1 @@
+{"id": "torch_tp_make_output_replicate_1d_removed", "raw": "tp_style.make_output_replicate_1d(sharded, mesh)", "completion": "tp_style.make_output_replicate_1d(sharded, mesh)"}

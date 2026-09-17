@@ -1,0 +1,1 @@
+{"id": "matplotlib_axes_divider_append_axes_add_to_figure_removed", "raw": "divider.append_axes(\"right\", size=\"5%\", pad=0.05)", "completion": "divider.append_axes(\"right\", size=\"5%\", pad=0.05)"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_polygon_selector_grab_range_renamed", "raw": "radius = widgets._get_vertex_grab_range(ax)", "completion": "radius = widgets._get_vertex_grab_range(ax)"}

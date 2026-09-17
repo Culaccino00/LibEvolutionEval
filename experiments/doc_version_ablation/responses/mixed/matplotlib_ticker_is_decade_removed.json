@@ -1,0 +1,1 @@
+{"id": "matplotlib_ticker_is_decade_removed", "raw": "np.isclose(np.log(value) / np.log(base) % 1, 0)", "completion": "np.isclose(np.log(value) / np.log(base) % 1, 0)"}

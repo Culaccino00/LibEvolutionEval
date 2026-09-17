@@ -1,0 +1,1 @@
+{"id": "matplotlib_fancybbox_mutation_keyword_only", "raw": "FancyBboxPatch((0, 0), 1, 1, boxstyle=\"round,pad=0.1\", mutation_scale=2)", "completion": "FancyBboxPatch((0, 0), 1, 1, boxstyle=\"round,pad=0.1\", mutation_scale=2)"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_line2d_valid_join_removed", "raw": "```python\n    return Line2D.validJoin[1]\n```", "completion": "    return Line2D.validJoin[1]"}

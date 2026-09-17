@@ -1,0 +1,1 @@
+{"id": "matplotlib_lasso_selector_onselect_required", "raw": "widgets.LassoSelector(ax, callback)", "completion": "widgets.LassoSelector(ax, callback)"}

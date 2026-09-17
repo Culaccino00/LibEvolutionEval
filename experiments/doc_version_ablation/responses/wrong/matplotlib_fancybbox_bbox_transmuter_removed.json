@@ -1,0 +1,1 @@
+{"id": "matplotlib_fancybbox_bbox_transmuter_removed", "raw": "FancyBboxPatch((0, 0), 1, 1, boxstyle=\"round,pad=0.1\", ec=\"k\", fc=\"none\")", "completion": "FancyBboxPatch((0, 0), 1, 1, boxstyle=\"round,pad=0.1\", ec=\"k\", fc=\"none\")"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_axes_size_padded_removed", "raw": "axes_size.Padded(axes_size.Fixed(1), 1)", "completion": "axes_size.Padded(axes_size.Fixed(1), 1)"}

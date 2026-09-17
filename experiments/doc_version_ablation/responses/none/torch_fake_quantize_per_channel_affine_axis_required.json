@@ -1,0 +1,1 @@
+{"id": "torch_fake_quantize_per_channel_affine_axis_required", "raw": "torch.fake_quantize_per_channel_affine(x, scale, zero_point, 0, -128, 127)", "completion": "torch.fake_quantize_per_channel_affine(x, scale, zero_point, 0, -128, 127)"}

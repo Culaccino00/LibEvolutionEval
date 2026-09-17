@@ -1,0 +1,1 @@
+{"id": "matplotlib_stem_formats_keyword_only", "raw": "axes.stem([1.0, 2.0, 3.0], [1.0, 2.0, 1.0])", "completion": "axes.stem([1.0, 2.0, 3.0], [1.0, 2.0, 1.0])"}

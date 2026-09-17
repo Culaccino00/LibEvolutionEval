@@ -1,0 +1,323 @@
+[
+  {
+    "id": "matplotlib_collection_set_offset_transform_renamed",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "matplotlib.collections.LineCollection.set_offset_transform",
+    "description": "Set a collection's offset transform and read it back.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import collections as mcollections\nfrom matplotlib import transforms as mtransforms\n\n\ndef collection_offset_transform():\n    transform = mtransforms.Affine2D().translate(3.0, 4.0)\n    collection = mcollections.LineCollection([[(0.0, 0.0), (1.0, 1.0)]])\n    ",
+    "right_context": "\n    return collection.get_offset_transform() is transform\n",
+    "assertions": "assert collection_offset_transform()",
+    "old_completion": "collection.set_offset_transform(transOffset=transform)",
+    "new_completion": "collection.set_offset_transform(offset_transform=transform)",
+    "expected_old_error": "unexpected keyword argument 'transOffset'",
+    "provenance": {
+      "old_signature": "set_offset_transform(transOffset)#",
+      "new_signature": "set_offset_transform(offset_transform)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_collection_set_pickradius_renamed",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "matplotlib.collections.LineCollection.set_pickradius",
+    "description": "Set a collection's pick radius and read it back.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import collections as mcollections\n\n\ndef collection_pickradius():\n    collection = mcollections.LineCollection([[(0.0, 0.0), (1.0, 1.0)]])\n    ",
+    "right_context": "\n    return collection.get_pickradius()\n",
+    "assertions": "assert collection_pickradius() == 7",
+    "old_completion": "collection.set_pickradius(pr=7)",
+    "new_completion": "collection.set_pickradius(pickradius=7)",
+    "expected_old_error": "unexpected keyword argument 'pr'",
+    "provenance": {
+      "old_signature": "set_pickradius(pr)#",
+      "new_signature": "set_pickradius(pickradius)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_collection_set_paths_requires_argument",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "required_parameter_added",
+    "api": "matplotlib.collections.Collection.set_paths",
+    "description": "Clear a collection's paths by resetting them to empty.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import collections as mcollections\nfrom matplotlib.path import Path\n\n\ndef cleared_path_count():\n    collection = mcollections.Collection()\n    collection.set_paths([Path([(0.0, 0.0), (1.0, 1.0)])])\n    ",
+    "right_context": "\n    return len(collection.get_paths())\n",
+    "assertions": "assert cleared_path_count() == 0",
+    "old_completion": "collection.set_paths()",
+    "new_completion": "collection.set_paths([])",
+    "expected_old_error": "set_paths() missing 1 required positional argument: 'paths'",
+    "provenance": {
+      "old_signature": "set_paths()#",
+      "new_signature": "set_paths(paths)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_linecollection_linewidths_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.collections.LineCollection",
+    "description": "Build a two-segment line collection with a 2-point linewidth.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import collections as mcollections\n\n\ndef line_collection_linewidths():\n    segments = [[(0.0, 0.0), (1.0, 1.0)], [(1.0, 0.0), (2.0, 1.0)]]\n    collection = ",
+    "right_context": "\n    return list(collection.get_linewidths())\n",
+    "assertions": "assert line_collection_linewidths() == [2.0]",
+    "old_completion": "mcollections.LineCollection(segments, [2.0])",
+    "new_completion": "mcollections.LineCollection(segments, linewidths=[2.0])",
+    "expected_old_error": "__init__() takes 2 positional arguments but 3 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.collections.LineCollection(segments,*args,zorder=2,**kwargs)#",
+      "new_signature": "class matplotlib.collections.LineCollection(segments,*,zorder=2,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_ellispecollection_units_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.collections.EllipseCollection",
+    "description": "Build a single-ellipse collection sized in points.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import collections as mcollections\n\n\ndef ellipse_path_count():\n    collection = ",
+    "right_context": "\n    return len(collection.get_paths())\n",
+    "assertions": "assert ellipse_path_count() == 1",
+    "old_completion": "mcollections.EllipseCollection([1.0], [2.0], [30.0], \"points\")",
+    "new_completion": "mcollections.EllipseCollection([1.0], [2.0], [30.0], units=\"points\")",
+    "expected_old_error": "__init__() takes 4 positional arguments but 5 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.collections.EllipseCollection(widths,heights,angles,units='points',**kwargs)#",
+      "new_signature": "class matplotlib.collections.EllipseCollection(widths,heights,angles,*,units='points',**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_eventcollection_lineoffset_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "matplotlib.collections.EventCollection",
+    "description": "Build a horizontal event collection offset by half a unit.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import collections as mcollections\n\n\ndef event_line_offset():\n    collection = ",
+    "right_context": "\n    return collection.get_lineoffset()\n",
+    "assertions": "assert event_line_offset() == 0.5",
+    "old_completion": "mcollections.EventCollection([1.0, 2.0], \"horizontal\", 0.5)",
+    "new_completion": "mcollections.EventCollection([1.0, 2.0], \"horizontal\", lineoffset=0.5)",
+    "expected_old_error": "__init__() takes from 2 to 3 positional arguments but 4 were given",
+    "provenance": {
+      "old_signature": "class matplotlib.collections.EventCollection(positions,orientation='horizontal',lineoffset=0,linelength=1,linewidth=None,color=None,linestyle='solid',antialiased=None,**kwargs)#",
+      "new_signature": "class matplotlib.collections.EventCollection(positions,orientation='horizontal',*,lineoffset=0,linelength=1,linewidth=None,color=None,linestyle='solid',antialiased=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_collection_callbackssm_removed",
+    "library": "matplotlib",
+    "source_version": "3.5.2",
+    "target_version": "3.8.3",
+    "change_type": "removed_api",
+    "api": "matplotlib.collections.Collection.callbacksSM",
+    "replacement_api": "matplotlib.collections.Collection.callbacks",
+    "description": "Connect to a collection's 'changed' signal and fire it.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom matplotlib import collections as mcollections\n\n\ndef changed_signal_fires():\n    collection = mcollections.LineCollection([[(0.0, 0.0), (1.0, 1.0)]])\n    fired = []\n    registry = ",
+    "right_context": "\n    registry.connect(\"changed\", lambda artist: fired.append(artist))\n    collection.changed()\n    return len(fired)\n",
+    "assertions": "assert changed_signal_fires() == 1",
+    "old_completion": "collection.callbacksSM",
+    "new_completion": "collection.callbacks",
+    "expected_old_error": "has no attribute 'callbacksSM'",
+    "provenance": {
+      "old_signature": "propertycallbacksSM",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_axes3d_format_coord_renamed",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "mpl_toolkits.mplot3d.axes3d.Axes3D.format_coord",
+    "description": "Format a 3D axes coordinate string from view coordinates.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef format_3d_coordinate():\n    fig = plt.figure()\n    ax = fig.add_subplot(111, projection=\"3d\")\n    result = ",
+    "right_context": "\n    plt.close(fig)\n    return result\n",
+    "assertions": "assert isinstance(format_3d_coordinate(), str)",
+    "old_completion": "ax.format_coord(xd=0.5, yd=0.5)",
+    "new_completion": "ax.format_coord(xv=0.5, yv=0.5)",
+    "expected_old_error": "unexpected keyword argument 'xd'",
+    "provenance": {
+      "old_signature": "format_coord(xd,yd)#",
+      "new_signature": "Axes3D.format_coord(xv,yv,renderer=None)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_axes3d_quiver_length_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "mpl_toolkits.mplot3d.axes3d.Axes3D.quiver",
+    "description": "Draw one half-length 3D quiver arrow and count its segments.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef quiver_segment_count():\n    fig = plt.figure()\n    ax = fig.add_subplot(111, projection=\"3d\")\n    quiver = ",
+    "right_context": "\n    fig.canvas.draw()\n    count = len(quiver.get_segments())\n    plt.close(fig)\n    return count\n",
+    "assertions": "assert quiver_segment_count() == 3",
+    "old_completion": "ax.quiver([0.0], [0.0], [0.0], [1.0], [0.0], [0.0], 0.5)",
+    "new_completion": "ax.quiver([0.0], [0.0], [0.0], [1.0], [0.0], [0.0], length=0.5)",
+    "expected_old_error": "quiver() takes 7 positional arguments but 8 were given",
+    "provenance": {
+      "old_signature": "quiver(X,Y,Z,U,V,W,/,length=1,arrow_length_ratio=.3,pivot='tail',normalize=False,**kwargs)#",
+      "new_signature": "Axes3D.quiver(X,Y,Z,U,V,W,*,length=1,arrow_length_ratio=0.3,pivot='tail',normalize=False,data=None,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_axes3d_set_zlim_emit_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "mpl_toolkits.mplot3d.axes3d.Axes3D.set_zlim3d",
+    "description": "Set 3D z-axis limits without notifying observers.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n\ndef z_limits():\n    fig = plt.figure()\n    ax = fig.add_subplot(111, projection=\"3d\")\n    ",
+    "right_context": "\n    limits = ax.get_zlim()\n    plt.close(fig)\n    return limits\n",
+    "assertions": "assert z_limits() == (0.0, 1.0)",
+    "old_completion": "ax.set_zlim3d(0.0, 1.0, False)",
+    "new_completion": "ax.set_zlim(0.0, 1.0, emit=False)",
+    "expected_old_error": "set_zlim() takes from 1 to 3 positional arguments but 4 were given",
+    "provenance": {
+      "old_signature": "set_zlim3d(bottom=None,top=None,emit=True,auto=False,*,zmin=None,zmax=None)#",
+      "new_signature": "Axes3D.set_zlim3d(bottom=None,top=None,*,emit=True,auto=False,zmin=None,zmax=None)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_proj3d_persp_transformation_focal_length_required",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "required_parameter_added",
+    "api": "mpl_toolkits.mplot3d.proj3d.persp_transformation",
+    "description": "Build the 3D perspective transformation matrix.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom mpl_toolkits.mplot3d import proj3d\n\n\ndef perspective_matrix():\n    return ",
+    "right_context": "\n",
+    "assertions": "matrix = perspective_matrix()\nassert matrix.shape == (4, 4)\nassert matrix[0, 0] == 1.0\nassert matrix[3, 3] == 0.0\nassert matrix[2, 3] == -10.0",
+    "old_completion": "proj3d.persp_transformation(-10.0, 10.0)",
+    "new_completion": "proj3d.persp_transformation(-10.0, 10.0, 1.0)",
+    "expected_old_error": "persp_transformation() missing 1 required positional argument: 'focal_length'",
+    "provenance": {
+      "old_signature": "mpl_toolkits.mplot3d.proj3d.persp_transformation(zfront,zback)#",
+      "new_signature": "mpl_toolkits.mplot3d.proj3d.persp_transformation(zfront,zback,focal_length)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_proj3d_view_transformation_roll_required",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "required_parameter_added",
+    "api": "mpl_toolkits.mplot3d.proj3d.view_transformation",
+    "description": "Build the 3D view transformation matrix with zero roll.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nfrom mpl_toolkits.mplot3d import proj3d\n\n\ndef view_matrix():\n    eye = np.array([1.0, 0.0, 0.0])\n    center = np.zeros(3)\n    up = np.array([0.0, 0.0, 1.0])\n    return ",
+    "right_context": "\n",
+    "assertions": "matrix = view_matrix()\nassert matrix.shape == (4, 4)\nrotation = matrix[:3, :3]\nassert np.allclose(rotation @ rotation.T, np.eye(3))",
+    "old_completion": "proj3d.view_transformation(eye, center, up)",
+    "new_completion": "proj3d.view_transformation(eye, center, up, 0.0)",
+    "expected_old_error": "view_transformation() missing 1 required positional argument: 'roll'",
+    "provenance": {
+      "old_signature": "mpl_toolkits.mplot3d.proj3d.view_transformation(E,R,V)#",
+      "new_signature": "mpl_toolkits.mplot3d.proj3d.view_transformation(E,R,V,roll)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_proj3d_inv_transform_parameter_renamed",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "renamed_parameter",
+    "api": "mpl_toolkits.mplot3d.proj3d.inv_transform",
+    "description": "Apply an inverse projection matrix to 3D coordinates.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nfrom mpl_toolkits.mplot3d import proj3d\n\n\ndef scaled_inverse_transform():\n    matrix = np.diag([2.0, 2.0, 2.0, 1.0])\n    return ",
+    "right_context": "\n",
+    "assertions": "xs, ys, zs = scaled_inverse_transform()\nassert float(xs[0]) == 4.0\nassert float(ys[0]) == 8.0\nassert float(zs[0]) == 12.0",
+    "old_completion": "proj3d.inv_transform(np.array([2.0]), np.array([4.0]), np.array([6.0]), M=matrix)",
+    "new_completion": "proj3d.inv_transform(np.array([2.0]), np.array([4.0]), np.array([6.0]), invM=matrix)",
+    "expected_old_error": "unexpected keyword argument 'M'",
+    "provenance": {
+      "old_signature": "mpl_toolkits.mplot3d.proj3d.inv_transform(xs,ys,zs,M)#",
+      "new_signature": "mpl_toolkits.mplot3d.proj3d.inv_transform(xs,ys,zs,invM)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_line3dcollection_linewidths_keyword_only",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "keyword_only_parameter",
+    "api": "mpl_toolkits.mplot3d.art3d.Line3DCollection",
+    "description": "Build a 3D line collection with a 2-point linewidth.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nfrom mpl_toolkits.mplot3d import art3d\n\n\ndef line3d_linewidths():\n    segments = [[(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)]]\n    collection = ",
+    "right_context": "\n    return list(collection.get_linewidths())\n",
+    "assertions": "assert line3d_linewidths() == [2.0]",
+    "old_completion": "art3d.Line3DCollection(segments, [2.0])",
+    "new_completion": "art3d.Line3DCollection(segments, linewidths=[2.0])",
+    "expected_old_error": "__init__() takes 2 positional arguments but 3 were given",
+    "provenance": {
+      "old_signature": "class mpl_toolkits.mplot3d.art3d.Line3DCollection(segments,*args,zorder=2,**kwargs)#",
+      "new_signature": "class mpl_toolkits.mplot3d.art3d.Line3DCollection(segments,*,zorder=2,**kwargs)#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_poly3dcollection_do_3d_projection_renderer_removed",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "mpl_toolkits.mplot3d.art3d.Poly3DCollection.do_3d_projection",
+    "description": "Project a 3D polygon collection and return its draw depth.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.mplot3d import art3d\n\n\ndef projected_depth():\n    fig = plt.figure()\n    ax = fig.add_subplot(111, projection=\"3d\")\n    collection = art3d.Poly3DCollection([[(0.0, 0.0, 0.0), (1.0, 0.0, 0.0), (1.0, 1.0, 0.0)]])\n    ax.add_collection3d(collection)\n    fig.canvas.draw()\n    renderer = fig.canvas.get_renderer()\n    depth = ",
+    "right_context": "\n    plt.close(fig)\n    return depth\n",
+    "assertions": "depth = projected_depth()\nassert np.isfinite(depth)",
+    "old_completion": "collection.do_3d_projection(renderer)",
+    "new_completion": "collection.do_3d_projection()",
+    "expected_old_error": "do_3d_projection() takes 1 positional argument but 2 were given",
+    "provenance": {
+      "old_signature": "do_3d_projection(renderer=<deprecatedparameter>)#",
+      "new_signature": "do_3d_projection()#",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "matplotlib_line3dcollection_draw_project_removed",
+    "library": "matplotlib",
+    "source_version": "3.7.2",
+    "target_version": "3.8.3",
+    "change_type": "removed_parameter",
+    "api": "mpl_toolkits.mplot3d.art3d.Line3DCollection.draw",
+    "description": "Draw a red 3D line collection onto an Agg renderer.",
+    "prompt": "import matplotlib\nassert matplotlib.__version__ == \"3.8.3\"\nmatplotlib.use(\"Agg\")\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.mplot3d import art3d\n\n\ndef drawn_red_pixel_count():\n    fig = plt.figure()\n    ax = fig.add_subplot(111, projection=\"3d\")\n    collection = art3d.Line3DCollection([[(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)]], colors=\"red\")\n    ax.add_collection3d(collection)\n    fig.canvas.draw()\n    renderer = fig.canvas.get_renderer()\n    ",
+    "right_context": "\n    buffer = np.asarray(fig.canvas.buffer_rgba())\n    red = (buffer[:, :, 0] == 255) & (buffer[:, :, 1] < 60) & (buffer[:, :, 2] < 60)\n    plt.close(fig)\n    return int(red.sum())\n",
+    "assertions": "assert drawn_red_pixel_count() > 0",
+    "old_completion": "collection.draw(renderer, project=True)",
+    "new_completion": "collection.draw(renderer)",
+    "expected_old_error": "unexpected keyword argument 'project'",
+    "provenance": {
+      "old_signature": "draw(renderer,project=<deprecatedparameter>)#",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

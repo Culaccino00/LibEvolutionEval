@@ -1,0 +1,1 @@
+{"id": "matplotlib_legend_positional_loc_removed", "raw": "Legend(ax, [handle], [\"series\"], loc=\"lower left\")", "completion": "Legend(ax, [handle], [\"series\"], loc=\"lower left\")"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_set_window_title_moved", "raw": "fig.canvas.set_window_title(\"Test\")", "completion": "fig.canvas.set_window_title(\"Test\")"}

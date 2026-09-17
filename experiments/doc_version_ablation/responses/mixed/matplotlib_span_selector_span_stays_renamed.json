@@ -1,0 +1,1 @@
+{"id": "matplotlib_span_selector_span_stays_renamed", "raw": "SpanSelector(axes, lambda xmin, xmax: None, 'horizontal')", "completion": "SpanSelector(axes, lambda xmin, xmax: None, 'horizontal')"}

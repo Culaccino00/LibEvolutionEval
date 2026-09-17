@@ -1,0 +1,1 @@
+{"id": "matplotlib_artistlist_insert_removed", "raw": "ax.add_line(line)", "completion": "ax.add_line(line)"}

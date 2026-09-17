@@ -1,0 +1,1 @@
+{"id": "matplotlib_figure_facecolor_keyword_only", "raw": "plt.figure(figsize=(6, 4), dpi=100, facecolor=\"red\")", "completion": "plt.figure(figsize=(6, 4), dpi=100, facecolor=\"red\")"}

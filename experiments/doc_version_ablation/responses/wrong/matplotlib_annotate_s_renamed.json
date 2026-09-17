@@ -1,0 +1,1 @@
+{"id": "matplotlib_annotate_s_renamed", "raw": "plt.annotate(\"foo\", (0.5, 0.5))", "completion": "plt.annotate(\"foo\", (0.5, 0.5))"}

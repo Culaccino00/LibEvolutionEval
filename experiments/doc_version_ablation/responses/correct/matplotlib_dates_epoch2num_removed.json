@@ -1,0 +1,1 @@
+{"id": "matplotlib_dates_epoch2num_removed", "raw": "dates.date2num(datetime(1970, 1, 1, tzinfo=timezone.utc))", "completion": "dates.date2num(datetime(1970, 1, 1, tzinfo=timezone.utc))"}

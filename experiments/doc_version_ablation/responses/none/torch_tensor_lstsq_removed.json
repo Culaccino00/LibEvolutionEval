@@ -1,0 +1,1 @@
+{"id": "torch_tensor_lstsq_removed", "raw": "torch.linalg.lstsq(design, target).solution", "completion": "torch.linalg.lstsq(design, target).solution"}

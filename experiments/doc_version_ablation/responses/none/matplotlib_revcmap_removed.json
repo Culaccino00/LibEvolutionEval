@@ -1,0 +1,1 @@
+{"id": "matplotlib_revcmap_removed", "raw": "return base.reversed()", "completion": "return base.reversed()"}

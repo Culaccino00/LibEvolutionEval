@@ -1,0 +1,1 @@
+{"id": "matplotlib_log2_transform_removed", "raw": "return scale.LogTransform(2)", "completion": "return scale.LogTransform(2)"}

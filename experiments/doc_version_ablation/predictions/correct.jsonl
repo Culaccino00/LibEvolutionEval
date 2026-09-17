@@ -1,0 +1,212 @@
+{"id": "matplotlib_hist_normed_removed", "completion": "plt.hist(values, density=True)"}
+{"id": "matplotlib_annotate_s_renamed", "completion": "plt.annotate(\"annotation text\", xy=(0, 0))"}
+{"id": "matplotlib_stem_line_collection_removed", "completion": "plt.stem(values)"}
+{"id": "matplotlib_grid_b_renamed", "completion": "plt.grid(True)"}
+{"id": "matplotlib_diverging_norm_removed", "completion": "colors.TwoSlopeNorm(vcenter=0, vmin=-2, vmax=4)"}
+{"id": "matplotlib_cbook_warning_moved", "completion": "cbook.MatplotlibDeprecationWarning"}
+{"id": "matplotlib_shared_axes_join_removed", "completion": "top.sharex(bottom)"}
+{"id": "matplotlib_figure_facecolor_keyword_only", "completion": "plt.figure()"}
+{"id": "matplotlib_line2d_style_keyword_only", "completion": "Line2D([0, 1], [0, 1])"}
+{"id": "matplotlib_set_xlim_flags_keyword_only", "completion": "ax.set_xlim(0, 1)"}
+{"id": "matplotlib_offset_transform_parameter_renamed", "completion": "collection.set_offset_transform(transform)"}
+{"id": "matplotlib_log_locator_base_setter_removed", "completion": "locator.base = 2.0"}
+{"id": "matplotlib_log_formatter_base_setter_removed", "completion": "formatter.base = 2.0"}
+{"id": "matplotlib_axes_renderer_cache_removed", "completion": "fig.canvas.get_renderer()"}
+{"id": "matplotlib_stride_windows_removed", "completion": "list(zip(values[:-1], values[1:]))"}
+{"id": "matplotlib_affine_identity_removed", "completion": "Affine2D()"}
+{"id": "matplotlib_date_ticker_factory_removed", "completion": "    locator = dates.AutoDateLocator()\n    formatter = dates.AutoDateFormatter(locator)\n    return locator, formatter"}
+{"id": "matplotlib_canvas_button_event_removed", "completion": "event = matplotlib.backend_bases.MouseEvent(\n    \"button_press_event\", fig.canvas, 100, 100, button=1\n)\nfig.canvas.callbacks.process(\"button_press_event\", event)"}
+{"id": "matplotlib_marker_none_removed", "completion": "MarkerStyle(\"\")"}
+{"id": "matplotlib_seaborn_style_renamed", "completion": "'ggplot'"}
+{"id": "matplotlib_axes3d_w_xaxis_removed", "completion": "axes.xaxis"}
+{"id": "matplotlib_tick_label_alias_removed", "completion": "tick.label1"}
+{"id": "matplotlib_cm_lutsize_removed", "completion": "256"}
+{"id": "matplotlib_scalarmappable_callbackssm_removed", "completion": "ScalarMappable().callbacks"}
+{"id": "matplotlib_subplotparams_validate_removed", "completion": "params.left = matplotlib.rcParams[\"figure.subplot.left\"]\nparams.bottom = matplotlib.rcParams[\"figure.subplot.bottom\"]\nparams.right = matplotlib.rcParams[\"figure.subplot.right\"]\nparams.top = matplotlib.rcParams[\"figure.subplot.top\"]\nparams.wspace = matplotlib.rcParams[\"figure.subplot.wspace\"]\nparams.hspace = matplotlib.rcParams[\"figure.subplot.hspace\"]"}
+{"id": "matplotlib_win32_installed_fonts_removed", "completion": "font_manager.findSystemFonts()"}
+{"id": "matplotlib_fontconfig_fonts_removed", "completion": "font_manager.findSystemFonts()"}
+{"id": "matplotlib_fancyarrow_display_path_removed", "completion": "arrow.get_path()"}
+{"id": "matplotlib_fancybbox_bbox_transmuter_removed", "completion": "FancyBboxPatch((0, 0), 1, 1, boxstyle=\"round\")"}
+{"id": "matplotlib_fancybbox_mutation_keyword_only", "completion": "return FancyBboxPatch((0, 0), 1, 1, boxstyle=\"round\", mutation_scale=10)"}
+{"id": "matplotlib_rectangle_selector_drawtype_removed", "completion": "RectangleSelector(axes, lambda eclick, erelease: None)"}
+{"id": "matplotlib_rectangle_selector_lineprops_renamed", "completion": "RectangleSelector(axes, lambda eclick, erelease: None)"}
+{"id": "matplotlib_rectangle_selector_rectprops_renamed", "completion": "RectangleSelector(axes, lambda eclick, erelease: None)"}
+{"id": "matplotlib_rectangle_selector_maxdist_renamed", "completion": "RectangleSelector(axes, lambda eclick, erelease: None)"}
+{"id": "matplotlib_rectangle_selector_marker_props_renamed", "completion": "RectangleSelector(axes, lambda eclick, erelease: None)"}
+{"id": "matplotlib_span_selector_rectprops_renamed", "completion": "SpanSelector(axes, lambda vmin, vmax: None, 'horizontal')"}
+{"id": "matplotlib_span_selector_span_stays_renamed", "completion": "SpanSelector(axes, lambda xmin, xmax: None, \"horizontal\")"}
+{"id": "matplotlib_lasso_selector_lineprops_renamed", "completion": "LassoSelector(axes, lambda verts: None)"}
+{"id": "matplotlib_colorbar_set_ticks_update_ticks_removed", "completion": "colorbar.set_ticks([0, 1], labels=[\"low\", \"high\"])"}
+{"id": "matplotlib_imshow_aspect_keyword_only", "completion": "axes.imshow([[0, 1], [2, 3]], aspect=\"equal\")"}
+{"id": "matplotlib_stem_formats_keyword_only", "completion": "axes.stem([1.0, 2.0, 3.0], [1.0, 2.0, 1.0])"}
+{"id": "matplotlib_quadmesh_constructor_changed", "completion": "QuadMesh(coordinates)"}
+{"id": "matplotlib_cbook_warn_deprecated_moved", "completion": "cbook._warn_external(\"This is a warning.\")"}
+{"id": "matplotlib_cbook_deprecated_moved", "completion": ""}
+{"id": "matplotlib_mpldeprecation_renamed", "completion": "    return matplotlib.MatplotlibDeprecationWarning"}
+{"id": "matplotlib_execute_constrained_layout_removed", "completion": "fig.execute_constrained_layout()"}
+{"id": "matplotlib_markerstyle_set_fillstyle_removed", "completion": "    return MarkerStyle(\"o\", fillstyle=\"left\")"}
+{"id": "matplotlib_markerstyle_set_marker_removed", "completion": "return MarkerStyle('s')"}
+{"id": "matplotlib_axis_cla_renamed", "completion": "axes.xaxis.clear()"}
+{"id": "matplotlib_canvas_get_window_title_moved", "completion": "fig.canvas.get_window_title()"}
+{"id": "matplotlib_canvas_set_window_title_moved", "completion": "fig.canvas.manager.set_window_title(\"Figure\")"}
+{"id": "matplotlib_fontconfig_pattern_parser_removed", "completion": "    import matplotlib.font_manager\n    font_path = matplotlib.font_manager.findfont('DejaVu Sans')\n    return matplotlib.font_manager.FontProperties(fname=font_path)"}
+{"id": "matplotlib_subplot_get_geometry_moved", "completion": "axes[0, 0].get_subplotspec()"}
+{"id": "matplotlib_subplot_is_first_row_moved", "completion": "axes[0, 0].get_subplotspec().rowspan.start == 0"}
+{"id": "matplotlib_subplot_is_last_row_moved", "completion": "axes[1, 0].get_subplotspec().is_last_row()"}
+{"id": "matplotlib_subplot_is_first_col_moved", "completion": "axes[0, 0].get_subplotspec().is_first_col()"}
+{"id": "matplotlib_subplot_is_last_col_moved", "completion": "result = axes[0, 1].get_subplotspec().is_last_col()"}
+{"id": "matplotlib_axes3d_auto_add_removed", "completion": "axes = Axes3D(fig)"}
+{"id": "matplotlib_line2d_valid_cap_removed", "completion": "return Line2D([0, 1], [0, 1], solid_capstyle='round')"}
+{"id": "matplotlib_line2d_valid_join_removed", "completion": "return Line2D([0, 1], [0, 1], solid_joinstyle='round')"}
+{"id": "matplotlib_mathtext_parse_antialiased_renamed", "completion": "parser.parse(r\"$\\Box$\")"}
+{"id": "matplotlib_mathtext_get_unicode_index_math_removed", "completion": "mathtext.get_unicode_index(r\"\\alpha\")"}
+{"id": "matplotlib_mathtext_to_rgba_removed", "completion": ""}
+{"id": "matplotlib_mathtext_backend_agg_removed", "completion": ""}
+{"id": "matplotlib_mathtext_warning_removed", "completion": "ValueError"}
+{"id": "matplotlib_blocking_input_module_removed", "completion": ""}
+{"id": "matplotlib_ellipse_selector_drawtype_removed", "completion": "widgets.EllipseSelector(ax, lambda *args: None)"}
+{"id": "matplotlib_lasso_selector_onselect_required", "completion": "widgets.LassoSelector(ax, callback)"}
+{"id": "matplotlib_lasso_callback_required", "completion": "widgets.Lasso(ax, (0, 0), lambda verts: None)"}
+{"id": "matplotlib_polygon_selector_grab_range_renamed", "completion": "widgets.PolygonSelector(ax, lambda verts: None).grab_range"}
+{"id": "matplotlib_backend_tools_set_cursor_base_removed", "completion": "backend_tools.ToolCursorPosition"}
+{"id": "matplotlib_backend_tools_copy_to_clipboard_removed", "completion": "backend_tools.ToolCopyToClipboard"}
+{"id": "matplotlib_agg_print_jpg_pil_kwargs", "completion": "canvas.print_jpg(buffer)"}
+{"id": "matplotlib_pdf_print_dpi_removed", "completion": "canvas.print_pdf(buffer)"}
+{"id": "matplotlib_svg_print_dpi_removed", "completion": "canvas.print_svg(buffer)"}
+{"id": "matplotlib_agg_tostring_rgba_minimized_removed", "completion": "np.asarray(figure.canvas.buffer_rgba())"}
+{"id": "matplotlib_pdf_operator_removed", "completion": "backend_pdf.Op(\"q\")"}
+{"id": "matplotlib_template_new_figure_manager_removed", "completion": "backend_template.FigureManagerTemplate(backend_template.FigureCanvasTemplate(figure), 1)"}
+{"id": "matplotlib_pyplot_gca_projection_kwargs_removed", "completion": "plt.gca(projection='polar')"}
+{"id": "matplotlib_figure_gca_kwargs_removed", "completion": "fig.gca(projection=\"polar\")"}
+{"id": "matplotlib_artistlist_insert_removed", "completion": "ax.add_line(line)"}
+{"id": "matplotlib_colorbar_set_ticklabels_update_ticks_removed", "completion": "colorbar.set_ticklabels(['low', 'high'])"}
+{"id": "matplotlib_colorbarpatch_removed", "completion": "matplotlib.colorbar.Colorbar(cax, image)"}
+{"id": "matplotlib_get_font_filename_renamed", "completion": "font_manager.get_font(font_path)"}
+{"id": "matplotlib_subplotspec_get_position_return_all_removed", "completion": "spec.get_position(fig)"}
+{"id": "matplotlib_axesimage_positional_cmap_removed", "completion": "AxesImage(ax)"}
+{"id": "matplotlib_pcolorimage_positional_cmap_removed", "completion": "PcolorImage(ax, A=data)"}
+{"id": "matplotlib_legend_positional_loc_removed", "completion": "Legend(ax, [handle], [\"series\"])"}
+{"id": "matplotlib_table_cell_positional_colors_removed", "completion": "Cell((0, 0), 1, 1)"}
+{"id": "matplotlib_spine_cla_removed", "completion": "spine.set_position((\"outward\", 0))"}
+{"id": "matplotlib_tight_layout_get_renderer_removed", "completion": "fig.canvas.get_renderer()"}
+{"id": "matplotlib_axis_positional_pickradius_removed", "completion": "ax.xaxis"}
+{"id": "matplotlib_clabeltext_positional_color_removed", "completion": "ClabelText()"}
+{"id": "matplotlib_canvas_key_press_event_removed", "completion": ""}
+{"id": "matplotlib_canvas_key_release_event_removed", "completion": ""}
+{"id": "matplotlib_canvas_scroll_event_removed", "completion": "fig.canvas.scroll_event(0.5, 0.5, 1)\nfig.canvas.scroll_event(0.5, 0.5, -1)"}
+{"id": "matplotlib_canvas_motion_event_removed", "completion": "    event = matplotlib.backend_bases.MouseEvent(\"motion_notify_event\", fig.canvas, 10, 20)\n    fig.canvas.callbacks.process(\"motion_notify_event\", event)"}
+{"id": "matplotlib_canvas_close_event_removed", "completion": "fig.canvas.close_event()"}
+{"id": "matplotlib_canvas_resize_event_removed", "completion": "fig.canvas.resize_event()"}
+{"id": "matplotlib_canvas_draw_event_removed", "completion": "fig.canvas.draw()"}
+{"id": "matplotlib_canvas_button_release_event_removed", "completion": "fig.canvas.button_release_event(0, 0, button=1)\nfig.canvas.button_release_event(0, 0, button=2)\nfig.canvas.button_release_event(0, 0, button=3)"}
+{"id": "matplotlib_canvas_enter_event_removed", "completion": "from matplotlib.backend_bases import LocationEvent\nfig.canvas.callbacks.process(\"figure_enter_event\", LocationEvent(\"figure_enter_event\", fig.canvas, 10, 20))"}
+{"id": "matplotlib_canvas_leave_event_removed", "completion": "fig.canvas.leave_notify_event()"}
+{"id": "matplotlib_revcmap_removed", "completion": "base.reversed()"}
+{"id": "matplotlib_cbook_bunch_removed", "completion": "return cbook.__dict__"}
+{"id": "matplotlib_legend_draggable_removed", "completion": "legend.set_draggable(True)"}
+{"id": "matplotlib_avconv_writer_removed", "completion": "return animation.FFMpegWriter()"}
+{"id": "matplotlib_log10_transform_removed", "completion": "scale.LogTransform(10)"}
+{"id": "matplotlib_log2_transform_removed", "completion": "scale.LogTransform(10)"}
+{"id": "matplotlib_natural_log_transform_removed", "completion": "scale.LogTransform(math.e)"}
+{"id": "matplotlib_text_with_dash_removed", "completion": "text.Text(0, 0, \"label\")"}
+{"id": "matplotlib_circle_resolution_removed", "completion": "Circle((0, 0), 1)"}
+{"id": "matplotlib_arrow_width_keyword_only", "completion": "Arrow(0, 0, 1, 1)"}
+{"id": "matplotlib_figure_constructor_facecolor_keyword_only", "completion": "Figure()"}
+{"id": "matplotlib_rectangle_angle_keyword_only", "completion": "Rectangle((0, 0), 1, 1, angle=45)"}
+{"id": "matplotlib_ellipse_angle_keyword_only", "completion": "Ellipse((0, 0), width=2, height=1, angle=45)"}
+{"id": "matplotlib_text_color_keyword_only", "completion": "Text(0, 0, \"text\", color=\"red\")"}
+{"id": "matplotlib_set_ylim_flags_keyword_only", "completion": "axes.set_ylim(0, 10)"}
+{"id": "matplotlib_set_zlim_flags_keyword_only", "completion": "axes.set_zlim(0, 1)"}
+{"id": "matplotlib_set_rlim_flags_keyword_only", "completion": "axes.set_rlim(0, 10)"}
+{"id": "matplotlib_log_locator_subs_setter_removed", "completion": "locator.set_params(base=10.0, subs=(1.0, 2.0))"}
+{"id": "matplotlib_log_formatter_label_minor_removed", "completion": ""}
+{"id": "matplotlib_axes3d_w_yaxis_removed", "completion": "axes.yaxis"}
+{"id": "matplotlib_axes3d_w_zaxis_removed", "completion": "axes.zaxis"}
+{"id": "matplotlib_axes3d_set_frame_on_removed", "completion": "axes.set_axis_off()"}
+{"id": "matplotlib_axes_size_addlist_removed", "completion": "axes_size.add(axes_size.Fixed(1), axes_size.Fixed(2))"}
+{"id": "matplotlib_axes_size_padded_removed", "completion": ""}
+{"id": "matplotlib_ticker_is_close_to_int_removed", "completion": "math.isclose(value, round(value))"}
+{"id": "matplotlib_ticker_is_decade_removed", "completion": "np.isclose(np.log(value) / np.log(base), np.round(np.log(value) / np.log(base)))"}
+{"id": "matplotlib_get_renderer_cleared_removed", "completion": "renderer = fig.canvas.get_renderer()"}
+{"id": "matplotlib_colorbar_filled_removed", "completion": "matplotlib.colorbar.Colorbar(axes, mappable=mappable)"}
+{"id": "matplotlib_multicursor_options_keyword_only", "completion": "MultiCursor(fig.canvas, (top, bottom))"}
+{"id": "matplotlib_selector_visible_setter_removed", "completion": "selector.set_visible(False)"}
+{"id": "matplotlib_figure_callbacks_removed", "completion": "    fig.canvas.mpl_connect('resize_event', lambda event: seen.append(event))\n    fig.set_size_inches(10, 10)"}
+{"id": "matplotlib_dates_epoch2num_removed", "completion": "dates.date2num(datetime(1970, 1, 1, tzinfo=timezone.utc))"}
+{"id": "matplotlib_dates_num2epoch_removed", "completion": "    return dates.num2date(0).timestamp()"}
+{"id": "matplotlib_osx_installed_fonts_removed", "completion": "font_manager.findSystemFonts()"}
+{"id": "matplotlib_dates_hours_removed", "completion": "timedelta(days=0.5)"}
+{"id": "matplotlib_textpath_vertices_method_removed", "completion": "    text_path = TextPath((0, 0), \"A\")\n    return text_path.vertices, text_path.codes"}
+{"id": "matplotlib_text_to_path_texmanager_removed", "completion": "TexManager()"}
+{"id": "matplotlib_canvas_pick_removed", "completion": "fig.canvas.pick(event)"}
+{"id": "matplotlib_colorbar_draw_all_removed", "completion": "colorbar.remove()"}
+{"id": "matplotlib_collection_set_offset_transform_renamed", "completion": "collection.set_offset_transform(transform)"}
+{"id": "matplotlib_collection_set_pickradius_renamed", "completion": "collection.set_pickradius(10)"}
+{"id": "matplotlib_collection_set_paths_requires_argument", "completion": "collection.set_paths([])"}
+{"id": "matplotlib_linecollection_linewidths_keyword_only", "completion": "mcollections.LineCollection(segments)"}
+{"id": "matplotlib_ellispecollection_units_keyword_only", "completion": "mcollections.EllipseCollection([1], [1], [0], units='xy')"}
+{"id": "matplotlib_eventcollection_lineoffset_keyword_only", "completion": "mcollections.EventCollection([0])"}
+{"id": "matplotlib_collection_callbackssm_removed", "completion": "matplotlib.artist._get_artist_registry()"}
+{"id": "matplotlib_axes3d_format_coord_renamed", "completion": "ax.format_coord(0, 0)"}
+{"id": "matplotlib_axes3d_quiver_length_keyword_only", "completion": "ax.quiver([0], [0], [0], [1], [1], [1])"}
+{"id": "matplotlib_axes3d_set_zlim_emit_keyword_only", "completion": "ax.set_zlim3d(0, 1)"}
+{"id": "matplotlib_proj3d_persp_transformation_focal_length_required", "completion": "proj3d.persp_transformation(-10, 10, 1)"}
+{"id": "matplotlib_proj3d_view_transformation_roll_required", "completion": "proj3d.view_transformation(eye, center, up, 0)"}
+{"id": "matplotlib_proj3d_inv_transform_parameter_renamed", "completion": "proj3d.inv_transform(1, 2, 3, np.linalg.inv(matrix))"}
+{"id": "matplotlib_line3dcollection_linewidths_keyword_only", "completion": "art3d.Line3DCollection(segments)"}
+{"id": "matplotlib_poly3dcollection_do_3d_projection_renderer_removed", "completion": "collection.do_3d_projection()"}
+{"id": "matplotlib_line3dcollection_draw_project_removed", "completion": ""}
+{"id": "matplotlib_offsetbox_textarea_minimumdescent_removed", "completion": "TextArea(\"hello world\")"}
+{"id": "matplotlib_offsetbox_anchoredtext_positional_pad", "completion": "AnchoredText(\"test\", loc=\"upper left\")"}
+{"id": "matplotlib_offsetbox_get_offset_arguments_removed", "completion": "area.get_offset(area.get_bbox(fig.canvas.get_renderer()), fig.canvas.get_renderer())"}
+{"id": "matplotlib_fancyarrowpatch_dpi_cor_removed", "completion": "arrow.set_mutation_scale(arrow.get_mutation_scale() * 2)"}
+{"id": "matplotlib_polar_set_ylim_keyword_only", "completion": "axes.set_rlim(0, 1)"}
+{"id": "matplotlib_polar_theta_locator_refresh_removed", "completion": ""}
+{"id": "matplotlib_axes_divider_get_vsize_hsize_removed", "completion": "sum(divider.get_horizontal_sizes(renderer))"}
+{"id": "matplotlib_axes_divider_append_axes_add_to_figure_removed", "completion": "divider.append_axes(\"right\", size=\"100%\", pad=0.05)"}
+{"id": "matplotlib_parasite_axes_auxtrans_factory_removed", "completion": "parasite_axes(host, transform)"}
+{"id": "torch_symeig_removed", "completion": "torch.linalg.eigh(matrix)"}
+{"id": "torch_tensor_symeig_removed", "completion": "torch.linalg.eigh(matrix)"}
+{"id": "torch_all_gather_multigpu_removed", "completion": "dist.all_gather(outputs, input_tensor)"}
+{"id": "torch_all_reduce_multigpu_removed", "completion": "dist.all_reduce(tensor, op=dist.ReduceOp.SUM)"}
+{"id": "torch_broadcast_multigpu_removed", "completion": "dist.broadcast(tensor, src=0)"}
+{"id": "torch_reduce_multigpu_removed", "completion": "dist.all_reduce(tensor, op=dist.ReduceOp.SUM)"}
+{"id": "torch_reduce_scatter_multigpu_removed", "completion": "dist.reduce_scatter_tensor(output, contribution)"}
+{"id": "torch_fsdp_load_optim_state_dict_pre_hook_removed", "completion": "FSDP.optim_state_dict_to_load(model, optim, full_state)"}
+{"id": "torch_fsdp_optim_state_dict_post_hook_removed", "completion": "optim.state_dict()"}
+{"id": "torch_fsdp_params_with_grad_removed", "completion": "list(model.parameters())"}
+{"id": "torch_tp_enable_2d_with_fsdp_removed", "completion": "FSDP(nn.Linear(4, 4), device_mesh=mesh)"}
+{"id": "torch_tp_multihead_attention_removed", "completion": "nn.MultiheadAttention(embed_dim=4, num_heads=2)"}
+{"id": "torch_tp_pairwise_parallel_removed", "completion": "plan = {\"fc1\": ColwiseParallel(), \"fc2\": RowwiseParallel()}"}
+{"id": "torch_tp_make_input_replicate_1d_removed", "completion": "distribute_tensor(tensor, mesh, [Replicate()])"}
+{"id": "torch_tp_make_input_shard_1d_removed", "completion": "distribute_tensor(tensor, mesh, [Shard(0)])"}
+{"id": "torch_tp_make_input_shard_1d_last_dim_removed", "completion": "distribute_tensor(tensor, mesh, [Shard(1)])"}
+{"id": "torch_tp_make_output_replicate_1d_removed", "completion": "sharded.redistribute(mesh, [Replicate()])"}
+{"id": "torch_tp_make_output_shard_1d_removed", "completion": "tp_style.make_output_sharded(replicated)"}
+{"id": "torch_tp_make_output_tensor_removed", "completion": "tp_style._gather_output(sharded)"}
+{"id": "torch_eig_removed", "completion": "torch.linalg.eig(matrix)"}
+{"id": "torch_tensor_eig_removed", "completion": "torch.linalg.eig(matrix)"}
+{"id": "torch_solve_removed", "completion": "torch.linalg.solve(matrix, rhs)"}
+{"id": "torch_tensor_solve_removed", "completion": "torch.linalg.solve(matrix, rhs)"}
+{"id": "torch_lstsq_removed", "completion": "torch.linalg.lstsq(design, target).solution"}
+{"id": "torch_tensor_lstsq_removed", "completion": "torch.linalg.lstsq(design, target.unsqueeze(-1)).solution.squeeze(-1)"}
+{"id": "torch_matrix_rank_removed", "completion": "torch.linalg.matrix_rank(matrix)"}
+{"id": "torch_fft_removed", "completion": "torch.fft.fft(signal)"}
+{"id": "torch_ifft_removed", "completion": "torch.fft.ifft(torch.view_as_complex(spectrum)).real"}
+{"id": "torch_rfft_removed", "completion": "torch.fft.rfft(signal)"}
+{"id": "torch_irfft_removed", "completion": "torch.fft.irfft(spectrum, n=signal.numel())"}
+{"id": "torch_tensor_fft_removed", "completion": "torch.fft.fft(signal)"}
+{"id": "torch_tensor_ifft_removed", "completion": "torch.fft.ifft(torch.view_as_complex(spectrum))"}
+{"id": "torch_tensor_rfft_removed", "completion": "torch.fft.rfft(signal)"}
+{"id": "torch_tensor_irfft_removed", "completion": "torch.fft.irfft(spectrum, n=signal.shape[-1])"}
+{"id": "torch_buffered_shuffle_dataset_removed", "completion": "torch.utils.data.datapipes.iter.Shuffler(dataset, buffer_size=buffer_size)"}
+{"id": "torch_cpp_extension_check_compiler_abi_removed", "completion": "`cpp_extension.get_compiler_abi_compatibility_and_version(compiler)[0]`"}
+{"id": "torch_fx_graph_flatten_inps_removed", "completion": "_pytree.tree_flatten((left, right))[0]"}
+{"id": "torch_fx_graph_unflatten_outs_removed", "completion": "_pytree.tree_unflatten(flat, template)"}
+{"id": "torch_rpc_process_group_backend_options_removed", "completion": "rpc.TensorPipeRpcBackendOptions(init_method=init_method, rpc_timeout=rpc_timeout)"}
+{"id": "torch_nn_quantized_relu_module_removed", "completion": "torch.nn.ReLU()"}
+{"id": "torch_nn_quantized_functional_relu_removed", "completion": "F.relu(x)"}
+{"id": "torch_onnx_jitscalartype_from_name_removed", "completion": "torch.onnx.TensorProtoDataType.FLOAT"}
+{"id": "torch_add_observer_removed", "completion": "torch.ao.quantization.prepare(model, inplace=True)"}
+{"id": "torch_get_observer_dict_removed", "completion": "    for name, module in prepared.named_modules():\n        if hasattr(module, \"activation_post_process\"):\n            collected[name] = module.activation_post_process"}
+{"id": "torch_fake_quantize_per_channel_affine_axis_required", "completion": "torch.fake_quantize_per_channel_affine(x, scale, zero_point, 0, 0, 255)"}

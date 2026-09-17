@@ -1,0 +1,1 @@
+{"id": "matplotlib_proj3d_inv_transform_parameter_renamed", "raw": "```python\nreturn proj3d.inv_transform(1, 2, 3, matrix)\n```", "completion": "return proj3d.inv_transform(1, 2, 3, matrix)"}

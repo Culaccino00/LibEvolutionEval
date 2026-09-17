@@ -1,0 +1,1 @@
+{"id": "matplotlib_markerstyle_set_fillstyle_removed", "raw": "return MarkerStyle('o', fillstyle='left')", "completion": "return MarkerStyle('o', fillstyle='left')"}

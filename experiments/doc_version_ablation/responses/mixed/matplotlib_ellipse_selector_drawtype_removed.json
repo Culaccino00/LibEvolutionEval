@@ -1,0 +1,1 @@
+{"id": "matplotlib_ellipse_selector_drawtype_removed", "raw": "widgets.EllipseSelector(ax, lambda e1, e2: None, props=dict(facecolor='red'))", "completion": "widgets.EllipseSelector(ax, lambda e1, e2: None, props=dict(facecolor='red'))"}

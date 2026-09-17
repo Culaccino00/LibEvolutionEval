@@ -1,0 +1,1 @@
+{"id": "torch_fsdp_params_with_grad_removed", "raw": "[p for p in model.parameters() if p.requires_grad]", "completion": "[p for p in model.parameters() if p.requires_grad]"}

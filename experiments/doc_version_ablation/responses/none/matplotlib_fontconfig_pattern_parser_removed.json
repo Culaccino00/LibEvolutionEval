@@ -1,0 +1,1 @@
+{"id": "matplotlib_fontconfig_pattern_parser_removed", "raw": "    from matplotlib import afm\n    with open(afm.findfont(\"Helvetica\")) as fh:\n        return afm.AFM(fh)", "completion": "    from matplotlib import afm\n    with open(afm.findfont(\"Helvetica\")) as fh:\n        return afm.AFM(fh)"}

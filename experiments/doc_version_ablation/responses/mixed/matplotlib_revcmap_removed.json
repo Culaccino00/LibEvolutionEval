@@ -1,0 +1,1 @@
+{"id": "matplotlib_revcmap_removed", "raw": "colors.LinearSegmentedColormap.from_list(\"viridis_r\", base(np.linspace(0, 1, 256))[::-1])", "completion": "colors.LinearSegmentedColormap.from_list(\"viridis_r\", base(np.linspace(0, 1, 256))[::-1])"}

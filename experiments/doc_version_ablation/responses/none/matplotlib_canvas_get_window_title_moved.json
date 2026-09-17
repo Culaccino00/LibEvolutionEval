@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_get_window_title_moved", "raw": "fig.canvas.manager.get_window_title()", "completion": "fig.canvas.manager.get_window_title()"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_leave_event_removed", "raw": "fig.canvas.leave_notify_event()", "completion": "fig.canvas.leave_notify_event()"}

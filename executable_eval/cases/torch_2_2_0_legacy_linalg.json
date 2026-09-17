@@ -1,0 +1,317 @@
+[
+  {
+    "id": "torch_eig_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.eig",
+    "replacement_api": "torch.linalg.eig",
+    "description": "Compute the eigenvalues and eigenvectors of a symmetric matrix.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef eigendecomposition():\n    torch.manual_seed(0)\n    base = torch.randn(4, 4, dtype=torch.double)\n    matrix = base @ base.t()\n    eigenvalues, eigenvectors = ",
+    "right_context": "\n    return eigenvalues, eigenvectors, matrix\n",
+    "assertions": "eigenvalues, eigenvectors, matrix = eigendecomposition()\nassert eigenvalues.dtype == torch.complex128\nassert eigenvectors.dtype == torch.complex128\nassert eigenvalues.shape == (4,)\nassert eigenvectors.shape == (4, 4)\nassert bool(torch.all(eigenvalues.imag.abs() < 1e-8))\nlhs = matrix.to(torch.complex128) @ eigenvectors\nrhs = eigenvectors * eigenvalues.unsqueeze(0)\nassert torch.allclose(lhs, rhs, atol=1e-8)",
+    "old_completion": "torch.eig(matrix, eigenvectors=True)",
+    "new_completion": "torch.linalg.eig(matrix)",
+    "expected_old_error": "This function was deprecated since version 1.9 and is now removed.",
+    "provenance": {
+      "old_signature": "torch.eig(input,eigenvectors=False,out=None) -> (Tensor,Tensor)¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tensor_eig_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.Tensor.eig",
+    "replacement_api": "torch.linalg.eig",
+    "description": "Compute the eigenvalues and eigenvectors of a symmetric matrix via a tensor method.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef eigendecomposition():\n    torch.manual_seed(0)\n    base = torch.randn(4, 4, dtype=torch.double)\n    matrix = base @ base.t()\n    eigenvalues, eigenvectors = ",
+    "right_context": "\n    return eigenvalues, eigenvectors, matrix\n",
+    "assertions": "eigenvalues, eigenvectors, matrix = eigendecomposition()\nassert eigenvalues.dtype == torch.complex128\nassert eigenvectors.dtype == torch.complex128\nassert eigenvalues.shape == (4,)\nassert eigenvectors.shape == (4, 4)\nassert bool(torch.all(eigenvalues.imag.abs() < 1e-8))\nlhs = matrix.to(torch.complex128) @ eigenvectors\nrhs = eigenvectors * eigenvalues.unsqueeze(0)\nassert torch.allclose(lhs, rhs, atol=1e-8)",
+    "old_completion": "matrix.eig(eigenvectors=True)",
+    "new_completion": "torch.linalg.eig(matrix)",
+    "expected_old_error": "This function was deprecated since version 1.9 and is now removed.",
+    "provenance": {
+      "old_signature": "eig(eigenvectors=False) -> (Tensor,Tensor)¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_solve_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.solve",
+    "replacement_api": "torch.linalg.solve",
+    "description": "Solve a well-conditioned square linear system.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef linear_system_solution():\n    torch.manual_seed(0)\n    matrix = torch.randn(4, 4, dtype=torch.double) + 3.0 * torch.eye(4, dtype=torch.double)\n    rhs = torch.randn(4, dtype=torch.double)\n    solution = ",
+    "right_context": "\n    return solution, matrix, rhs\n",
+    "assertions": "solution, matrix, rhs = linear_system_solution()\nassert solution.shape == (4,)\nassert solution.dtype == torch.double\nassert torch.allclose(matrix @ solution, rhs, atol=1e-8)",
+    "old_completion": "torch.solve(rhs, matrix)[0]",
+    "new_completion": "torch.linalg.solve(matrix, rhs)",
+    "expected_old_error": "`torch.solve` is deprecated in favor of `torch.linalg.solve`",
+    "provenance": {
+      "old_signature": "torch.solve(input,A,out=None) -> (Tensor,Tensor)¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tensor_solve_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.Tensor.solve",
+    "replacement_api": "torch.linalg.solve",
+    "description": "Solve a well-conditioned square linear system via a tensor method.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef linear_system_solution():\n    torch.manual_seed(0)\n    matrix = torch.randn(4, 4, dtype=torch.double) + 3.0 * torch.eye(4, dtype=torch.double)\n    rhs = torch.randn(4, dtype=torch.double)\n    solution = ",
+    "right_context": "\n    return solution, matrix, rhs\n",
+    "assertions": "solution, matrix, rhs = linear_system_solution()\nassert solution.shape == (4,)\nassert solution.dtype == torch.double\nassert torch.allclose(matrix @ solution, rhs, atol=1e-8)",
+    "old_completion": "rhs.solve(matrix)[0]",
+    "new_completion": "torch.linalg.solve(matrix, rhs)",
+    "expected_old_error": "This function was deprecated since version 1.9 and is now removed.",
+    "provenance": {
+      "old_signature": "solve(A)→ Tensor, Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_lstsq_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.lstsq",
+    "replacement_api": "torch.linalg.lstsq",
+    "description": "Solve an overdetermined least-squares problem.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef least_squares_solution():\n    torch.manual_seed(0)\n    design = torch.randn(6, 3, dtype=torch.double)\n    target = torch.randn(6, dtype=torch.double)\n    solution = ",
+    "right_context": "\n    return solution, design, target\n",
+    "assertions": "solution, design, target = least_squares_solution()\nassert solution.shape == (3,)\nassert solution.dtype == torch.double\nnormal_equation_residual = design.t() @ (design @ solution - target)\nassert torch.allclose(normal_equation_residual, torch.zeros(3, dtype=torch.double), atol=1e-6)",
+    "old_completion": "torch.lstsq(target, design)[:3]",
+    "new_completion": "torch.linalg.lstsq(design, target, driver=\"gels\").solution",
+    "expected_old_error": "`torch.lstsq` is deprecated in favor of `torch.linalg.lstsq`",
+    "provenance": {
+      "old_signature": "torch.lstsq(input,A,out=None)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tensor_lstsq_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.Tensor.lstsq",
+    "replacement_api": "torch.linalg.lstsq",
+    "description": "Solve an overdetermined least-squares problem via a tensor method.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef least_squares_solution():\n    torch.manual_seed(0)\n    design = torch.randn(6, 3, dtype=torch.double)\n    target = torch.randn(6, dtype=torch.double)\n    solution = ",
+    "right_context": "\n    return solution, design, target\n",
+    "assertions": "solution, design, target = least_squares_solution()\nassert solution.shape == (3,)\nassert solution.dtype == torch.double\nnormal_equation_residual = design.t() @ (design @ solution - target)\nassert torch.allclose(normal_equation_residual, torch.zeros(3, dtype=torch.double), atol=1e-6)",
+    "old_completion": "target.lstsq(design)[:3]",
+    "new_completion": "torch.linalg.lstsq(design, target, driver=\"gels\").solution",
+    "expected_old_error": "This function was deprecated since version 1.9 and is now removed.",
+    "provenance": {
+      "old_signature": "lstsq(A) -> (Tensor,Tensor)¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_matrix_rank_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.matrix_rank",
+    "replacement_api": "torch.linalg.matrix_rank",
+    "description": "Compute the numerical rank of a rank-two matrix.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef low_rank_matrix_rank():\n    torch.manual_seed(0)\n    left = torch.randn(5, 2, dtype=torch.double)\n    right = torch.randn(2, 5, dtype=torch.double)\n    matrix = left @ right\n    rank = ",
+    "right_context": "\n    return rank\n",
+    "assertions": "rank = low_rank_matrix_rank()\nassert int(rank) == 2",
+    "old_completion": "torch.matrix_rank(matrix)",
+    "new_completion": "torch.linalg.matrix_rank(matrix)",
+    "expected_old_error": "Please use the `torch.linalg.matrix_rank` function instead",
+    "provenance": {
+      "old_signature": "torch.matrix_rank(input,tol=None,symmetric=False)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_fft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.fft",
+    "replacement_api": "torch.fft.fft",
+    "description": "Compute the one-dimensional discrete Fourier transform of a real signal.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef fft_spectrum():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = ",
+    "right_context": "\n    return signal, spectrum\n",
+    "assertions": "signal, spectrum = fft_spectrum()\nassert spectrum.dtype == torch.complex64\nassert spectrum.shape == (8,)\ntime_energy = signal.abs().pow(2).sum()\nfrequency_energy = spectrum.abs().pow(2).sum() / 8\nassert torch.allclose(time_energy, frequency_energy, atol=1e-4)",
+    "old_completion": "torch.fft(torch.stack([signal, torch.zeros_like(signal)], dim=-1), 1)",
+    "new_completion": "torch.fft.fft(signal)",
+    "expected_old_error": "'module' object is not callable",
+    "provenance": {
+      "old_signature": "torch.fft(input,signal_ndim,normalized=False)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_ifft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.ifft",
+    "replacement_api": "torch.fft.ifft",
+    "description": "Recover a real signal from its Fourier spectrum via the inverse transform.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef ifft_recovers_signal():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = torch.view_as_real(torch.fft.fft(signal))\n    recovered = ",
+    "right_context": "\n    return signal, recovered\n",
+    "assertions": "signal, recovered = ifft_recovers_signal()\nassert torch.is_complex(recovered)\nassert recovered.shape == (8,)\nassert torch.allclose(recovered.real, signal, atol=1e-5)",
+    "old_completion": "torch.ifft(spectrum, 1)",
+    "new_completion": "torch.fft.ifft(torch.view_as_complex(spectrum))",
+    "expected_old_error": "module 'torch' has no attribute 'ifft'",
+    "provenance": {
+      "old_signature": "torch.ifft(input,signal_ndim,normalized=False)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_rfft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.rfft",
+    "replacement_api": "torch.fft.rfft",
+    "description": "Compute the one-sided discrete Fourier transform of a real signal.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef rfft_spectrum():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = ",
+    "right_context": "\n    return signal, spectrum\n",
+    "assertions": "signal, spectrum = rfft_spectrum()\nassert spectrum.dtype == torch.complex64\nassert spectrum.shape == (5,)\nassert torch.allclose(spectrum[0].real, signal.sum(), atol=1e-5)\nassert abs(float(spectrum[0].imag)) < 1e-5",
+    "old_completion": "torch.rfft(signal, 1)",
+    "new_completion": "torch.fft.rfft(signal)",
+    "expected_old_error": "module 'torch' has no attribute 'rfft'",
+    "provenance": {
+      "old_signature": "torch.rfft(input,signal_ndim,normalized=False,onesided=True)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_irfft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.irfft",
+    "replacement_api": "torch.fft.irfft",
+    "description": "Recover a real signal from its one-sided Fourier spectrum.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef irfft_recovers_signal():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = torch.fft.rfft(signal)\n    recovered = ",
+    "right_context": "\n    return signal, recovered\n",
+    "assertions": "signal, recovered = irfft_recovers_signal()\nassert recovered.dtype == torch.float32\nassert recovered.shape == (8,)\nassert torch.allclose(recovered, signal, atol=1e-5)",
+    "old_completion": "torch.irfft(torch.view_as_real(spectrum), 1, signal_sizes=(8,))",
+    "new_completion": "torch.fft.irfft(spectrum, n=8)",
+    "expected_old_error": "module 'torch' has no attribute 'irfft'",
+    "provenance": {
+      "old_signature": "torch.irfft(input,signal_ndim,normalized=False,onesided=True,signal_sizes=None)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tensor_fft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.Tensor.fft",
+    "replacement_api": "torch.fft.fft",
+    "description": "Compute the one-dimensional discrete Fourier transform of a real signal via a tensor method.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef fft_spectrum():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = ",
+    "right_context": "\n    return signal, spectrum\n",
+    "assertions": "signal, spectrum = fft_spectrum()\nassert spectrum.dtype == torch.complex64\nassert spectrum.shape == (8,)\ntime_energy = signal.abs().pow(2).sum()\nfrequency_energy = spectrum.abs().pow(2).sum() / 8\nassert torch.allclose(time_energy, frequency_energy, atol=1e-4)",
+    "old_completion": "torch.stack([signal, torch.zeros_like(signal)], dim=-1).fft(1)",
+    "new_completion": "torch.fft.fft(signal)",
+    "expected_old_error": "'Tensor' object has no attribute 'fft'",
+    "provenance": {
+      "old_signature": "fft(signal_ndim,normalized=False)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tensor_ifft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.Tensor.ifft",
+    "replacement_api": "torch.fft.ifft",
+    "description": "Recover a real signal from its Fourier spectrum via a tensor method.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef ifft_recovers_signal():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = torch.view_as_real(torch.fft.fft(signal))\n    recovered = ",
+    "right_context": "\n    return signal, recovered\n",
+    "assertions": "signal, recovered = ifft_recovers_signal()\nassert torch.is_complex(recovered)\nassert recovered.shape == (8,)\nassert torch.allclose(recovered.real, signal, atol=1e-5)",
+    "old_completion": "spectrum.ifft(1)",
+    "new_completion": "torch.fft.ifft(torch.view_as_complex(spectrum))",
+    "expected_old_error": "'Tensor' object has no attribute 'ifft'",
+    "provenance": {
+      "old_signature": "ifft(signal_ndim,normalized=False)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tensor_rfft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.Tensor.rfft",
+    "replacement_api": "torch.fft.rfft",
+    "description": "Compute the one-sided discrete Fourier transform of a real signal via a tensor method.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef rfft_spectrum():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = ",
+    "right_context": "\n    return signal, spectrum\n",
+    "assertions": "signal, spectrum = rfft_spectrum()\nassert spectrum.dtype == torch.complex64\nassert spectrum.shape == (5,)\nassert torch.allclose(spectrum[0].real, signal.sum(), atol=1e-5)\nassert abs(float(spectrum[0].imag)) < 1e-5",
+    "old_completion": "signal.rfft(1)",
+    "new_completion": "torch.fft.rfft(signal)",
+    "expected_old_error": "'Tensor' object has no attribute 'rfft'",
+    "provenance": {
+      "old_signature": "rfft(signal_ndim,normalized=False,onesided=True)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tensor_irfft_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.Tensor.irfft",
+    "replacement_api": "torch.fft.irfft",
+    "description": "Recover a real signal from its one-sided Fourier spectrum via a tensor method.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\n\n\ndef irfft_recovers_signal():\n    torch.manual_seed(0)\n    signal = torch.randn(8)\n    spectrum = torch.fft.rfft(signal)\n    recovered = ",
+    "right_context": "\n    return signal, recovered\n",
+    "assertions": "signal, recovered = irfft_recovers_signal()\nassert recovered.dtype == torch.float32\nassert recovered.shape == (8,)\nassert torch.allclose(recovered, signal, atol=1e-5)",
+    "old_completion": "torch.view_as_real(spectrum).irfft(1, signal_sizes=(8,))",
+    "new_completion": "torch.fft.irfft(spectrum, n=8)",
+    "expected_old_error": "'Tensor' object has no attribute 'irfft'",
+    "provenance": {
+      "old_signature": "irfft(signal_ndim,normalized=False,onesided=True,signal_sizes=None)→ Tensor¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

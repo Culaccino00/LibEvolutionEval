@@ -1,0 +1,1 @@
+{"id": "matplotlib_line2d_valid_join_removed", "raw": "return Line2D([0, 1], [0, 1], solid_joinstyle='round')", "completion": "return Line2D([0, 1], [0, 1], solid_joinstyle='round')"}

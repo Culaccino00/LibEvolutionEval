@@ -1,0 +1,1 @@
+{"id": "matplotlib_subplot_is_first_col_moved", "raw": "axes[0, 0].is_first_col()", "completion": "axes[0, 0].is_first_col()"}

@@ -1,0 +1,1 @@
+{"id": "torch_tensor_eig_removed", "raw": "torch.linalg.eig(matrix)", "completion": "torch.linalg.eig(matrix)"}

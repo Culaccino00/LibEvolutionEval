@@ -1,0 +1,1 @@
+{"id": "matplotlib_blocking_input_module_removed", "raw": "matplotlib.blocking_input.BlockingMouseInput(plt.gcf())", "completion": "matplotlib.blocking_input.BlockingMouseInput(plt.gcf())"}

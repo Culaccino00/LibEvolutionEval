@@ -1,0 +1,1 @@
+{"id": "matplotlib_subplot_get_geometry_moved", "raw": "axes[0, 0].get_subplotspec().get_geometry()", "completion": "axes[0, 0].get_subplotspec().get_geometry()"}

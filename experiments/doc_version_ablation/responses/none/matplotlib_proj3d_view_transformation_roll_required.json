@@ -1,0 +1,1 @@
+{"id": "matplotlib_proj3d_view_transformation_roll_required", "raw": "proj3d.view_transformation(eye, center, up)", "completion": "proj3d.view_transformation(eye, center, up)"}

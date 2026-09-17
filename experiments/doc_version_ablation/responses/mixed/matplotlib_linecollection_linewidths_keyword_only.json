@@ -1,0 +1,1 @@
+{"id": "matplotlib_linecollection_linewidths_keyword_only", "raw": "mcollections.LineCollection(segments, linewidths=(1, 2))", "completion": "mcollections.LineCollection(segments, linewidths=(1, 2))"}

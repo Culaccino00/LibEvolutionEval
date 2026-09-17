@@ -1,0 +1,1 @@
+{"id": "matplotlib_ticker_is_close_to_int_removed", "raw": "abs(value - round(value)) < 1e-10", "completion": "abs(value - round(value)) < 1e-10"}

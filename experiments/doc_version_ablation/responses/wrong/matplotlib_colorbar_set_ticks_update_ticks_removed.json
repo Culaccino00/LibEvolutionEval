@@ -1,0 +1,1 @@
+{"id": "matplotlib_colorbar_set_ticks_update_ticks_removed", "raw": "colorbar.set_ticks([0, 1], labels=[\"low\", \"high\"])", "completion": "colorbar.set_ticks([0, 1], labels=[\"low\", \"high\"])"}

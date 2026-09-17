@@ -1,0 +1,1 @@
+{"id": "torch_fsdp_load_optim_state_dict_pre_hook_removed", "raw": "FSDP.optim_state_dict_to_load(model, optim, full_state)", "completion": "FSDP.optim_state_dict_to_load(model, optim, full_state)"}

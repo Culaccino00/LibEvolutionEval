@@ -1,0 +1,1 @@
+{"id": "matplotlib_figure_gca_kwargs_removed", "raw": "fig.gca(projection='polar')", "completion": "fig.gca(projection='polar')"}

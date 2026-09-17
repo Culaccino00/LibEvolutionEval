@@ -1,0 +1,1 @@
+{"id": "torch_rpc_process_group_backend_options_removed", "raw": "```python\noptions = rpc.ProcessGroupRpcBackendOptions(\n    init_method=init_method,\n    rpc_timeout=rpc_timeout,\n)\n```", "completion": "options = rpc.ProcessGroupRpcBackendOptions(\n    init_method=init_method,\n    rpc_timeout=rpc_timeout,\n)"}

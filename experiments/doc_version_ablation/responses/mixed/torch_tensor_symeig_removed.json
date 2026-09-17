@@ -1,0 +1,1 @@
+{"id": "torch_tensor_symeig_removed", "raw": "```python\ntorch.linalg.eigh(matrix)\n```", "completion": "torch.linalg.eigh(matrix)"}

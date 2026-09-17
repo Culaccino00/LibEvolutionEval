@@ -1,0 +1,44 @@
+[
+  {
+    "id": "torch_nn_quantized_relu_module_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_api",
+    "api": "torch.nn.quantized.ReLU",
+    "replacement_api": "torch.nn.ReLU",
+    "description": "Apply a ReLU module to a quantized tensor and clamp negative activations to zero.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\ntorch.manual_seed(0)\ntorch.backends.quantized.engine = \"qnnpack\"\n\n\ndef quantized_relu(values):\n    x = torch.quantize_per_tensor(torch.tensor(values), 0.1, 0, torch.quint8)\n    relu = ",
+    "right_context": "\n    return relu(x)\n",
+    "assertions": "result = quantized_relu([-1.0, 0.5, 2.0, -0.3])\nassert result.is_quantized\nassert result.q_scale() == 0.1\nassert result.q_zero_point() == 0\nassert torch.allclose(result.dequantize(), torch.tensor([0.0, 0.5, 2.0, 0.0]))",
+    "old_completion": "torch.nn.quantized.ReLU()",
+    "new_completion": "torch.nn.ReLU()",
+    "expected_old_error": "module 'torch.nn.quantized' has no attribute 'ReLU'",
+    "provenance": {
+      "old_signature": "classtorch.nn.quantized.ReLU(inplace=False)[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_nn_quantized_functional_relu_removed",
+    "library": "torch",
+    "source_version": "1.6.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_api",
+    "api": "torch.nn.quantized.functional.relu",
+    "replacement_api": "torch.nn.functional.relu",
+    "description": "Apply functional ReLU to a quantized tensor and clamp negative activations to zero.",
+    "prompt": "import torch\nimport torch.nn.functional as F\nassert torch.__version__ == \"2.2.0\"\ntorch.manual_seed(0)\ntorch.backends.quantized.engine = \"qnnpack\"\n\n\ndef quantized_relu(values):\n    x = torch.quantize_per_tensor(torch.tensor(values), 0.25, 10, torch.quint8)\n    return ",
+    "right_context": "\n",
+    "assertions": "result = quantized_relu([-1.0, 0.75, 1.5, -0.5])\nassert result.is_quantized\nassert result.q_scale() == 0.25\nassert result.q_zero_point() == 10\nassert torch.allclose(result.dequantize(), torch.tensor([0.0, 0.75, 1.5, 0.0]))",
+    "old_completion": "torch.nn.quantized.functional.relu(x)",
+    "new_completion": "F.relu(x)",
+    "expected_old_error": "module 'torch.nn.quantized.functional' has no attribute 'relu'",
+    "provenance": {
+      "old_signature": "torch.nn.quantized.functional.relu(input,inplace=False)→ Tensor[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

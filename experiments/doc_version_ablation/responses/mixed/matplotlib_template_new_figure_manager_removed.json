@@ -1,0 +1,1 @@
+{"id": "matplotlib_template_new_figure_manager_removed", "raw": "backend_template.FigureManagerTemplate(backend_template.FigureCanvasTemplate(figure), 1)", "completion": "backend_template.FigureManagerTemplate(backend_template.FigureCanvasTemplate(figure), 1)"}

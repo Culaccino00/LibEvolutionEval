@@ -1,0 +1,1 @@
+{"id": "matplotlib_fontconfig_pattern_parser_removed", "raw": "```python\n    from matplotlib import font_manager\n    return font_manager.get_font(font_manager.findfont(\"DejaVu Sans\"))\n```", "completion": "    from matplotlib import font_manager\n    return font_manager.get_font(font_manager.findfont(\"DejaVu Sans\"))"}

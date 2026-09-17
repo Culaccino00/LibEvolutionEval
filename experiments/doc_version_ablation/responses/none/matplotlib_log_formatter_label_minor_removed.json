@@ -1,0 +1,1 @@
+{"id": "matplotlib_log_formatter_label_minor_removed", "raw": "formatter.set_labelOnlyBase(True)", "completion": "formatter.set_labelOnlyBase(True)"}

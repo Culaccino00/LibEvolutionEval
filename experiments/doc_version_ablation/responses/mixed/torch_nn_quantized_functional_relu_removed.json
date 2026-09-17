@@ -1,0 +1,1 @@
+{"id": "torch_nn_quantized_functional_relu_removed", "raw": "torch.nn.quantized.functional.relu(x)", "completion": "torch.nn.quantized.functional.relu(x)"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_mpldeprecation_renamed", "raw": "return matplotlib.MatplotlibDeprecationWarning", "completion": "return matplotlib.MatplotlibDeprecationWarning"}

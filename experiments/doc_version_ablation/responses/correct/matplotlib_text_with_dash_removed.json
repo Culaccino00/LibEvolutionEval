@@ -1,0 +1,1 @@
+{"id": "matplotlib_text_with_dash_removed", "raw": "text.Text(0, 0, \"label\")", "completion": "text.Text(0, 0, \"label\")"}

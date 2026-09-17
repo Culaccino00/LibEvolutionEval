@@ -1,0 +1,1 @@
+{"id": "matplotlib_axis_cla_renamed", "raw": "    axes.xaxis.clear()", "completion": "    axes.xaxis.clear()"}

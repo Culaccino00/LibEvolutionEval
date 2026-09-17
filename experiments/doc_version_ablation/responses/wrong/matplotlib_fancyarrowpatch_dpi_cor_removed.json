@@ -1,0 +1,1 @@
+{"id": "matplotlib_fancyarrowpatch_dpi_cor_removed", "raw": "arrow.set_mutation_scale(arrow.get_mutation_scale() * 2)", "completion": "arrow.set_mutation_scale(arrow.get_mutation_scale() * 2)"}

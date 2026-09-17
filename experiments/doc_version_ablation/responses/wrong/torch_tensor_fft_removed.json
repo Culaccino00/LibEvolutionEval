@@ -1,0 +1,1 @@
+{"id": "torch_tensor_fft_removed", "raw": "spectrum = torch.stack((torch.fft.fft(signal).real, torch.fft.fft(signal).imag))", "completion": "spectrum = torch.stack((torch.fft.fft(signal).real, torch.fft.fft(signal).imag))"}

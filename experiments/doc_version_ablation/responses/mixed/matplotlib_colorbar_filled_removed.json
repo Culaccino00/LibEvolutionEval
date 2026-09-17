@@ -1,0 +1,1 @@
+{"id": "matplotlib_colorbar_filled_removed", "raw": "fig.colorbar(mappable, ax=axes)", "completion": "fig.colorbar(mappable, ax=axes)"}

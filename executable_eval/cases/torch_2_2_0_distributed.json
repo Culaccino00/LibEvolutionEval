@@ -1,0 +1,358 @@
+[
+  {
+    "id": "torch_all_gather_multigpu_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.all_gather_multigpu",
+    "replacement_api": "torch.distributed.all_gather",
+    "description": "Gather a tensor into one output list per rank with a single-rank gloo process group.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef gathered_values(values):\n    input_tensor = torch.tensor(values, dtype=torch.float32)\n    outputs = [torch.zeros_like(input_tensor) for _ in range(dist.get_world_size())]\n    ",
+    "right_context": "\n    return outputs\n",
+    "assertions": "outputs = gathered_values([1.5, -2.0])\nassert len(outputs) == 1\nassert torch.equal(outputs[0], torch.tensor([1.5, -2.0]))",
+    "old_completion": "dist.all_gather_multigpu(outputs, [input_tensor])",
+    "new_completion": "dist.all_gather(outputs, input_tensor)",
+    "expected_old_error": "module 'torch.distributed' has no attribute 'all_gather_multigpu'",
+    "provenance": {
+      "old_signature": "torch.distributed.all_gather_multigpu(output_tensor_lists,input_tensor_list,group=None,async_op=False)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_all_reduce_multigpu_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.all_reduce_multigpu",
+    "replacement_api": "torch.distributed.all_reduce",
+    "description": "Sum a tensor across ranks with a single-rank gloo process group.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef all_reduced_sum(scalar):\n    tensor = torch.tensor([scalar], dtype=torch.float32)\n    ",
+    "right_context": "\n    return float(tensor[0])\n",
+    "assertions": "assert all_reduced_sum(3.5) == 3.5",
+    "old_completion": "dist.all_reduce_multigpu([tensor])",
+    "new_completion": "dist.all_reduce(tensor)",
+    "expected_old_error": "module 'torch.distributed' has no attribute 'all_reduce_multigpu'",
+    "provenance": {
+      "old_signature": "torch.distributed.all_reduce_multigpu(tensor_list,op=<RedOpType.SUM:0>,group=None,async_op=False)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_broadcast_multigpu_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.broadcast_multigpu",
+    "replacement_api": "torch.distributed.broadcast",
+    "description": "Broadcast a tensor from rank zero with a single-rank gloo process group.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef broadcast_value(scalar):\n    tensor = torch.tensor([scalar], dtype=torch.float32)\n    ",
+    "right_context": "\n    return float(tensor[0])\n",
+    "assertions": "assert broadcast_value(7.25) == 7.25",
+    "old_completion": "dist.broadcast_multigpu([tensor], src=0)",
+    "new_completion": "dist.broadcast(tensor, src=0)",
+    "expected_old_error": "module 'torch.distributed' has no attribute 'broadcast_multigpu'",
+    "provenance": {
+      "old_signature": "torch.distributed.broadcast_multigpu(tensor_list,src,group=None,async_op=False,src_tensor=0)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_reduce_multigpu_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.reduce_multigpu",
+    "replacement_api": "torch.distributed.reduce",
+    "description": "Reduce a tensor onto rank zero with a single-rank gloo process group.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef reduced_value(scalar):\n    tensor = torch.tensor([scalar], dtype=torch.float32)\n    ",
+    "right_context": "\n    return float(tensor[0])\n",
+    "assertions": "assert reduced_value(-4.5) == -4.5",
+    "old_completion": "dist.reduce_multigpu([tensor], dst=0)",
+    "new_completion": "dist.reduce(tensor, dst=0)",
+    "expected_old_error": "module 'torch.distributed' has no attribute 'reduce_multigpu'",
+    "provenance": {
+      "old_signature": "torch.distributed.reduce_multigpu(tensor_list,dst,op=<RedOpType.SUM:0>,group=None,async_op=False,dst_tensor=0)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_reduce_scatter_multigpu_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.reduce_scatter_multigpu",
+    "replacement_api": "torch.distributed.reduce_scatter_tensor",
+    "description": "Reduce then scatter a tensor with a single-rank gloo process group.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef reduce_scattered_value(scalar):\n    output = torch.zeros(1, dtype=torch.float32)\n    contribution = torch.tensor([scalar], dtype=torch.float32)\n    ",
+    "right_context": "\n    return float(output[0])\n",
+    "assertions": "assert reduce_scattered_value(9.5) == 9.5",
+    "old_completion": "dist.reduce_scatter_multigpu([output], [[contribution]])",
+    "new_completion": "dist.reduce_scatter_tensor(output, contribution)",
+    "expected_old_error": "module 'torch.distributed' has no attribute 'reduce_scatter_multigpu'",
+    "provenance": {
+      "old_signature": "torch.distributed.reduce_scatter_multigpu(output_tensor_list,input_tensor_lists,op=<RedOpType.SUM:0>,group=None,async_op=False)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_fsdp_load_optim_state_dict_pre_hook_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.distributed.fsdp.FullyShardedDataParallel.load_optim_state_dict_pre_hook",
+    "replacement_api": "torch.distributed.fsdp.FullyShardedDataParallel.optim_state_dict_to_load",
+    "description": "Transform a full optimizer state dict so it can be loaded back into an FSDP-wrapped model.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.nn as nn\nimport torch.distributed as dist\nfrom torch.distributed.fsdp import FullyShardedDataParallel as FSDP\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef reloaded_optimizer_lr():\n    torch.manual_seed(0)\n    model = FSDP(nn.Linear(4, 4), device_id=torch.device(\"cpu\"))\n    optim = torch.optim.SGD(model.parameters(), lr=0.1)\n    model(torch.ones(2, 4)).sum().backward()\n    optim.step()\n    full_state = FSDP.optim_state_dict(model, optim)\n    to_load = ",
+    "right_context": "\n    optim.load_state_dict(to_load)\n    return float(optim.param_groups[0][\"lr\"])\n",
+    "assertions": "lr = reloaded_optimizer_lr()\nassert abs(lr - 0.1) < 1e-9",
+    "old_completion": "FSDP.load_optim_state_dict_pre_hook(model, optim, full_state)",
+    "new_completion": "FSDP.optim_state_dict_to_load(model, optim, full_state)",
+    "expected_old_error": "type object 'FullyShardedDataParallel' has no attribute 'load_optim_state_dict_pre_hook'",
+    "provenance": {
+      "old_signature": "staticload_optim_state_dict_pre_hook(model,optim,optim_state_dict,group=None)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_fsdp_optim_state_dict_post_hook_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.distributed.fsdp.FullyShardedDataParallel.optim_state_dict_post_hook",
+    "replacement_api": "torch.distributed.fsdp.FullyShardedDataParallel.optim_state_dict",
+    "description": "Materialize the full optimizer state dict of an FSDP-wrapped model.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.nn as nn\nimport torch.distributed as dist\nfrom torch.distributed.fsdp import FullyShardedDataParallel as FSDP\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef optimizer_state_summary():\n    torch.manual_seed(0)\n    model = FSDP(nn.Linear(4, 4), device_id=torch.device(\"cpu\"))\n    optim = torch.optim.SGD(model.parameters(), lr=0.1)\n    model(torch.ones(2, 4)).sum().backward()\n    optim.step()\n    state_dict = ",
+    "right_context": "\n    return sorted(state_dict.keys()), float(state_dict[\"param_groups\"][0][\"lr\"])\n",
+    "assertions": "keys, lr = optimizer_state_summary()\nassert keys == [\"param_groups\", \"state\"]\nassert abs(lr - 0.1) < 1e-9",
+    "old_completion": "FSDP.optim_state_dict_post_hook(model, optim, optim.state_dict())",
+    "new_completion": "FSDP.optim_state_dict(model, optim)",
+    "expected_old_error": "type object 'FullyShardedDataParallel' has no attribute 'optim_state_dict_post_hook'",
+    "provenance": {
+      "old_signature": "staticoptim_state_dict_post_hook(model,optim,optim_state_dict,group=None)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_fsdp_params_with_grad_removed",
+    "library": "torch",
+    "source_version": "1.13.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_method",
+    "api": "torch.distributed.fsdp.FullyShardedDataParallel.params_with_grad",
+    "description": "Collect the trainable parameters of an FSDP-wrapped linear layer.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.nn as nn\nimport torch.distributed as dist\nfrom torch.distributed.fsdp import FullyShardedDataParallel as FSDP\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef trainable_parameter_numel():\n    torch.manual_seed(0)\n    model = FSDP(nn.Linear(4, 4), device_id=torch.device(\"cpu\"))\n    params = ",
+    "right_context": "\n    assert all(p.requires_grad for p in params)\n    return sum(int(p.numel()) for p in params)\n",
+    "assertions": "assert trainable_parameter_numel() == 20",
+    "old_completion": "model.params_with_grad",
+    "new_completion": "[p for p in model.parameters() if p.requires_grad]",
+    "expected_old_error": "has no attribute 'params_with_grad'",
+    "provenance": {
+      "old_signature": "propertyparams_with_grad:List[Parameter]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_enable_2d_with_fsdp_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.tensor.parallel.fsdp.enable_2d_with_fsdp",
+    "replacement_api": "torch.distributed.fsdp.FullyShardedDataParallel(device_mesh=...)",
+    "description": "Run an FSDP-wrapped linear layer on a data-parallel dimension of a two-dimensional device mesh.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.nn as nn\nimport torch.distributed as dist\nfrom torch.distributed.fsdp import FullyShardedDataParallel as FSDP\nimport torch.distributed.tensor.parallel.fsdp as tp_fsdp\nfrom torch.distributed.device_mesh import init_device_mesh\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef fsdp_forward_on_mesh():\n    mesh = init_device_mesh(\"cpu\", (1, 1), mesh_dim_names=(\"dp\", \"tp\"))\n    torch.manual_seed(0)\n    model = ",
+    "right_context": "\n    return model(torch.ones(2, 4))\n",
+    "assertions": "output = fsdp_forward_on_mesh()\nassert output.shape == (2, 4)\ntorch.manual_seed(0)\nreference = nn.Linear(4, 4)\nassert torch.allclose(output, reference(torch.ones(2, 4)))",
+    "old_completion": "tp_fsdp.enable_2d_with_fsdp()",
+    "new_completion": "FSDP(nn.Linear(4, 4), device_mesh=mesh[\"dp\"], device_id=torch.device(\"cpu\"))",
+    "expected_old_error": "has no attribute 'enable_2d_with_fsdp'",
+    "provenance": {
+      "old_signature": "torch.distributed.tensor.parallel.fsdp.enable_2d_with_fsdp()[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_multihead_attention_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_class",
+    "api": "torch.distributed.tensor.parallel.multihead_attention_tp.TensorParallelMultiheadAttention",
+    "replacement_api": "torch.nn.MultiheadAttention",
+    "description": "Run batch-first multi-head self-attention on a single rank.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport torch.nn as nn\n\n\ndef attention_output_shape():\n    torch.manual_seed(0)\n    attention = ",
+    "right_context": "\n    query = torch.randn(1, 3, 4)\n    output, _ = attention(query, query, query)\n    return tuple(output.shape)\n",
+    "assertions": "assert attention_output_shape() == (1, 3, 4)",
+    "old_completion": "__import__(\"torch.distributed.tensor.parallel.multihead_attention_tp\", fromlist=[\"TensorParallelMultiheadAttention\"]).TensorParallelMultiheadAttention(4, 2, batch_first=True)",
+    "new_completion": "nn.MultiheadAttention(embed_dim=4, num_heads=2, batch_first=True)",
+    "expected_old_error": "No module named 'torch.distributed.tensor.parallel.multihead_attention_tp'",
+    "provenance": {
+      "old_signature": "classtorch.distributed.tensor.parallel.multihead_attention_tp.TensorParallelMultiheadAttention(embed_dim,num_heads,dropout=0.0,bias=True,add_bias_kv=False,add_zero_attn=False,kdim=None,vdim=None,batch_first=False,device=None,dtype=None,tp_size=1,self_attention=True)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_pairwise_parallel_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_class",
+    "api": "torch.distributed.tensor.parallel.style.PairwiseParallel",
+    "replacement_api": "torch.distributed.tensor.parallel.parallelize_module with ColwiseParallel/RowwiseParallel",
+    "description": "Parallelize a two-layer MLP with a column-wise then row-wise tensor-parallel plan.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.nn as nn\nimport torch.distributed as dist\nfrom torch.distributed.device_mesh import init_device_mesh\nfrom torch.distributed._tensor import DTensor\nimport torch.distributed.tensor.parallel.style as tp_style\nfrom torch.distributed.tensor.parallel import (\n    ColwiseParallel,\n    RowwiseParallel,\n    parallelize_module,\n)\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\nclass MLP(nn.Module):\n    def __init__(self):\n        super().__init__()\n        torch.manual_seed(0)\n        self.fc1 = nn.Linear(4, 8)\n        self.fc2 = nn.Linear(8, 4)\n\n    def forward(self, x):\n        return self.fc2(torch.relu(self.fc1(x)))\n\n\ndef parallelized_weight_placements():\n    mesh = init_device_mesh(\"cpu\", (1,))\n    mlp = MLP()\n    plan = ",
+    "right_context": "\n    parallelize_module(mlp, mesh, plan)\n    return mlp.fc1.weight, mlp.fc2.weight\n",
+    "assertions": "weight1, weight2 = parallelized_weight_placements()\nassert isinstance(weight1, DTensor)\nassert isinstance(weight2, DTensor)\nassert repr(weight1.placements[0]) == \"Shard(dim=0)\"\nassert repr(weight2.placements[0]) == \"Shard(dim=1)\"\ntorch.manual_seed(0)\nreference = MLP()\nassert torch.equal(weight1.full_tensor(), reference.fc1.weight.detach())\nassert torch.equal(weight2.full_tensor(), reference.fc2.weight.detach())",
+    "old_completion": "tp_style.PairwiseParallel()",
+    "new_completion": "{\"fc1\": ColwiseParallel(), \"fc2\": RowwiseParallel()}",
+    "expected_old_error": "module 'torch.distributed.tensor.parallel.style' has no attribute 'PairwiseParallel'",
+    "provenance": {
+      "old_signature": "classtorch.distributed.tensor.parallel.style.PairwiseParallel[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_make_input_replicate_1d_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.tensor.parallel.style.make_input_replicate_1d",
+    "replacement_api": "torch.distributed.tensor.distribute_tensor with Replicate",
+    "description": "Replicate an input tensor over a one-dimensional device mesh as a DTensor.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\nfrom torch.distributed.device_mesh import init_device_mesh\nfrom torch.distributed._tensor import Replicate, Shard, distribute_tensor\nimport torch.distributed.tensor.parallel.style as tp_style\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef replicated_input(values):\n    mesh = init_device_mesh(\"cpu\", (1,))\n    tensor = torch.tensor(values, dtype=torch.float32)\n    distributed = ",
+    "right_context": "\n    return repr(distributed.placements[0]), distributed.full_tensor()\n",
+    "assertions": "placement, gathered = replicated_input([1.0, 2.0, 3.0])\nassert placement == \"Replicate()\"\nassert torch.equal(gathered, torch.tensor([1.0, 2.0, 3.0]))",
+    "old_completion": "tp_style.make_input_replicate_1d(tensor, mesh)",
+    "new_completion": "distribute_tensor(tensor, mesh, [Replicate()])",
+    "expected_old_error": "module 'torch.distributed.tensor.parallel.style' has no attribute 'make_input_replicate_1d'",
+    "provenance": {
+      "old_signature": "torch.distributed.tensor.parallel.style.make_input_replicate_1d(input,device_mesh=None)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_make_input_shard_1d_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.tensor.parallel.style.make_input_shard_1d",
+    "replacement_api": "torch.distributed.tensor.distribute_tensor with Shard",
+    "description": "Shard an input tensor on a chosen dimension over a one-dimensional device mesh.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\nfrom torch.distributed.device_mesh import init_device_mesh\nfrom torch.distributed._tensor import Replicate, Shard, distribute_tensor\nimport torch.distributed.tensor.parallel.style as tp_style\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef sharded_input():\n    mesh = init_device_mesh(\"cpu\", (1,))\n    tensor = torch.arange(6, dtype=torch.float32).reshape(2, 3)\n    distributed = ",
+    "right_context": "\n    return repr(distributed.placements[0]), distributed.full_tensor()\n",
+    "assertions": "placement, gathered = sharded_input()\nassert placement == \"Shard(dim=0)\"\nassert torch.equal(gathered, torch.arange(6, dtype=torch.float32).reshape(2, 3))",
+    "old_completion": "tp_style.make_input_shard_1d(tensor, mesh, dim=0)",
+    "new_completion": "distribute_tensor(tensor, mesh, [Shard(0)])",
+    "expected_old_error": "module 'torch.distributed.tensor.parallel.style' has no attribute 'make_input_shard_1d'",
+    "provenance": {
+      "old_signature": "torch.distributed.tensor.parallel.style.make_input_shard_1d(input,device_mesh=None,dim=0)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_make_input_shard_1d_last_dim_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.tensor.parallel.style.make_input_shard_1d_last_dim",
+    "replacement_api": "torch.distributed.tensor.distribute_tensor with Shard on the last dimension",
+    "description": "Shard an input tensor on its last dimension over a one-dimensional device mesh.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\nfrom torch.distributed.device_mesh import init_device_mesh\nfrom torch.distributed._tensor import Replicate, Shard, distribute_tensor\nimport torch.distributed.tensor.parallel.style as tp_style\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef last_dim_sharded_input():\n    mesh = init_device_mesh(\"cpu\", (1,))\n    tensor = torch.arange(6, dtype=torch.float32).reshape(2, 3)\n    distributed = ",
+    "right_context": "\n    return repr(distributed.placements[0]), distributed.full_tensor()\n",
+    "assertions": "placement, gathered = last_dim_sharded_input()\nassert placement == \"Shard(dim=1)\"\nassert torch.equal(gathered, torch.arange(6, dtype=torch.float32).reshape(2, 3))",
+    "old_completion": "tp_style.make_input_shard_1d_last_dim(tensor, mesh)",
+    "new_completion": "distribute_tensor(tensor, mesh, [Shard(tensor.ndim - 1)])",
+    "expected_old_error": "module 'torch.distributed.tensor.parallel.style' has no attribute 'make_input_shard_1d_last_dim'",
+    "provenance": {
+      "old_signature": "torch.distributed.tensor.parallel.style.make_input_shard_1d_last_dim(input,device_mesh=None)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_make_output_replicate_1d_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.tensor.parallel.style.make_output_replicate_1d",
+    "replacement_api": "torch.distributed.tensor.DTensor.redistribute with Replicate",
+    "description": "Redistribute a sharded DTensor output so it is replicated over a one-dimensional device mesh.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\nfrom torch.distributed.device_mesh import init_device_mesh\nfrom torch.distributed._tensor import Replicate, Shard, distribute_tensor\nimport torch.distributed.tensor.parallel.style as tp_style\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef replicated_output():\n    mesh = init_device_mesh(\"cpu\", (1,))\n    tensor = torch.arange(6, dtype=torch.float32).reshape(2, 3)\n    sharded = distribute_tensor(tensor, mesh, [Shard(0)])\n    output = ",
+    "right_context": "\n    return repr(output.placements[0]), output.full_tensor()\n",
+    "assertions": "placement, gathered = replicated_output()\nassert placement == \"Replicate()\"\nassert torch.equal(gathered, torch.arange(6, dtype=torch.float32).reshape(2, 3))",
+    "old_completion": "tp_style.make_output_replicate_1d(sharded, mesh)",
+    "new_completion": "sharded.redistribute(mesh, [Replicate()])",
+    "expected_old_error": "module 'torch.distributed.tensor.parallel.style' has no attribute 'make_output_replicate_1d'",
+    "provenance": {
+      "old_signature": "torch.distributed.tensor.parallel.style.make_output_replicate_1d(output,device_mesh=None)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_make_output_shard_1d_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.tensor.parallel.style.make_output_shard_1d",
+    "replacement_api": "torch.distributed.tensor.DTensor.redistribute with Shard",
+    "description": "Redistribute a replicated DTensor output so it is sharded on a chosen dimension.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\nfrom torch.distributed.device_mesh import init_device_mesh\nfrom torch.distributed._tensor import Replicate, Shard, distribute_tensor\nimport torch.distributed.tensor.parallel.style as tp_style\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef sharded_output():\n    mesh = init_device_mesh(\"cpu\", (1,))\n    tensor = torch.arange(6, dtype=torch.float32).reshape(2, 3)\n    replicated = distribute_tensor(tensor, mesh, [Replicate()])\n    output = ",
+    "right_context": "\n    return repr(output.placements[0]), output.full_tensor()\n",
+    "assertions": "placement, gathered = sharded_output()\nassert placement == \"Shard(dim=1)\"\nassert torch.equal(gathered, torch.arange(6, dtype=torch.float32).reshape(2, 3))",
+    "old_completion": "tp_style.make_output_shard_1d(replicated, mesh, dim=1)",
+    "new_completion": "replicated.redistribute(mesh, [Shard(1)])",
+    "expected_old_error": "module 'torch.distributed.tensor.parallel.style' has no attribute 'make_output_shard_1d'",
+    "provenance": {
+      "old_signature": "torch.distributed.tensor.parallel.style.make_output_shard_1d(output,device_mesh=None,dim=0)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_tp_make_output_tensor_removed",
+    "library": "torch",
+    "source_version": "2.0.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.distributed.tensor.parallel.style.make_output_tensor",
+    "replacement_api": "torch.distributed.tensor.DTensor.full_tensor",
+    "description": "Convert a sharded DTensor output back into a plain gathered tensor.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport os\nimport tempfile\nimport torch.distributed as dist\nfrom torch.distributed.device_mesh import init_device_mesh\nfrom torch.distributed._tensor import DTensor, Replicate, Shard, distribute_tensor\nimport torch.distributed.tensor.parallel.style as tp_style\n\n_store_dir = tempfile.mkdtemp()\ndist.init_process_group(\n    \"gloo\",\n    init_method=\"file://\" + os.path.join(_store_dir, \"store\"),\n    world_size=1,\n    rank=0,\n)\n\n\ndef gathered_output():\n    mesh = init_device_mesh(\"cpu\", (1,))\n    tensor = torch.arange(6, dtype=torch.float32).reshape(2, 3)\n    sharded = distribute_tensor(tensor, mesh, [Shard(0)])\n    output = ",
+    "right_context": "\n    return output\n",
+    "assertions": "output = gathered_output()\nassert isinstance(output, torch.Tensor)\nassert not isinstance(output, DTensor)\nassert torch.equal(output, torch.arange(6, dtype=torch.float32).reshape(2, 3))",
+    "old_completion": "tp_style.make_output_tensor(sharded, mesh)",
+    "new_completion": "sharded.full_tensor()",
+    "expected_old_error": "module 'torch.distributed.tensor.parallel.style' has no attribute 'make_output_tensor'",
+    "provenance": {
+      "old_signature": "torch.distributed.tensor.parallel.style.make_output_tensor(output,device_mesh=None)[source]\u00b6",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

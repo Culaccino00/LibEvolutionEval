@@ -1,0 +1,1 @@
+{"id": "matplotlib_figure_callbacks_removed", "raw": "    fig.callbacks.connect('resize_event', lambda event: seen.append(event))\n    fig.canvas.resize_event()", "completion": "    fig.callbacks.connect('resize_event', lambda event: seen.append(event))\n    fig.canvas.resize_event()"}

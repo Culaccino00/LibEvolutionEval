@@ -1,0 +1,1 @@
+{"id": "torch_tp_pairwise_parallel_removed", "raw": "{\n        \"fc1\": ColwiseParallel(),\n        \"fc2\": RowwiseParallel(),\n    }", "completion": "{\n        \"fc1\": ColwiseParallel(),\n        \"fc2\": RowwiseParallel(),\n    }"}

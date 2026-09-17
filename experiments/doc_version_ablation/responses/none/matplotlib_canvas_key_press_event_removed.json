@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_key_press_event_removed", "raw": "    for key in \"abc\":\n        fig.canvas.key_press_event(key)", "completion": "    for key in \"abc\":\n        fig.canvas.key_press_event(key)"}

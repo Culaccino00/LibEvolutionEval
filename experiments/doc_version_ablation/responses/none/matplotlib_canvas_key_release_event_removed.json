@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_key_release_event_removed", "raw": "```python\nfor key in [\"a\", \"b\", \"c\"]:\n    fig.canvas.key_press_event(key)\n    fig.canvas.key_release_event(key)\n```", "completion": "for key in [\"a\", \"b\", \"c\"]:\n    fig.canvas.key_press_event(key)\n    fig.canvas.key_release_event(key)"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_axes_divider_get_vsize_hsize_removed", "raw": "divider.get_vsize_hsize(renderer)[1]", "completion": "divider.get_vsize_hsize(renderer)[1]"}

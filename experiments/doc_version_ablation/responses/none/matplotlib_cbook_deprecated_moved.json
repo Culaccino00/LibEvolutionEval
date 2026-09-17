@@ -1,0 +1,1 @@
+{"id": "matplotlib_cbook_deprecated_moved", "raw": "    @cbook.deprecated(\"3.8\")\n    def legacy():\n        return 1", "completion": "    @cbook.deprecated(\"3.8\")\n    def legacy():\n        return 1"}

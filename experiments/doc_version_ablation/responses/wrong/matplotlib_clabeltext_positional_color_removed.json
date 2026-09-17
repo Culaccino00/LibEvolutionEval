@@ -1,0 +1,1 @@
+{"id": "matplotlib_clabeltext_positional_color_removed", "raw": "ClabelText(0, 0, \"test\", color=\"red\")", "completion": "ClabelText(0, 0, \"test\", color=\"red\")"}

@@ -1,0 +1,1 @@
+{"id": "torch_onnx_jitscalartype_from_name_removed", "raw": "torch.onnx.TensorProtoDataType.FLOAT", "completion": "torch.onnx.TensorProtoDataType.FLOAT"}

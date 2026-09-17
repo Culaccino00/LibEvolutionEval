@@ -1,0 +1,1 @@
+{"id": "matplotlib_collection_set_paths_requires_argument", "raw": "collection.set_paths([])", "completion": "collection.set_paths([])"}

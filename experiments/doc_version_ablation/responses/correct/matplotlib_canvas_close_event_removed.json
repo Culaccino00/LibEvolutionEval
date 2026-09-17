@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_close_event_removed", "raw": "fig.canvas.close_event()", "completion": "fig.canvas.close_event()"}

@@ -1,0 +1,1 @@
+{"id": "torch_get_observer_dict_removed", "raw": "    for name, module in prepared.named_modules():\n        if isinstance(module, torch.ao.quantization.ObserverBase):\n            collected[name] = module", "completion": "    for name, module in prepared.named_modules():\n        if isinstance(module, torch.ao.quantization.ObserverBase):\n            collected[name] = module"}

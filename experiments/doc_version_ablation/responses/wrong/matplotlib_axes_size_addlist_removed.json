@@ -1,0 +1,1 @@
+{"id": "matplotlib_axes_size_addlist_removed", "raw": "axes_size.AddList([axes_size.Fixed(1), axes_size.Fixed(2)])", "completion": "axes_size.AddList([axes_size.Fixed(1), axes_size.Fixed(2)])"}

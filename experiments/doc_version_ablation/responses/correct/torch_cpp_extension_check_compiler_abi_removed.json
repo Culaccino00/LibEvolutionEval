@@ -1,0 +1,1 @@
+{"id": "torch_cpp_extension_check_compiler_abi_removed", "raw": "`cpp_extension.get_compiler_abi_compatibility_and_version(compiler)[0]`", "completion": "`cpp_extension.get_compiler_abi_compatibility_and_version(compiler)[0]`"}

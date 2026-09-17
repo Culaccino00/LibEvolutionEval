@@ -1,0 +1,1 @@
+{"id": "torch_buffered_shuffle_dataset_removed", "raw": "torch.utils.data.datapipes.iter.Shuffler(dataset, buffer_size)", "completion": "torch.utils.data.datapipes.iter.Shuffler(dataset, buffer_size)"}

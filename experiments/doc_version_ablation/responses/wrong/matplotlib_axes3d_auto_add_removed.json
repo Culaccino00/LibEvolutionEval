@@ -1,0 +1,1 @@
+{"id": "matplotlib_axes3d_auto_add_removed", "raw": "axes = Axes3D(fig)", "completion": "axes = Axes3D(fig)"}

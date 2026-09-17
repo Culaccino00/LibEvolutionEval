@@ -1,0 +1,1 @@
+{"id": "matplotlib_grid_b_renamed", "raw": "plt.grid(True, which=\"major\")", "completion": "plt.grid(True, which=\"major\")"}

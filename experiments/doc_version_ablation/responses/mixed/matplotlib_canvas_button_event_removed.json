@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_button_event_removed", "raw": "fig.canvas.callbacks.process(\"button_press_event\", matplotlib.backend_bases.MouseEvent(\"button_press_event\", fig.canvas, 10, 20, button=1))", "completion": "fig.canvas.callbacks.process(\"button_press_event\", matplotlib.backend_bases.MouseEvent(\"button_press_event\", fig.canvas, 10, 20, button=1))"}

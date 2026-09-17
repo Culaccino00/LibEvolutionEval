@@ -1,0 +1,1 @@
+{"id": "matplotlib_date_ticker_factory_removed", "raw": "    return dates.AutoDateLocator()", "completion": "    return dates.AutoDateLocator()"}

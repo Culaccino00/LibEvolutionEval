@@ -1,0 +1,43 @@
+[
+  {
+    "id": "torch_add_observer_removed",
+    "library": "torch",
+    "source_version": "1.13.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.quantization.add_observer_",
+    "replacement_api": "torch.ao.quantization.prepare",
+    "description": "Insert activation observers into a qconfig-tagged linear model.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport torch.nn as nn\n\n\ndef observed_activation_range():\n    torch.manual_seed(0)\n    model = nn.Linear(4, 2)\n    model.qconfig = torch.ao.quantization.get_default_qconfig(\"fbgemm\")\n    torch.ao.quantization.propagate_qconfig_(model)\n    ",
+    "right_context": "\n    x = torch.randn(8, 4)\n    _ = model(x)\n    observer = model.activation_post_process\n    return observer.min_val, observer.max_val, model(x)\n",
+    "assertions": "min_val, max_val, out = observed_activation_range()\nassert min_val.shape == torch.Size([])\nassert max_val.shape == torch.Size([])\nassert float(min_val) <= float(out.min())\nassert float(max_val) >= float(out.max())\nassert float(min_val) < 0.0 < float(max_val)",
+    "old_completion": "torch.quantization.add_observer_(model)",
+    "new_completion": "torch.ao.quantization.prepare(model, inplace=True)",
+    "expected_old_error": "module 'torch.quantization' has no attribute 'add_observer_'",
+    "provenance": {
+      "old_signature": "classtorch.quantization.add_observer_(module,qconfig_propagation_list=None,non_leaf_module_list=None,device=None,custom_module_class_mapping=None)[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  },
+  {
+    "id": "torch_get_observer_dict_removed",
+    "library": "torch",
+    "source_version": "1.13.0",
+    "target_version": "2.2.0",
+    "change_type": "removed_function",
+    "api": "torch.quantization.get_observer_dict",
+    "description": "Collect the activation observers of a prepared model into a dict.",
+    "prompt": "import torch\nassert torch.__version__ == \"2.2.0\"\nimport torch.nn as nn\n\n\ndef collect_observers():\n    torch.manual_seed(0)\n    model = nn.Sequential(nn.Linear(4, 4), nn.Linear(4, 2))\n    model.qconfig = torch.ao.quantization.get_default_qconfig(\"fbgemm\")\n    prepared = torch.ao.quantization.prepare(model)\n    _ = prepared(torch.randn(8, 4))\n    collected = {}\n    ",
+    "right_context": "\n    return collected\n",
+    "assertions": "observers = collect_observers()\nassert set(observers) == {\"0.activation_post_process\", \"1.activation_post_process\"}\nassert all(obs.__class__.__name__ == \"HistogramObserver\" for obs in observers.values())\nassert all(float(obs.min_val) < float(obs.max_val) for obs in observers.values())",
+    "old_completion": "torch.quantization.get_observer_dict(prepared, collected)",
+    "new_completion": "collected.update({name + \".activation_post_process\": mod.activation_post_process for name, mod in prepared.named_modules() if hasattr(mod, \"activation_post_process\")})",
+    "expected_old_error": "module 'torch.quantization' has no attribute 'get_observer_dict'",
+    "provenance": {
+      "old_signature": "classtorch.quantization.get_observer_dict(mod,target_dict,prefix='')[source]¶",
+      "new_signature": "",
+      "source": "data/package_apis.tar.gz"
+    }
+  }
+]

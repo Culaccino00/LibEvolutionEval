@@ -1,0 +1,1 @@
+{"id": "matplotlib_canvas_enter_event_removed", "raw": "    fig.canvas.enter_notify_event(xy=(0, 0))\n    fig.canvas.enter_notify_event(xy=(0, 1))\n    fig.canvas.enter_notify_event(xy=(1, 0))", "completion": "    fig.canvas.enter_notify_event(xy=(0, 0))\n    fig.canvas.enter_notify_event(xy=(0, 1))\n    fig.canvas.enter_notify_event(xy=(1, 0))"}

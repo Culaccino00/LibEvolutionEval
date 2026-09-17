@@ -1,0 +1,1 @@
+{"id": "matplotlib_rectangle_selector_marker_props_renamed", "raw": "RectangleSelector(axes, lambda eclick, erelease: None)", "completion": "RectangleSelector(axes, lambda eclick, erelease: None)"}

@@ -1,0 +1,1 @@
+{"id": "matplotlib_pdf_print_dpi_removed", "raw": "canvas.print_pdf(buffer)", "completion": "canvas.print_pdf(buffer)"}
